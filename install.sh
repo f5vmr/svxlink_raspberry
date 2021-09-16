@@ -46,7 +46,7 @@ If [ ! -f $FLAG ]; then
 	fi
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= ‘{print $2}’`
 	echo `date` New Version: $NEWVERSION
-
+# Compilation
 	cd svxlink/src/build
 	sudo cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var ..
 	sudo make
