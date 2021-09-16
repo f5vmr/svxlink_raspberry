@@ -70,13 +70,13 @@ If [ ! -F $FLAG ]; then
 	sudo wget -q0 $CONF https://g4nab.co.uk/wp-content/uploads/2021/09/svxlink.conf
 #
 	echo `date` Setting Callsign to $CALL
-	sudo sed -I “s/MYCALL/$CALL/g” $CONF
+	sudo sed -i “s/MYCALL/$CALL/g” $CONF
 #
 	echo `date` Setting Squelch Hangtime to 10
-	sudo sed -I ’s/SQL_HANGTIME=2000/SQL_HANGTIME=10/‘ $CONF
+	sudo sed -i ’s/SQL_HANGTIME=2000/SQL_HANGTIME=10/‘ $CONF
 #	
 	echo `date` Disabling audio distortion warning messages
-	sudo sed -I ’s/PEAK_METER=1/PEAK_METER=0/‘ $CONF
+	sudo sed -i ’s/PEAK_METER=1/PEAK_METER=0/‘ $CONF
 #
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
