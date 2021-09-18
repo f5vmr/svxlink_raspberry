@@ -2,7 +2,8 @@
 # automated install of SVXlink
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
-FLAG=$HOME/.makescript
+HOME=/home/pi/
+FLAG=/$HOME/.makescript
 sudo apt update
 VERSIONS=$HOME/svxlink/src/versions
 
@@ -19,17 +20,18 @@ If [ ! -f $FLAG ]; then
 
 # Creating Groups and Users
 	echo `date` Creating Groups and Users 
-	sudo group-add svxlink
-	sudo user add -g svxlink -d /etc/svxlink svxlink
-	sudo user mod -aG audio,nogroup,svxlink,plugdev svxlink
-	sudo user mod -aG gpio svxlink
+	sudo groupadd svxlink
+	sudo useradd -g svxlink -d /etc/svxlink svxlink
+	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
+	sudo usermod -aG gpio svxlink
 
 # Installing other packages
 	echo `date` Installing required software packages …
-	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alas-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial
+	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial
 
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
+	cd $HOME
 	sudo git clone https://github.com/f5vmr/svxlink.git
 	sudo mkdir svxlink/src/build
 	fi
