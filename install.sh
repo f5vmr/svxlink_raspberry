@@ -38,7 +38,7 @@ if [ ! -f $FLAG ]; then
 # Updating from repo and building software
 	echo `date` Updating from repo and building software …
 	cd $HOME/svxlink
-	VERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= ‘{print $2}’`
+	VERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` Current Version: $VERSION
 	#
 	sudo git pull
@@ -46,7 +46,7 @@ if [ ! -f $FLAG ]; then
 			echo `date` git pull request failed, aborting!
 			exit 1
 	fi
-	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= ‘{print $2}’`
+	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
 	cd svxlink/src/build
