@@ -12,7 +12,7 @@ if [ ! -f $FLAG ]; then
 	echo
 	echo -n “Enter the node callsign: “
 	read CallVar
-	if [ “$CallVar” == “”]; then
+	if [ “$CallVar” == “” ]; then
 		echo “Sorry - Start this program again with a valid callsign”
 		exit 1
 	fi
