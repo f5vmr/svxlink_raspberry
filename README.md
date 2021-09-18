@@ -31,6 +31,9 @@ The script will now update the software. You will be required to add the callsig
 
 At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins.
 
+You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
+
+
 
 Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.
 
