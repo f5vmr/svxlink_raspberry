@@ -5,6 +5,7 @@ GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi/
 FLAG=/$HOME/.makescript
 sudo apt update
+sudo apt upgrade -y
 VERSIONS=$HOME/svxlink/src/versions
 
 if [ ! -f $FLAG ]; then
