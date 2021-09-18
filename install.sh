@@ -7,7 +7,7 @@ FLAG=/$HOME/.makescript
 sudo apt update
 VERSIONS=$HOME/svxlink/src/versions
 
-If [ ! -f $FLAG ]; then
+if [ ! -f $FLAG ]; then
 	echo `date` *** commence build ***
 	echo
 	echo -n “Enter the node callsign: “
