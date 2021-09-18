@@ -59,7 +59,7 @@ if [ ! -f $FLAG ]; then
 	sudo mkdir local
 	sudo cp * local
 	sudo ldconfig
-If [ ! -F $FLAG ]; then
+if [ ! -F $FLAG ]; then
 	# Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
 	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/09/en_GB.tar.gz
