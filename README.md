@@ -29,6 +29,8 @@ Now enter sudo bash svxlink_raspberry/audio_update.sh and enter followed by: sud
 
 The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
 
+At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins.
+
 
 Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.
 
