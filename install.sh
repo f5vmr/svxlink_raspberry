@@ -34,7 +34,7 @@ if [ ! -f $FLAG ]; then
 	echo `date` downloading SVXLink source code …
 	cd $HOME
 	sudo git clone https://github.com/f5vmr/svxlink.git
-	sudo mkdir svxlink/src/build
+	sudo mkdir $HOME/svxlink/src/build
 	fi
 # Updating from repo and building software
 #	echo `date` Updating from repo and building software …
@@ -50,9 +50,7 @@ if [ ! -f $FLAG ]; then
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
-	cd svxlink/src
-	sudo mkdir build
-	cd build
+	cd $HOME/svxlink/src/build
 	sudo cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var ..
 	sudo make
 	sudo make doc
