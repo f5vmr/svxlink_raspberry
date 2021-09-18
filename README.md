@@ -29,11 +29,11 @@ Now enter sudo bash svxlink_raspberry/audio_update.sh and enter followed by: sud
 
 The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
 
-At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins.
+At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes.
+At the end of the compilation type sudo reboot to restart the unit.
 
 You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
 
-
-
+To stop svxlink running type in the terminal sudo systemctl stop svxlink.service and to restart it type sudo systemctl restart svxlink.service
 Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.
 
