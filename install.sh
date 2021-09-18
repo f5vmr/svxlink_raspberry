@@ -18,7 +18,7 @@ if [ ! -f $FLAG ]; then
 		exit 1
 	fi
 	CALL=${CallVar^^}
-
+	echo `date` Creating Node $CALL
 # Creating Groups and Users
 	echo `date` Creating Groups and Users 
 	sudo groupadd svxlink
