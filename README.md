@@ -15,11 +15,20 @@ For a second set of transceivers, you can consider GPIO 17 and 18 as COS & PTT f
 
 A copy of the design can be found on g4nab.co.uk.
 
-Start with a download of Raspberry OS Lite from RaspberryPi.org. Then use a 16 GB MicroSD Card and transfer the image to the card by one of the proprietary image writers. Prior to removing the card from the writing PC, add a blank file to the boot sector called 'ssh' without a file type. Also add a wpa_supplicant.conf file with the necessary WiFi details if the device is not to be connected on an ethernet network.
+Start with a download of Raspberry OS Lite from RaspberryPi.org. Then use a 16 GB MicroSD Card and transfer the image to the card by one of the proprietary image writers. Prior to removing the card from the writing PC, add a blank file to the boot sector called 'ssh' without a file type. Also add a wpa_supplicant.conf file with the necessary WiFi details if the device is not to be connected on an ethernet network. For a good wpa_supplicant builder go to this link https://www.pistar.uk/wifi_builder.php courtesy of the author MW0MWW.
 
-Once complete, eject the card and install it in the raspberry pi and power it up.
+Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
 
-Prior to running the install script accompanying this file, run the audio_update script, to ensure the USB Sound card you are to use is set to be the first device.
+The first step will be the following command: sudo apt install -y git  
+
+Now the following command: sudo git clone https://github.com/f5vmr/svxlink_raspberry.git - It is not apparent on this line but there is a _ between svxlink and raspberry.
+
+Once this is installed type the following command: sudo chmod +x svxlink_raspberry/*.sh
+
+Now enter sudo bash svxlink_raspberry/audio_update.sh and enter followed by: sudo bash svxlink_raspberry/install.sh and enter.
+
+The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
+
 
 Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.
 
