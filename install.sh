@@ -2,7 +2,8 @@
 # automated install of SVXlink
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
-HOME=/home/pi/
+HOME=/home/pi
+OP=/etc/svxlink
 FLAG=/$HOME/.makescript
 sudo apt update
 sudo apt upgrade -y
@@ -26,7 +27,8 @@ if [ ! -f $FLAG ]; then
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
 
-# Installing other packages
+# Installing 
+other packages
 	echo `date` Installing required software packages …
 	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial
 
@@ -65,21 +67,24 @@ if [ ! -f $FLAG ]; then
 	cd /usr/share/svxlink/sounds
 	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/09/en_GB.tar.gz
 	sudo tar -zxvf en_GB.tar.gz
+	sudo rm en_GB.tar.gz
 #
-	echo `date` backing up configuration to : $CONF.bak
+echo `date` backing up configuration to : $CONF.bak
+	cd $OP
 	sudo cp -p $CONF $CONF.bak
 #
 	echo `date` Downloading prepared configuration files from G4NAB …
-	sudo wget -q0 $CONF https://g4nab.co.uk/wp-content/uploads/2021/09/svxlink.conf
+	sudo cp -r $HOME/svxlink_raspberry/svxlink.conf $OP
+	sudo cp -r $HOME/svxlink_raspberry/gpio.conf $OP
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i “s/MYCALL/$CALL/g” $CONF
 #
 	echo `date` Setting Squelch Hangtime to 10
-	sudo sed -i ’s/SQL_HANGTIME=2000/SQL_HANGTIME=10/‘ $CONF
+	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
 #	
 	echo `date` Disabling audio distortion warning messages
-	sudo sed -i ’s/PEAK_METER=1/PEAK_METER=0/‘ $CONF
+	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
