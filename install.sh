@@ -50,8 +50,9 @@ if [ ! -f $FLAG ]; then
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
-	sudo mkdir svxlink/src/build
-	cd svxlink/src/build
+	cd svxlink/src
+	sudo mkdir build
+	cd build
 	sudo cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var ..
 	sudo make
 	sudo make doc
@@ -61,7 +62,7 @@ if [ ! -f $FLAG ]; then
 	sudo mkdir local
 	sudo cp * local
 	sudo ldconfig
-if [ ! -F $FLAG ]; then
+# if [ ! -F $FLAG ]; then
 	# Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
 	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/09/en_GB.tar.gz
@@ -85,7 +86,7 @@ if [ ! -F $FLAG ]; then
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
 	sudo systemctl enable svxlink
-Fi
+#fi
 touch $FLAG
 echo `date` Installation complete
 echo `date` Reboot to restart SVXLink
