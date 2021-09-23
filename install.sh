@@ -82,7 +82,7 @@ echo `date` backing up configuration to : $CONF.bak
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
 #
 	echo `date` Setting Callsign to $CALL
-	sudo sed -i “s/MYCALL/$CALL/g” $CONF
+	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 #
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
