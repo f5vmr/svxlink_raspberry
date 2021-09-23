@@ -4,10 +4,11 @@ CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi
 OP=/etc/svxlink
-FLAG=/$HOME/.makescript
+FLAG=.makescript
+cd
 sudo apt update
 sudo apt upgrade -y
-VERSIONS=$HOME/svxlink/src/versions
+VERSIONS=svxlink/src/versions
 
 if [ ! -f $FLAG ]; then
 	echo `date` *** commence build ***
@@ -34,13 +35,14 @@ other packages
 
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
-	cd $HOME
+	cd
 	sudo git clone https://github.com/f5vmr/svxlink.git
-	sudo mkdir $HOME/svxlink/src/build
+	sudo mkdir svxlink/src/build
 	fi
 # Updating from repo and building software
 #	echo `date` Updating from repo and building software …
-#	cd $HOME/svxlink
+#       cd
+#	cd svxlink
 #	VERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 #	echo `date` Current Version: $VERSION
 #	#
@@ -52,7 +54,8 @@ other packages
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
-	cd $HOME/svxlink/src/build
+	cd
+	cd svxlink/src/build
 	sudo cmake -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var ..
 	sudo make
 	sudo make doc
@@ -73,9 +76,10 @@ echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
 #
+	cd
 	echo `date` Downloading prepared configuration files from G4NAB …
-	sudo cp -r $HOME/svxlink_raspberry/svxlink.conf $OP
-	sudo cp -r $HOME/svxlink_raspberry/gpio.conf $OP
+	sudo cp -r svxlink_raspberry/svxlink.conf $OP
+	sudo cp -r svxlink_raspberry/gpio.conf $OP
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i “s/MYCALL/$CALL/g” $CONF
