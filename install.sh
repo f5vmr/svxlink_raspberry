@@ -31,7 +31,7 @@ if [ ! -f $FLAG ]; then
 # Installing 
 other packages
 	echo `date` Installing required software packages …
-	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial
+	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial toilet
 
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
@@ -90,15 +90,22 @@ echo `date` backing up configuration to : $CONF.bak
 	echo `date` Disabling audio distortion warning messages
 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
+	echo `date` Updating SplashScreen on startup
+	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/20-uname
+	sudo chmod 0755 /etc/update-motd.d/20-uname
+#	
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
 	sudo systemctl enable svxlink
+	sleep 10
+	sudo systemctl start svxlink_gpio_setup.service
+	sudo systemctl start svxlink.service
 #fi
 touch $FLAG
 echo `date` Installation complete
-echo `date` Reboot to restart SVXLink
+echo `date` Rebooting to restart SVXLink
 echo
-
+sudo reboot
 
 	
  
