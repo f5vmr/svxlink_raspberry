@@ -34,7 +34,7 @@ The script will now update the software. You will be required to add the callsig
 
 At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error.
 
-At the end of the compilation type <b>sudo reboot</b> to restart the unit. IF all is well the unit wil be immediately functional.
+At the end of the compilation type <b>sudo reboot</b> to restart the unit. If all is well the unit wil be immediately functional.
 
 You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
 
