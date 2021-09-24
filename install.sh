@@ -96,9 +96,11 @@ echo `date` backing up configuration to : $CONF.bak
 #	
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
+	sleep 10
 	sudo systemctl enable svxlink
 	sleep 10
 	sudo systemctl start svxlink_gpio_setup.service
+	sleep 10
 	sudo systemctl start svxlink.service
 #fi
 touch $FLAG
