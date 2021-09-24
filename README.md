@@ -21,19 +21,20 @@ Once complete, eject the card and install it in the raspberry pi and power it up
 
 The first step will be the following command: sudo apt install -y git  
 
-Now the following command: sudo git clone https://github.com/f5vmr/svxlink_raspberry.git - It is not apparent on this line but there is a _ between svxlink and raspberry.
+Now the following command: sudo git clone https://github.com/f5vmr/svxlink_raspberry.git .
 
 Once this is installed type the following command: sudo chmod +x svxlink_raspberry/*.sh
 
-Now enter sudo bash svxlink_raspberry/audio_update.sh and enter followed by: sudo bash svxlink_raspberry/install.sh and enter.
+Now type sudo bash svxlink_raspberry/audio_update.sh and return followed by: sudo bash svxlink_raspberry/install.sh and return.
 
 The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
 
-At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes.
-At the end of the compilation type sudo reboot to restart the unit.
+At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error.
+
+At the end of the compilation type sudo reboot to restart the unit. IF all is well the unit wil be immediately functional.
 
 You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
 
-To stop svxlink running type in the terminal sudo systemctl stop svxlink.service and to restart it type sudo systemctl restart svxlink.service
+To stop svxlink running type in the terminal <b>sudo systemctl stop svxlink.service</b> and to restart it type <b>sudo systemctl restart</b> svxlink.service
 Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.
 
