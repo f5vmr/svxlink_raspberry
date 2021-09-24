@@ -79,7 +79,7 @@ echo `date` backing up configuration to : $CONF.bak
 	echo `date` Downloading prepared configuration files from G4NAB …
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
-	sudo cp -r svxlink_raspberry/20-uname /etc/updatmotd.d/
+	sudo cp -r svxlink_raspberry/20-uname /etc/updatemotd.d/
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
