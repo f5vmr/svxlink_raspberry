@@ -28,8 +28,7 @@ if [ ! -f $FLAG ]; then
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
 
-# Installing 
-other packages
+# Installing other packages
 	echo `date` Installing required software packages …
 	sudo apt-get -y install g++ make libsigc++ libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial toilet
 
