@@ -16,23 +16,25 @@ For a second set of transceivers, you can consider GPIO 17 and 18 as COS & PTT f
 
 A copy of the design can be found on g4nab.co.uk.
 
-Start with a download of Raspberry OS Lite from RaspberryPi.org. Then use a 16 GB MicroSD Card and transfer the image to the card by one of the proprietary image writers. Prior to removing the card from the writing PC, add a blank file to the boot sector called 'ssh' without a file type. Also add a wpa_supplicant.conf file with the necessary WiFi details if the device is not to be connected on an ethernet network. For a good wpa_supplicant builder go to this link https://www.pistar.uk/wifi_builder.php courtesy of the author MW0MWW.
+<h3>The programming of the SDCard</h3>
+
+Start with a download of <b>Raspberry OS Lite</b> from RaspberryPi.org. Then use a 16 GB MicroSD Card and transfer the image to the card by one of the proprietary image writers. Prior to removing the card from the writing PC, add a blank file to the boot sector called 'ssh' without a file type. Also add a wpa_supplicant.conf file with the necessary WiFi details if the device is not to be connected on an ethernet network. For a good wpa_supplicant builder go to this link https://www.pistar.uk/wifi_builder.php courtesy of the author MW0MWW.
 
 Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
+<h3>The compilation</h3>
+The first step will be the following command: <b>sudo apt install -y git</b>  
 
-The first step will be the following command: sudo apt install -y git  
+Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .
 
-Now the following command: sudo git clone https://github.com/f5vmr/svxlink_raspberry.git .
+Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b>
 
-Once this is installed type the following command: sudo chmod +x svxlink_raspberry/*.sh
-
-Now type sudo bash svxlink_raspberry/audio_update.sh and return followed by: sudo bash svxlink_raspberry/install.sh and return.
+Now type <b>sudo bash svxlink_raspberry/audio_update.sh</b> and return followed by: <b>sudo bash svxlink_raspberry/install.sh</b> and return.
 
 The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
 
 At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error.
 
-At the end of the compilation type sudo reboot to restart the unit. IF all is well the unit wil be immediately functional.
+At the end of the compilation type <b>sudo reboot</b> to restart the unit. IF all is well the unit wil be immediately functional.
 
 You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
 
