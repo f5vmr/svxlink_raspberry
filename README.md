@@ -2,7 +2,7 @@
 <h2>Script build for Raspberry Pi - Repeater or Hotspot.</h2>
 
 <b>First Steps</b>
-Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card. One or two transceivers (3 or 4 if you are making a double repeater, for which you will need a second USB soundcard.)
+<p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card. One or two transceivers (3 or 4 if you are making a double repeater, for which you will need a second USB soundcard.)</p>
 
 There are few raspberry images that work succesfully for this type of build, where there is a potential for using the eventual application in several directions.
 
