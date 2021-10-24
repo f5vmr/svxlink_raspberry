@@ -91,8 +91,8 @@ echo `date` backing up configuration to : $CONF.bak
 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
 	echo `date` Updating SplashScreen on startup
-	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/20-uname
-	sudo chmod 0755 /etc/update-motd.d/20-uname
+	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
+	sudo chmod 0755 /etc/update-motd.d/10-uname
 #	
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
