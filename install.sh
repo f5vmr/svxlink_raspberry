@@ -67,7 +67,7 @@ if [ ! -f $FLAG ]; then
 # if [ ! -F $FLAG ]; then
 	# Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
-	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/09/en_GB.tar.gz
+	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/10/en_GB.tar.gz
 	sudo tar -zxvf en_GB.tar.gz
 	sudo rm en_GB.tar.gz
 #
