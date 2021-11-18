@@ -50,4 +50,4 @@ To modify the Echolink information type <b>sudo nano svxlink.d/ModuleEchoLink.co
 To incorporated the changes you will need to type <b>sudo systemctl restart svxlink.service</b> and return.
 If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too.
 <p>Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.</p>
-
+<p>Finally it will be necessary to add dvswitch-server to permit interaction with the digital modes. Type in terminal sudo wget https://dvswitch.org/buster and return. When the download is complete, type sudo chmod +x buster, then sudo ./buster. This will introduce the download repository to the raspberry. It will immediately update it, Next type sudo apt install dvswitch-server, which will install all t the necessary functionality of the dvswitch, Mmdvm_bridge and the Analog _bridge together with the md380-emulator. Instructions should be contained within the folders, but refer to groups. io for further help.</p>
