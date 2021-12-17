@@ -67,10 +67,11 @@ if [ ! -f $FLAG ]; then
 # if [ ! -F $FLAG ]; then
 	# Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
-	sudo wget http://g4nab.co.uk/wp-content/uploads/2021/10/en_GB.tar.gz
+	sudo wget https://g4nab.co.uk/wp-content/uploads/2021/10/en_GB.tar.gz
 	sudo tar -zxvf en_GB.tar.gz
 	sudo rm en_GB.tar.gz
-#
+#.      for the French Language use sudo wget https://g4nab.co.uk/wp-content/uploads/2021/07/fr_FR.tar.gz and change the 2 lines below.      
+#.      pour la langue française uilise cela dessus ^ et donc changé les dexu lignes qui la suivent.
 echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
