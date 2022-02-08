@@ -12,7 +12,10 @@ VERSIONS=svxlink/src/versions
 
 if [ ! -f $FLAG ]; then
 	echo `date` *** commence build ***
-	echo
+# Installing other packages
+	echo `date` Installing required software packages …
+	sudo apt install g++ make cmake libsigc++ php8.0 libgsm1-dev libpopt-dev tcl-dev libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
+
 	echo -n “Enter the node callsign: “
 	read CallVar
 	if [ “$CallVar” == “” ]; then
@@ -28,9 +31,6 @@ if [ ! -f $FLAG ]; then
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
 
-# Installing other packages
-	echo `date` Installing required software packages …
-	sudo apt install g++ make cmake libsigc++ php8.0 libgsm1-dev libpopt-dev tcl-dev libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
