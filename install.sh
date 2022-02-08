@@ -30,7 +30,7 @@ if [ ! -f $FLAG ]; then
 
 # Installing other packages
 	echo `date` Installing required software packages …
-	sudo apt-get -y install g++ make libsigc++ php7.3 libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt5-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial toilet
+	sudo apt-get -y install g++ make libsigc++ php7.3 libgsm1-dev libpopt-dev tcl-dev libgcrypt-dev libspeex-dev libasound2-dev alsa-utils libqt4-dev git cmake libsigc++ libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python-serial toilet
 
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
