@@ -14,7 +14,7 @@ if [ ! -f $FLAG ]; then
 	echo `date` *** commence build ***
 # Installing other packages
 	echo `date` Installing required software packages …
-	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libpopt-dev tcl-dev libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
+	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 
 	echo -n “Enter the node callsign: “
 	read CallVar
