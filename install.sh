@@ -36,7 +36,7 @@ if [ ! -f $FLAG ]; then
 # Downloading Source Code for SVXLink
 	echo `date` downloading SVXLink source code …
 	cd
-	sudo git clone https://github.com/f5vmr/svxlink.git
+	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
 	fi
 # Updating from repo and building software
