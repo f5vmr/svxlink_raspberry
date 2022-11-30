@@ -88,7 +88,13 @@ echo `date` backing up configuration to : $CONF.bak
         echo 'date' Setting Language to French
 	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
 #
-	echo `date` Setting Squelch Hangtime to 10
+ 	echo 'date' setting server to RRF
+	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/docs.rrf.ovh/g" $CONF
+	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
+	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
+	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
+	
+#	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
 #	
 	echo `date` Disabling audio distortion warning messages
