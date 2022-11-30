@@ -77,12 +77,16 @@ echo `date` backing up configuration to : $CONF.bak
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo `date` Downloading prepared configuration files from G4NAB …
+	echo `date` Downloading prepared configuration files from source …
+	sudo cp -r svxlink_raspberry/svxlink.conf $CONF
 	sudo cp -r svxlink_raspberry/gpio.conf $GPIO
 #	sudo cp -r svxlink_raspberry/10-uname /etc/update-motd.d/
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
+#
+        echo 'date' Setting Language to French
+	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
 #
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
