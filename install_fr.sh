@@ -118,7 +118,7 @@ if [ ! -f $FLAG ]; then
 	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
 #
  	echo `date` setting server to RRF
-	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/docs.rrf.ovh/g" $CONF
+	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/HOSTS=docs.rrf.ovh/g" $CONF
 	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
 	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
 	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
