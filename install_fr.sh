@@ -22,19 +22,18 @@ echo `pwd`
 
 while true; do
 	echo -e "${JAUNE}Update & Upgrade Raspberry Pi OS${NORMAL}"
-	read -p "Do you want to proceed? (y/N) " yn
+	read -p "Oui on fait les mises à jour? (y/N) " yn
 	case $yn in
-		[Yy] ) echo ok, we will proceed;
+		[Yy] ) echo ok, On y va - ; 
 		sudo apt update
 		sudo apt upgrade -y
 		sudo sync
-		sudo reboot
+		
 		break;;
 	* ) break;;
 	esac
 done
 
-if [ ! -f $FLAG ]; then
 	echo -e "${JAUNE}Installation automatique du logicel SVXlink${NORMAL}"
 	echo `date` *** commence le build ***
 
