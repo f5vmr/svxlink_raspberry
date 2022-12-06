@@ -74,7 +74,7 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 <p>16. Avant l'édition du ficher svxlink.conf taper <b>sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.bak</b>.
 <p>17. Taper <b>sudo nano /etc/svxlink/svxlink.conf</b>
 <p>Ici, il sera nécessaire de configurer correctement de nombreux paramètres, notamment GPIO, Cartes son, Localisation et autres. Avant de modifier ces paramètres, lisez le fichier man sur internet pour vérifier vos connaissances http://www.svxlink.org/doc/man/man5/svxlink.conf.5.html. Cette page est en anglais, pour traduire. A chaque changement, sauvegardez le résultat, en cas de coupure de courant. </p>
-<p>18. Faire marcher le logicel en teste avec <b>sudo svxlink</b> en mode direct. Le journal se montre. pour l'arrête à cette étape, simplement taper <b>cntrl-c</b>. Faire les corrections des erreurs un par un, et faire les tests jusqu'a la satifaction. Donc redémmarer svxlink en service avec <b>sudo systemctl restart svxlink | tail -f /var/log/svxlink.log</b>. Le journal vous montre le service. Encore une fois <b>cntrl-c</b> arrête l'apparition du journal.</p>
+<p>18. Faire marcher le logicel en teste avec <b>sudo svxlink</b> en mode direct. Le journal se montre. Pour l'arrête à cette étape, simplement taper <b>cntrl-c</b>. Faire les corrections des erreurs un par un, et faire les tests jusqu'a la satifaction. Donc redémmarer svxlink en service avec <b>sudo systemctl restart svxlink | tail -f /var/log/svxlink.log</b>. Le journal vous montre le service. Encore une fois <b>cntrl-c</b> arrête l'apparition du journal.</p>
 <p>Il y a plusieurs solutions, et une question stupide soit la question n'a jamais posé.</p>
 <p><b>73 - Chris G4NAB - F5VMR </b></p>
 
