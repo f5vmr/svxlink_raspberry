@@ -65,6 +65,7 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 <p>7.  Taper <b>sudo chmod +x svxlink_raspberry/*.sh</b></p>
 <p>8.  Taper <b>sudo bash ./svxlink_raspberry/audio_update.sh</b></p>
 <p>9.  Taper <b>sudo bash ./svxlink_raspberry/install_fr.sh</b></p>
-<p>10. Ici le script va demander si vous voulez les mises à jour des logiciels. Taper 'y'.</p>
+<p>10. Ici le script va demander si vous voulez les mises à jour des logiciels. Taper <b>y</b>.</p>
 <p>11. Après plusieurs minutes, pendant lesquelles les mises à jour auront lieu, une demande d'indicatif d'appel du nœud proposé vous sera présentée.</p>
 <p>12. Si la réponse est déterminée comme étant valide, le processus de configuration commencera. La compilation se poursuivra jusqu'à un point où la framboise redémarrera. Il est peu probable qu'il fonctionne comme vous le souhaitez, car vous devrez encore apporter quelques modifications à la configuration. Si une erreur se présente, vous devrez déterminer où se trouve l'erreur dans le script. Cependant il a été rigoureusement testé et une erreur est susceptible d'avoir été une interruption indépendante de votre volonté. Dans ce cas, vous devrez répéter le script en omettant les mises à jour.</p>
+<p>13. Reconnectez-vous au Raspberry. Comme la dernière action du script était de lancer SvxLink, vous devez maintenant l'arrêter, afin de modifier les paramètres. La même chose sera nécessaire pour le GPIO. Alors tapez <b>sudo systemctl stop svxlink && sudo systemctl stop svxlink_gpio_setup</b>.
