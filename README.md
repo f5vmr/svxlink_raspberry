@@ -1,5 +1,5 @@
 # svxlink_raspberry
-<h2>Script build for Raspberry Pi - Repeater or Hotspot.</h2>
+<h2>Script build for Raspberry Pi - Repeater or Hotspot. Pour l'instruction en Français, voir en bas.</h2>
 
 <b>First Steps</b>
 <p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card. One or two transceivers (3 or 4 if you are making a double repeater, for which you will need a second USB soundcard.)</p>
@@ -53,3 +53,14 @@ To incorporated the changes you will need to type <b>sudo systemctl restart svxl
 If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too.
 <p>Everything introduced here is from the original presentation by Tobias SM0SVX, modified slightly with some additional modules from DL1HRC.</p>
 <p>Finally it will be necessary to add dvswitch-server to permit interaction with the digital modes. Type in terminal sudo wget https://dvswitch.org/buster and return. When the download is complete, type sudo chmod +x buster, then sudo ./buster. This will introduce the download repository to the raspberry. It will immediately update it, Next type sudo apt install dvswitch-server, which will install all t the necessary functionality of the dvswitch, Mmdvm_bridge and the Analog _bridge together with the md380-emulator. Instructions should be contained within the folders, but refer to groups. io for further help.</p>
+
+<b><h2>Français</h2></b>
+<p>Cette Installation est pour un Raspberry Pi Tous marques.</p>
+<p>1. Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
+<p>2. Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
+<p>3. Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
+<p>4. Avec SSH d'un ordinateur au réseau, il faut trouver le terminal - ssh pi@192.168.#.# -p 22 dans votre réseau par un écran de command d'un PC par exemple. le mot-pass normale soit "raspberry".</p>
+<p>5. Taper <span style="color: green">sudo apt install git -y</span> au terminal et attendre.</p>
+<p>6. Taper 'sudo git clone https://github.com/f5vmr/svxlink_raspberry' et attendre.</p>
+<p>7. Taper 'sudo chmod +x svxlink_raspberry/*.sh'</p>
+<p>8. Taper 'sudo bash
