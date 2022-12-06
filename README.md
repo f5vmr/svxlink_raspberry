@@ -56,11 +56,15 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 
 <b><h2>Français</h2></b>
 <p>Cette Installation est pour un Raspberry Pi Tous marques.</p>
-<p>1. Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
-<p>2. Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
-<p>3. Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
-<p>4. Avec SSH d'un ordinateur au réseau, il faut trouver le terminal - ssh pi@192.168.#.# -p 22 dans votre réseau par un écran de command d'un PC par exemple. le mot-pass normale soit "raspberry".</p>
-<p>5. Taper <span style="color: green">sudo apt install git -y</span> au terminal et attendre.</p>
-<p>6. Taper 'sudo git clone https://github.com/f5vmr/svxlink_raspberry' et attendre.</p>
-<p>7. Taper 'sudo chmod +x svxlink_raspberry/*.sh'</p>
-<p>8. Taper 'sudo bash
+<p>1.  Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
+<p>2.  Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
+<p>3.  Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
+<p>4.  Avec SSH d'un ordinateur au réseau, il faut trouver le terminal - ssh pi@192.168.#.# -p 22 dans votre réseau par un écran de command d'un PC par exemple. le mot-pass normale soit "raspberry".</p>
+<p>5.  Taper <b>sudo apt install git -y</b> au terminal et attendre.</p>
+<p>6.  Taper <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry</b> et attendre.</p>
+<p>7.  Taper <b>sudo chmod +x svxlink_raspberry/*.sh</b></p>
+<p>8.  Taper <b>sudo bash ./svxlink_raspberry/audio_update.sh</b></p>
+<p>9.  Taper <b>sudo bash ./svxlink_raspberry/install_fr.sh</b></p>
+<p>10. Ici le script va demander si vous voulez les mises à jour des logiciels. Taper 'y'.</p>
+<p>11. Après plusieurs minutes, pendant lesquelles les mises à jour auront lieu, une demande d'indicatif d'appel du nœud proposé vous sera présentée.</p>
+<p>12. Si la réponse est déterminée comme étant valide, le processus de configuration commencera. La compilation se poursuivra jusqu'à un point où la framboise redémarrera. Il est peu probable qu'il fonctionne comme vous le souhaitez, car vous devrez encore apporter quelques modifications à la configuration. Si une erreur se présente, vous devrez déterminer où se trouve l'erreur dans le script. Cependant il a été rigoureusement testé et une erreur est susceptible d'avoir été une interruption indépendante de votre volonté. Dans ce cas, vous devrez répéter le script en omettant les mises à jour.</p>
