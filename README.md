@@ -75,9 +75,13 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 <p>17. Taper <b>sudo nano /etc/svxlink/svxlink.conf</b>
 <p>Ici, il sera nécessaire de configurer correctement de nombreux paramètres, notamment GPIO, Cartes son, Localisation et autres. Avant de modifier ces paramètres, lisez le fichier man sur internet pour vérifier vos connaissances http://www.svxlink.org/doc/man/man5/svxlink.conf.5.html. Cette page est en anglais, pour traduire. A chaque changement, sauvegardez le résultat, en cas de coupure de courant. </p>
 <p>18. Faire marcher le logicel en teste avec <b>sudo svxlink</b> en mode direct. Le journal se montre. Pour l'arrête à cette étape, simplement taper <b>cntrl-c</b>. Faire les corrections des erreurs un par un, et faire les tests jusqu'a la satifaction. Donc redémmarer svxlink en service avec <b>sudo systemctl restart svxlink | tail -f /var/log/svxlink.log</b>. Le journal vous montre le service. Encore une fois <b>cntrl-c</b> arrête l'apparition du journal.</p>
+<p>19. Vous devrez éditer le fichier node_info.json. Comme précédemment, tapez <b>sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.bak</b>. Puis <b>sudo nano /etc/svxlink/node_info.json</b>. Faites attention de laisser tous les '{ }' exactement. Faire Entrez les détails de votre emplacement. Soyez conscient de la convention correcte de longitude et de latitude. Enregistrez le fichier lorsque votre édition est terminée.</b>
+<p>Votre connexion au server a besoin de cette information.</p> 
 <p>Il y a plusieurs solutions, et une question stupide soit la question n'a jamais posé.</p>
 <p>Que puis-je faire avec mon nouveau nœud ?</p>
 <p>Dans ce cas, vous constaterez que votre nœud est déjà prêt à accéder au RRF - Réseau des Répéteurs Francophones. À une exception près, tous les groupes de discussion seront à votre disposition, à l'exception du RRF lui-même. Mais ce n'est pas votre erreur, mais une restriction sur le serveur.</p>
 <p>Pour accéder à ces groupes de discussion, vous devrez envoyer dtmf avec ptt appuyé - 91 + le numéro du groupe + #. Votre nœud répondra "talk group" et le numéro. Le numéro de groupe de discussion est le suivant.</p>
 <p>97 - FON, 98 - Technique, 99 - International, 100 - Bavardage, 101 - Local, 102 - Experimental</p>
 <p>Donc accèder au TG 100, transmettre au DTMF - <b>91100#</b> et le noeud repondra "Talk Groupe un zero zero". Parler à volonté. Pour déconnecter transmettre DTMF <b>910#</b> ou un autre TG.... Très simple. Regarder au même temps le tableau de bord <b>http://rrf4.f5nlg.ovh:82/</b>.
+Il y a une possibilité de connexion aux autres serveurs, comme le serveur britannique. Poser la question au email <b>g4nab.ne63@gmail.com</b></p>
+<b>73 de Chris G4NAB/F5VMR
