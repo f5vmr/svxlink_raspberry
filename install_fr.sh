@@ -55,12 +55,12 @@ done
 # Creating Groups and Users
 	echo -e "${JAUNE}Création des Groupes et des Utilisateurs${NORMAL}"
 	echo `date` Creating Groups and Users 
-	if [ ! $(getent group svxlink) ]; then
+	
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
-	fi
+	
 
 # Downloading Source Code for SVXLink
 	echo -e "${JAUNE}Téléchargement du code source de svxlink${NORMAL}"
@@ -68,13 +68,13 @@ done
 
 	DIR=${HOME}svxlink
 	echo $DIR
-	if [ ! -d "$DIR" ]; then
+	
   	# Take action if $DIR exists. #
   	echo "Installing SVXLink in ${DIR}..."
 	sudo apt install git -y
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
-	fi
+	
 
 	VERSIONS=`sudo cat svxlink/src/versions`
 #	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
@@ -84,7 +84,7 @@ done
 # Compilation
 	echo -e "${JAUNE}Compilation${NORMAL}"
 	FILE=svxlink/src/build/make_output
-	if [ ! -f "$FILE" ]; then
+	
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make | tee make_output
@@ -95,7 +95,7 @@ done
 	sudo mkdir local
 	sudo cp *.tcl ./local
 	sudo ldconfig
-	fi
+	
 
 	echo -e "${JAUNE}Installation de la langue Française${NORMAL}"
 	# Installing French Sound files
@@ -104,7 +104,7 @@ done
 	sudo tar -zxvf fr_FR.tar.gz
 	sudo rm fr_FR.tar.gz
 	sudo chmod 777 *
-	fi
+	
 
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
@@ -142,7 +142,7 @@ done
 	sudo systemctl start svxlink_gpio_setup.service
 	sleep 10
 	sudo systemctl start svxlink.service
-fi
+
 
 touch $FLAG
 echo `date` Installation complete
