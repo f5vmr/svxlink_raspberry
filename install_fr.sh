@@ -109,7 +109,7 @@ done
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
-	sudo cp -rp svxlink_raspberry/svxlink.conf.fr $CONF
+	sudo cp -rp /home/pi/svxlink_raspberry/svxlink.conf.fr $CONF
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
