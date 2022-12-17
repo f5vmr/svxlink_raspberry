@@ -55,7 +55,7 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 <p>Finally it will be necessary to add dvswitch-server to permit interaction with the digital modes. Type in terminal sudo wget https://dvswitch.org/buster and return. When the download is complete, type sudo chmod +x buster, then sudo ./buster. This will introduce the download repository to the raspberry. It will immediately update it, Next type sudo apt install dvswitch-server, which will install all t the necessary functionality of the dvswitch, Mmdvm_bridge and the Analog _bridge together with the md380-emulator. Instructions should be contained within the folders, but refer to groups. io for further help.</p>
 
 <b><h2>Français</h2></b>
-<p>Cette Installation est pour un Raspberry Pi Tous marques.</p>
+<p>Cette Installation est pour un Raspberry Pi Tous marques. Les paramètres du RRF sont inclues.</p>
 <p>1.  Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
 <p>2.  Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
 <p>3.  Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
