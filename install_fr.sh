@@ -106,10 +106,12 @@ done
 	sudo chmod 777 *
 	
 
-	echo `date` backing up configuration to : $CONF.bak
+	echo `date` back-up configuration à : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
-	sudo cp -rp /home/pi/svxlink_raspberry/svxlink.conf.fr $CONF
+	cd /home/pi/
+	sudo cp -r svxlink_raspberry/svxlink.conf.fr $CONF
+	sudo cp -r svxlink_raspberry/gpio.conf $GPIO 
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
@@ -135,7 +137,7 @@ done
 	echo `date` Setting svxlink log file
 	sudo sed -i "/LOGFILE=/ s/$/.log/" /etc/default/svxlink
 #
-	echo `date` enabling GPIO setup service and svxlink service …
+	echo `date`  GPIO setup service et svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
@@ -146,7 +148,7 @@ done
 
 
 touch $FLAG
-echo `date` Installation complete
+echo `date` Installation terminé
 echo `date` Reboot SVXLink
 echo
 sudo reboot
