@@ -77,14 +77,15 @@ echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
 #
-	cd /home/pi/
+	cd $HOME
 	echo `date` Downloading prepared configuration files from G4NAB …
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
-#	sudo cp -r svxlink_raspberry/10-uname /etc/update-motd.d/
+	sudo cp -r svxlink_raspberry/node_json.conf $OP/node_info.json
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
+	sudo sed -i "s/MYCALL/$CALL/g" $OP/node_info.json
 #
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
