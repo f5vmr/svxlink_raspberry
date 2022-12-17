@@ -111,10 +111,12 @@ done
 	sudo mv $CONF $CONF.bak
 	cd $HOME
 	sudo cp -r svxlink_raspberry/svxlink.conf.fr $CONF
-	sudo cp -r svxlink_raspberry/gpio.conf $GPIO 
+	sudo cp -r svxlink_raspberry/gpio.conf $GPIO
+	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
+	sudo sed -i "s/MYCALL/$CALL/g" $OP/node_info.json
 #
 #	les lignes suivantes sont supprimées - déja modifiées dans la copie.	
 #        echo `date` Set Langue à Français
