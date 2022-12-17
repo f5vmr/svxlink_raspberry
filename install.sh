@@ -77,7 +77,7 @@ echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
 #
-	cd
+	cd /home/pi/
 	echo `date` Downloading prepared configuration files from G4NAB …
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
