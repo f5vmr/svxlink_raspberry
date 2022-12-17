@@ -70,7 +70,7 @@ done
 	echo $DIR
 	
   	# Take action if $DIR exists. #
-  	echo "Installing SVXLink in ${DIR}..."
+  	echo "Installation du SVXLink en ${DIR}..."
 	sudo apt install git -y
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -89,7 +89,7 @@ done
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make | tee make_output
 	sudo make doc
-	echo `date` Installing SVXlink
+	echo `date` Installation SVXlink
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
@@ -109,18 +109,19 @@ done
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
+	sudo cp -rp svxlink_raspberry/svxlink.conf.fr $CONF
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 #
-        echo `date` Setting Language to French
+        echo `date` Set Langue à Français
 	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
 #
  	echo `date` setting server to RRF
-	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/HOSTS=docs.rrf.ovh/g" $CONF
-	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
-	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
-	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
+#	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/HOSTS=docs.rrf.ovh/g" $CONF
+#	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
+#	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
+#	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
 
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
