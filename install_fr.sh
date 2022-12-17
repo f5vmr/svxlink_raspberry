@@ -108,31 +108,33 @@ done
 
 	echo `date` back-up configuration à : $CONF.bak
 	cd $OP
-	sudo cp -p $CONF $CONF.bak
-	cd /home/pi/
+	sudo mv $CONF $CONF.bak
+	cd $HOME
 	sudo cp -r svxlink_raspberry/svxlink.conf.fr $CONF
 	sudo cp -r svxlink_raspberry/gpio.conf $GPIO 
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 #
-        echo `date` Set Langue à Français
-	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
+#	les lignes suivantes sont supprimées - déja modifiées dans la copie.	
+#        echo `date` Set Langue à Français
+#	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
 #
- 	echo `date` setting server to RRF
+# 	echo `date` setting server to RRF
+
 #	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/HOSTS=docs.rrf.ovh/g" $CONF
 #	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
 #	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
 #	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
 
-	echo `date` Setting Squelch Hangtime to 10
-	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
+#	echo `date` Setting Squelch Hangtime to 10
+#	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
 #
-	echo `date` Disabling audio distorsion warning messages
-	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
+#	echo `date` Disabling audio distorsion warning messages
+#	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
-        echo `date` Add ReflectorLogic in LOGICS
-	sudo sed -i "/LOGICS=SimplexLogic/ s/$/,ReflectorLogic/" $CONF
+#        echo `date` Add ReflectorLogic in LOGICS
+#	sudo sed -i "/LOGICS=SimplexLogic/ s/$/,ReflectorLogic/" $CONF
 #
 	echo `date` Setting svxlink log file
 	sudo sed -i "/LOGFILE=/ s/$/.log/" /etc/default/svxlink
