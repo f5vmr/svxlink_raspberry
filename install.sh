@@ -90,7 +90,15 @@ if [ ! -f $FLAG ]; then
 	echo `date` Updating SplashScreen on startup
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
 	sudo chmod 0755 /etc/update-motd.d/10-uname
-#	
+#
+	if [$CM=true]
+	then
+	sed -i "/PTT_TYPE/ i "HID_DEVICE=/dev/hidraw0"' $CONF
+	sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
+	sed -i "s/PTT_PORT=GPIO/PTT_PORT=/dev/hidraw0/g" $CONF
+	sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
+	fi
+#
 	echo `date` enabling GPIO setup service and svxlink service …
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
