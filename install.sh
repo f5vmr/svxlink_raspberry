@@ -93,6 +93,8 @@ if [ ! -f $FLAG ]; then
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
 	sudo chmod 0755 /etc/update-motd.d/10-uname
 #
+	echo `date` Changing Log file
+	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	if [$CM=true]
 	then
 	sed -i "/PTT_TYPE/ i "HID_DEVICE=/dev/hidraw0"' $CONF
