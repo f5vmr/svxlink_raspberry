@@ -10,14 +10,16 @@ while true; do
 		sudo cp cm-108.rules /etc/udev/rules.d/
 		sudo udevadm control --reload-rules
 		sudo udevadm trigger
-    CM=1
-		break
+    		CM=true
+		break;
 	esac
 done
-break
+break;
 
-if $CM=1 then echo "Modified CM-108 soundcard present"
-fi
-echo "Audio Updates complete."
+		if $CM=true 
+		then 
+		echo "Modified CM-108 soundcard present"
+		fi
+		echo "Audio Updates complete."
 
 
