@@ -101,6 +101,11 @@ if [ ! -f $FLAG ]; then
 	sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
 	sed -i "s/PTT_PORT=GPIO/PTT_PORT=/dev/hidraw0/g" $CONF
 	sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
+	sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+	sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+	
 	fi
 #
 	echo `date` enabling GPIO setup service and svxlink service …
