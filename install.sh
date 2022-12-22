@@ -1,5 +1,7 @@
 #!/bin/bash
-# automated install of SVXlink
+# Auto run audio_update.sh
+sudo ./svxlink_raspberry/audio_update.sh
+# Auto run install.sh
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi
