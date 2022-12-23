@@ -6,13 +6,13 @@ CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi
 OP=/etc/svxlink
-FLAG=.makescript
+#FLAG=.makescript
 cd
 sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
 
-if [ ! -f $FLAG ]; then
+#if [ ! -f $FLAG ]; then
 	echo `date` *** commence build ***
 # Installing other packages
 	echo `date` Installing required software packages …
@@ -43,7 +43,7 @@ if [ ! -f $FLAG ]; then
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
-	fi
+#	fi
 	
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
