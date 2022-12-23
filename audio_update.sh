@@ -11,14 +11,14 @@ while true; do
 		sudo udevadm control --reload-rules
 		sudo udevadm trigger
 		;;
-    		CM=true
+    		CM=1
 		break;
 	esac
 	break;
 done
 
 
-		if $CM=true 
+		if $CM=1 
 		then 
 		echo "Modified CM-108 soundcard present"
 		fi
