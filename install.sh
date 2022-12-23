@@ -97,14 +97,14 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	if [$CM=true]
 	then
-	sed -i "/PTT_TYPE/ i "HID_DEVICE=/dev/hidraw0"' $CONF
-	sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
-	sed -i "s/PTT_PORT=GPIO/PTT_PORT=/dev/hidraw0/g" $CONF
-	sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
-	sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-	sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-	sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+	sudo sed -i "/PTT_TYPE/ i "HID_DEVICE=/dev/hidraw0"' $CONF
+	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
+	sudo sed -i "s/PTT_PORT=GPIO/PTT_PORT=/dev/hidraw0/g" $CONF
+	sudo sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
+	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	
 	fi
 #
