@@ -8,20 +8,26 @@ while true; do
 	case $yn in
 		[Yy] ) echo "ok, Let's add the updated rules - " 
 		sudo cp cm-108.rules /etc/udev/rules.d/
+		;;
 		sudo udevadm control --reload-rules
+		;;
 		sudo udevadm trigger
 		;;
-    		$CM=1
-		break;
+    		card=true
+		break
+		;;
+	* ) break 
+		;;
 	esac
-	break;
+	
 done
 
 
-		if $CM=1 
+		if [ "$card"=true ] ;
 		then 
 		echo "Modified CM-108 soundcard present"
 		fi
+		
 		echo "Audio Updates complete."
 
 
