@@ -122,6 +122,7 @@ echo `date` Installation complete
 echo `date` Rebooting to restart SVXLink
 echo
 sudo reboot
+# UPdated voice pack
 
 	
  
