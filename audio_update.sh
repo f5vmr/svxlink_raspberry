@@ -11,7 +11,7 @@ while true; do
 		sudo udevadm control --reload-rules
 		sudo udevadm trigger
 		;;
-    		CM=1
+    		$CM=1
 		break;
 	esac
 	break;
