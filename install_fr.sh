@@ -119,7 +119,7 @@ VERSIONS=svxlink/src/versions
 
 
 echo `date` "${ROUGE}Installation complete\n${NORMAL}"
-echo `date` "${VERT} Reboot - Redémarrer SVXLink\n\n\\n${NORMAL}"
+echo `date` "${VERT} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}"
 echo
 sleep 10
 
