@@ -36,7 +36,7 @@ VERSIONS=svxlink/src/versions
 	echo
 	echo `date` Création du noeud $CALL
 # Creating Groups and Users
-	echo -e ${JAUNE}`date` Création des Groupes et des Utilisateurs ${NORMAL}
+	echo -e "${JAUNE}`date` Création des Groupes et des Utilisateurs ${NORMAL}"
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
@@ -44,7 +44,7 @@ VERSIONS=svxlink/src/versions
 	
 
 # Downloading Source Code for SVXLink
-	echo -e ${JAUNE}`date` Téléchargement du code source de svxlink${NORMAL}
+	echo -e "${JAUNE}`date` Téléchargement du code source de svxlink${NORMAL}"
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build

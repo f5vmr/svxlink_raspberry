@@ -19,13 +19,13 @@ sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
 
-	echo -e ${YELLOW} `date` *** commence build *** ${NORMAL}
+	echo -e "${YELLOW} `date` *** commence build *** ${NORMAL}"
 
 # Installing other packages
-	echo -e ${YELLOW}`date` Installing required software packages …${NORMAL}
+	echo -e "${YELLOW}`date` Installing required software packages …${NORMAL}"
 	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo         
-	echo -n ${GREEN}Enter the node callsign: ${NORMAL}
+	echo -n "${GREEN}Enter the node callsign: ${NORMAL}"
 	echo
 	read CallVar
 	if [ “$CallVar” == “” ]; then
@@ -36,7 +36,7 @@ VERSIONS=svxlink/src/versions
 	echo
 	echo `date` Creating Node $CALL
 # Creating Groups and Users
-	echo ${YELLOW}`date` Creating Groups and Users${NORMAL} 
+	echo "${YELLOW}`date` Creating Groups and Users${NORMAL} "
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
