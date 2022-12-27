@@ -1,10 +1,10 @@
 #!/bin/bash
 # Auto run audio_update.sh
 export LANGUAGE=en_GB.UTF-8
-GREEN="\\033[1;32m"
-NORMAL="\\033[0;39m"
-RED="\\033[1;31m"
-YELLOW="\\033[1;33m"
+GREEN="\033[1;32m"
+NORMAL="\033[0;39m"
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
 sudo ./svxlink_raspberry/audio_update.sh
 #
 # Auto run install.sh
@@ -19,13 +19,13 @@ sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
 
-	echo -e "${YELLOW} `date` *** commence build *** ${NORMAL}"
+	echo -e `date` " ${YELLOW}  *** commence build *** ${NORMAL}"
 
 # Installing other packages
-	echo -e "${YELLOW}`date` Installing required software packages …${NORMAL}"
+	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
 	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo         
-	echo -n "${GREEN}Enter the node callsign: ${NORMAL}"
+	echo -e "${GREEN} Enter the node callsign: \n ${NORMAL}"
 	echo
 	read CallVar
 	if [ “$CallVar” == “” ]; then
@@ -36,7 +36,7 @@ VERSIONS=svxlink/src/versions
 	echo
 	echo `date` Creating Node $CALL
 # Creating Groups and Users
-	echo "${YELLOW}`date` Creating Groups and Users${NORMAL} "
+	echo -e `date` "${YELLOW} Creating Groups and Users ${NORMAL}"
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
@@ -44,7 +44,7 @@ VERSIONS=svxlink/src/versions
 
 
 # Downloading Source Code for SVXLink
-	echo `date` downloading SVXLink source code …
+	echo -e `date` "${YELLOW} downloading SVXLink source code … ${NORMAL}"
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -75,7 +75,7 @@ VERSIONS=svxlink/src/versions
 	sudo cp -p $CONF $CONF.bak
 #
 	cd $HOME
-	echo `date` Downloading prepared configuration files from G4NAB …
+	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
 	sudo mkdir scripts
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
@@ -115,7 +115,7 @@ VERSIONS=svxlink/src/versions
 
 	fi
 #
-	echo `date` enabling GPIO setup service and svxlink service …
+	echo `date` "${RED} Authorise GPIO setup service and svxlink service${NORMAL}"
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
@@ -125,9 +125,11 @@ VERSIONS=svxlink/src/versions
 	sudo systemctl start svxlink.service
 
 
-echo `date` Installation complete
-echo `date` Rebooting to restart SVXLink
+echo `date` "${RED}Installation complete\n${NORMAL}"
+echo `date` "${GREEN} Reboot - Redémarrer SVXLink\n\n\\n${NORMAL}"
 echo
+sleep 10
+
 sudo reboot
 
 

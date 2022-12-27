@@ -1,10 +1,10 @@
 #!/bin/bash
 # Auto run audio_update.sh
 export LANGUAGE=fr_FR.UTF-8
-VERT="\\033[1;32m"
-NORMAL="\\033[1;39m"
-ROUGE="\\033[1;31m"
-JAUNE="\\033[1;33m"
+VERT="\033[1;32m"
+NORMAL="\033[1;39m"
+ROUGE="\033[1;31m"
+JAUNE="\033[1;33m"
 sudo ./svxlink_raspberry/audio_update.sh
 #
 # Installation automatique du logicel SVXlink
@@ -19,10 +19,10 @@ sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
 
-	echo -e "${JAUNE} `date` *** Installation automatique du logicel SVXlink ***${NORMAL}"
+	echo -e `date` "${JAUNE} *** Installation automatique du logicel SVXlink ***${NORMAL}"
 	
 # Installing other packages
-	echo -e "${JAUNE}`date` Installation des logiciels nécessaires${NORMAL}"
+	echo -e `date` "${JAUNE} Installation des logiciels nécessaires${NORMAL}"
 	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo
 	echo -n “Tapez l\'indicactif du noeud : \n“
@@ -36,7 +36,7 @@ VERSIONS=svxlink/src/versions
 	echo
 	echo `date` Création du noeud $CALL
 # Creating Groups and Users
-	echo -e "${JAUNE}`date` Création des Groupes et des Utilisateurs ${NORMAL}"
+	echo -e `date` "${JAUNE} Création des Groupes et des Utilisateurs ${NORMAL}"
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
@@ -44,7 +44,7 @@ VERSIONS=svxlink/src/versions
 	
 
 # Downloading Source Code for SVXLink
-	echo -e "${JAUNE}`date` Téléchargement du code source de svxlink${NORMAL}"
+	echo -e `date` "${JAUNE} Téléchargement du code source de svxlink${NORMAL}"
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -75,6 +75,8 @@ VERSIONS=svxlink/src/versions
 	sudo mv $CONF $CONF.bak
 	#
 	cd $HOME
+	echo -e `date` "${ROUGE} Téléchargement des dossiers config${NORMAL}"
+	sudo mkdir scripts
 	sudo cp -r svxlink_raspberry/svxlink.conf.fr $CONF
 	sudo cp -r svxlink_raspberry/gpio.conf $GPIO
 	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
@@ -86,21 +88,13 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/MYCALL/$CALL/g" $OP/node_info.json
 
 	sudo sed -i "s/DEFAULT_LANG=en_GB/DEFAULT_LANG=fr_FR/g" $CONF
-
-# 	echo `date` setting server to RRF
-
-	sudo sed -i "s/HOSTS=svxportal-uk.ddns.net/HOSTS=docs.rrf.ovh/g" $CONF
-	sudo sed -i "s/AUTH_KEY=\"ToBeChanged\"/AUTH_KEY=\"Magnifique123456789!\"/g" $CONF
-	sudo sed -i "s/HOST_PORT=5300/HOST_PORT=5399/g" $CONF
-	sudo sed -i "s/MONITOR_TGS=235,350,2351,23520,23590,23561/MONITOR_TGS=97,98,99,100,101,102/g" $CONF
-
+#
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
+#
 	echo `date` Disabling audio distorsion warning messages
 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
-        echo `date` Add ReflectorLogic in LOGICS
-	sudo sed -i "/LOGICS=SimplexLogic/ s/$/,ReflectorLogic/" $CONF
-	echo `date` Setting svxlink log file
+ 	echo `date` Setting svxlink log file
 	sudo sed -i "/LOGFILE=/ s/$/.log/" /etc/default/svxlink
 	if [$card=true]
 	then
@@ -114,7 +108,7 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	
 	fi
-	echo `date`  GPIO setup service et svxlink service …
+	echo `date` "${ROUGE} Authorise GPIO setup service and svxlink service${NORMAL}"
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
@@ -124,9 +118,10 @@ VERSIONS=svxlink/src/versions
 	sudo systemctl start svxlink.service
 
 
-
-echo `date` Installation terminé
-echo `date` Reboot SVXLink
+echo `date` "${ROUGE}Installation complete\n${NORMAL}"
+echo `date` "${VERT} Reboot - Redémarrer SVXLink\n\n\\n${NORMAL}"
 echo
+sleep 10
+
 sudo reboot
 
