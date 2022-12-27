@@ -1,26 +1,32 @@
 #!/bin/bash
 # Auto run audio_update.sh
+export LANGUAGE=en_GB.UTF-8
+GREEN="\\033[1;32m"
+NORMAL="\\033[0;39m"
+RED="\\033[1;31m"
+YELLOW="\\033[1;33m"
 sudo ./svxlink_raspberry/audio_update.sh
+#
 # Auto run install.sh
+#
+
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi
 OP=/etc/svxlink
-#FLAG=.makescript
 cd
 sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
 
-#if [ ! -f $FLAG ]; then
-	echo `date` *** commence build ***
+	echo -e ${YELLOW} `date` *** commence build *** ${NORMAL}
+
 # Installing other packages
-	echo `date` Installing required software packages …
+	echo -e ${YELLOW}`date` Installing required software packages …${NORMAL}
 	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo         
-	echo -n “Enter the node callsign: \n“
+	echo -n ${GREEN}Enter the node callsign: ${NORMAL}
 	echo
-	
 	read CallVar
 	if [ “$CallVar” == “” ]; then
 		echo “Sorry - Start this program again with a valid callsign”
@@ -30,8 +36,7 @@ VERSIONS=svxlink/src/versions
 	echo
 	echo `date` Creating Node $CALL
 # Creating Groups and Users
-	echo
-	echo `date` Creating Groups and Users 
+	echo ${YELLOW}`date` Creating Groups and Users${NORMAL} 
 	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
@@ -43,7 +48,7 @@ VERSIONS=svxlink/src/versions
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
-#	fi
+
 	
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
@@ -57,15 +62,14 @@ VERSIONS=svxlink/src/versions
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
-	sudo cp * local
+	sudo cp *.tcl ./local
 	sudo ldconfig
 # Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2022/12/en_GB.tar.gz
 	sudo tar -zxvf en_GB.tar.gz
 	sudo rm en_GB.tar.gz
-#.      for the French Language use sudo wget https://g4nab.co.uk/wp-content/uploads/2021/07/fr_FR.tar.gz and change the 2 lines below.      
-#.      pour la langue française uilise cela dessus ^ et donc changé les deux lignes qui la suivent.
+	sudo chmod 777 *
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
@@ -95,7 +99,7 @@ VERSIONS=svxlink/src/versions
 #
 	echo `date` Changing Log file
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
-	if [$CM=true]
+	if [$card=true]
 	then
 	sudo sed -i "/PTT_TYPE/iHID_DEVICE=\/dev\/hidraw0" $CONF
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
@@ -106,6 +110,9 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	
+
+
+
 	fi
 #
 	echo `date` enabling GPIO setup service and svxlink service …
@@ -116,13 +123,13 @@ VERSIONS=svxlink/src/versions
 	sudo systemctl start svxlink_gpio_setup.service
 	sleep 10
 	sudo systemctl start svxlink.service
-#fi
-#touch $FLAG
+
+
 echo `date` Installation complete
 echo `date` Rebooting to restart SVXLink
 echo
 sudo reboot
-# UPdated voice pack
+
 
 	
  
