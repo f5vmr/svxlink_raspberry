@@ -53,7 +53,7 @@ VERSIONS=svxlink/src/versions
 	NEWVERSION=`sudo echo "$VERSIONS" | grep "SVXLINK=" | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
-	ch
+	cd
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc \ -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
