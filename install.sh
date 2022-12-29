@@ -15,6 +15,7 @@ GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi
 OP=/etc/svxlink
 cd
+sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
@@ -23,7 +24,7 @@ VERSIONS=svxlink/src/versions
 
 # Installing other packages
 	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
-	sudo apt install g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
+	sudo apt install nodejs build-essential g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo         
 	echo -e "${GREEN} Enter the node callsign: \n ${NORMAL}"
 	echo
