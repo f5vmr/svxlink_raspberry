@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /tmp
+cd /var/log
 NOW=$(date -d "Today" +%Y%m%d)
 NOW7=$(date -d "Last-Week" +%Y%m%d)
 sleep 7
