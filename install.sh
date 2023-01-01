@@ -126,8 +126,8 @@ VERSIONS=svxlink/src/versions
 	sudo systemctl start svxlink.service
 
 
-echo `date` "${RED}Installation complete\n${NORMAL}"
-echo `date` "${GREEN} Reboot - Redémarrer SVXLink\n\n\\n${NORMAL}"
+echo -e `date` "${RED}Installation complete\n${NORMAL}"
+echo -e `date` "${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}"
 echo
 sleep 10
 
