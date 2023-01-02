@@ -5,7 +5,7 @@ VERT="\033[1;32m"
 NORMAL="\033[1;39m"
 ROUGE="\033[1;31m"
 JAUNE="\033[1;33m"
-sudo bash ~/svxlink_raspberry/audio_update.sh
+sudo bash ~/home/pi/svxlink_raspberry/audio_update.sh
 #
 # Installation automatique du logicel SVXlink
 #
