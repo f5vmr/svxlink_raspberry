@@ -5,7 +5,7 @@ GREEN="\033[1;32m"
 NORMAL="\033[0;39m"
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
-sudo ./svxlink_raspberry/audio_update.sh
+sudo bash ~/svxlink_raspberry/audio_update.sh
 #
 # Auto run install.sh
 #
