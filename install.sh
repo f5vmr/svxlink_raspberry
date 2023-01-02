@@ -5,7 +5,7 @@ GREEN="\033[1;32m"
 NORMAL="\033[0;39m"
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
-sudo bash ~/svxlink_raspberry/audio_update.sh
+sudo bash /home/pi/svxlink_raspberry/audio_update.sh
 #
 # Auto run install.sh
 #
@@ -77,11 +77,11 @@ VERSIONS=svxlink/src/versions
 #
 	cd $HOME
 	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
-	sudo mkdir scripts
+	sudo mkdir /home/pi/scripts
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
 	sudo cp -r svxlink_raspberry/gpio.conf $OP
 	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
-	sudo cp -r svxlink_raspberry/resetlog.sh ~/scripts/resetlog.sh
+	sudo cp -r svxlink_raspberry/resetlog.sh /home/pi/scripts/resetlog.sh
 	(crontab -l 2>/dev/null; echo "59 23 * * * /home/pi scripts/resetlog.sh ") | crontab -
 #
 	echo `date` Setting Callsign to $CALL
