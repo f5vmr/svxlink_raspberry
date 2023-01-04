@@ -33,9 +33,6 @@ RGR_SOUND_ALWAYS=1
 MACROS=Macros
 FX_GAIN_NORMAL=0
 FX_GAIN_LOW=-12
-OPEN_ON_SQL=1
-OPEN_SQUELCH_FLANK=OPEN
-IDLE_SOUND_INTERVAL=0
 QSO_RECORDER=8:QsoRecorder
 
 # Prochaine paragraphe dispo pour répéteur seulement.
