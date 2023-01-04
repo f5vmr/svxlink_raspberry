@@ -107,9 +107,9 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/PTT_PORT=GPIO/PTT_PORT=\/dev\/hidraw0/g" $CONF
 	sudo sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	
 	fi
 	echo `date` "${ROUGE} Authorise GPIO setup service and svxlink service${NORMAL}"
