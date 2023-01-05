@@ -2,6 +2,7 @@
     "nodeLocation": "to be added",
     "hidden": false,
     "sysop": "MYCALL",
+    "toneToTalkgroup":{""},
     "qth": [
         {
             "name": "place",
