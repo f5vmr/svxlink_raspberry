@@ -24,7 +24,7 @@ VERSIONS=svxlink/src/versions
 	
 # Installing other packages
 	echo -e `date` "${JAUNE} Installation des logiciels nécessaires${NORMAL}"
-	sudo apt install nodejs build-essential network-manager g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
+	sudo apt install nodejs build-essential g++ make cmake libsigc++-2.0-dev php8.0 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo
 	echo -n “Tapez l\'indicactif du noeud : \n“
 	echo
