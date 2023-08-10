@@ -67,7 +67,7 @@ VERSIONS=svxlink/src/versions
 	sudo ldconfig
 	# Installation des dossiers français
 	cd /usr/share/svxlink/sounds
-	sudo wget https://g4nab.co.uk/wp-content/uploads/2022/11/fr_FR.tar.gz
+	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/fr_FR.tar.gz
 	sudo tar -zxvf fr_FR.tar.gz
 	sudo rm fr_FR.tar.gz
 	sudo chmod 777 *
