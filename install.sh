@@ -77,7 +77,10 @@ VERSIONS=svxlink/src/versions
  	sudo mv en_GB.tar_.gz en_GB.tar.gz
 	sudo tar -zxvf en_GB.tar.gz
 	sudo rm en_GB.tar.gz
-	sudo chmod 777 *
+ 	cd en_GB/en_GB
+  	sudo mv * ..
+   	cd ..
+    	sudo chmod 777 *
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
@@ -86,8 +89,8 @@ VERSIONS=svxlink/src/versions
 	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
 	sudo mkdir /home/pi/scripts
 	sudo cp -r svxlink_raspberry/svxlink.conf $OP
-	sudo cp -r svxlink_raspberry/gpio.conf $OP
-	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
+#	sudo cp -r svxlink_raspberry/gpio.conf $OP
+#	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
 	sudo cp -r svxlink_raspberry/resetlog.sh /home/pi/scripts/resetlog.sh
 	(crontab -l 2>/dev/null; echo "59 23 * * * /home/pi scripts/resetlog.sh ") | crontab -
 #
