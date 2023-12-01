@@ -58,6 +58,7 @@ If you need to make changes to the <b>gpio.conf</b> file you will also need to r
 
 <b><h2>Français</h2></b>
 <p>Cette Installation est pour un Raspberry Pi Tous marques. Les paramètres du RRF sont inclues.</p>
+<p>IMPORTANT - Toute activité au terminal doit être en USER <h2>PI</h2>h2>  - Ne Jamais utiliser ROOT 
 <p>1.  Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
 <p>2.  Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
 <p>3.  Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
