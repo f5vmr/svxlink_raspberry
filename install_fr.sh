@@ -15,7 +15,7 @@ GPIO=/etc/svxlink/gpio.conf
 HOME=/home/pi/
 OP=/etc/svxlink/
 cd
-sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+### NODE.JS ####
 sudo apt update
 sudo apt upgrade -y
 VERSIONS=svxlink/src/versions
