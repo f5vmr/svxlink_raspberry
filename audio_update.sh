@@ -2,7 +2,7 @@
 echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
 sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
 sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/config.txt
-echo options snd_usb_audio index=0 && echo options snd slots=snd_usb_audio > /etc/modeprobe.d/asound.conf
+sudo cp /home/pi/svxlink_raspberry/asound.conf /home/pi/etc/modprobe.d/asound.conf
 
 
 while true; do
