@@ -40,6 +40,6 @@ done
                 echo "Normal USB soundcard present"
                 fi
                 
-                echo "Audio Updates complete."
+                echo "Audio Updates including Dummy Sound Card for Darkice complete."
 
 
