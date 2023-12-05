@@ -24,6 +24,7 @@ Start with a download of <b>Raspberry OS Lite</b> from RaspberryPi.org. Then use
 
 Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
 <h3>The compilation</h3>
+This script will also install a dummy sound card for the use of Darkice and Icecast2
 The first step will be the following command: <b>sudo apt install -y git</b>  
 
 Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .
