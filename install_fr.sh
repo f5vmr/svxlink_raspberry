@@ -5,7 +5,50 @@ VERT="\033[1;32m"
 NORMAL="\033[1;39m"
 ROUGE="\033[1;31m"
 JAUNE="\033[1;33m"
-sudo bash /home/pi/svxlink_raspberry/audio_update.sh
+echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
+sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
+sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/config.txt
+sudo cp /home/pi/svxlink_raspberry/asound.conf /home/pi/etc/modprobe.d/asound.conf
+echo snd-aloop > /etc/modules
+sudo cp /home/pi/svxlink_raspberry/loopback.conf /home/pi/etc/asound.conf
+
+
+
+
+while true; do
+        echo "Est-ce que vous avez une carte-son CM-108 modifié? - Y/N "
+        read on
+        case $on in
+                [Yy]* )
+                echo "D'accord, on va faire les règles"
+                sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
+                sudo udevadm control --reload-rules
+                sudo udevadm trigger
+                card=true
+                break
+                ;;
+                [Nn]* )
+                echo "D'accord, donc je ne fais plus de changement."
+                card=false
+                break
+                ;;
+                * ) echo "SVP répondez O or N."
+                ;;
+        esac
+        
+done
+
+
+                if [ $card=true ] ;
+                then 
+                echo "Modified CM-108 carte-son se presente"
+                else
+                echo "USB carte-son sans modification se presente"
+                fi
+                
+                echo "Audio Updates including Dummy Sound Card for Darkice complete."
+
+
 #
 # Installation automatique du logicel SVXlink
 #
