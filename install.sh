@@ -8,9 +8,9 @@ YELLOW="\033[1;33m"
 echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
 sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
 sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/config.txt
-sudo cp /home/pi/svxlink_raspberry/asound.conf /home/pi/etc/modprobe.d/asound.conf
+sudo cp /home/pi/svxlink_raspberry/asound.conf /etc/modprobe.d/asound.conf
 echo snd-aloop > /etc/modules
-sudo cp /home/pi/svxlink_raspberry/loopback.conf /home/pi/etc/asound.conf
+sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
 while true; do
         echo "Do you have a modified CM-108 USB Card? - Y/N "
         read yn
