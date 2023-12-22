@@ -7,6 +7,8 @@
 <p>There are few raspberry images that work succesfully for this type of build, where there is a potential for using the eventual application in several directions.</p>
 
 <p>Whilst this in itself is not an image, it will take the hard work out of the physical compilation, although leaves a little work for the user to place the finishing touches to the final assembly.</p>
+<p>There are a number of pitfalls that you must avoid and that includes using Raspberry OS Bookworm Lite 64 bit (Debian 12). My strong recommendation is NOT to use this.</p>
+<p>In preference use Raspberry OS Bullseye Lite (Debian 11) 32 Bit, then you won't go wrong.</p>
 
 <p>There are a number of available interface boards that have a variety of uses, either as a hotspot or a repeater, or even a fill-in receiver/transceiver for an existing SVXLink repeater. The settings in this build are for a homebrew interface board using GPIO 23 for the Receive COS and GPIO 24 for the PTT controller, or alternative a modified CM-108 that can use udev and drive the PTT from the modification components.</p>
 
@@ -19,7 +21,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <h3>The programming of the SDCard</h3>
 
-Start with a download of <b>Raspberry OS Lite</b> from RaspberryPi.org. Then use a 8/16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source.
+<p>Start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above.</p> 
 
 
 Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
