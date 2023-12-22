@@ -148,7 +148,7 @@ VERSIONS=svxlink/src/versions
 #
 	echo `date` Changing Log file
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
-	if [$card=true]
+	if [ $card=true ] ;
 	then
 	sudo sed -i "/PTT_TYPE/iHID_DEVICE=\/dev\/hidraw0" $CONF
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
