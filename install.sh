@@ -35,7 +35,7 @@ while true; do
 done
 
 
-                if [ $card=true ] ;
+                if [ "$card" = true ] ;
                 then 
                 echo "Modified CM-108 soundcard present"
                 else
