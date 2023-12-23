@@ -152,7 +152,7 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	if [ $card=true ] ;
 	then
-	sudo sed -i "/PTT_TYPE/iHID_DEVICE=\/dev\/hidraw0" $CONF
+	#sudo sed -i "/PTT_TYPE/iHID_DEVICE=\/dev\/hidraw0" $CONF
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
 	sudo sed -i "s/PTT_PORT=GPIO/PTT_PORT=\/dev\/hidraw0/g" $CONF
 	sudo sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
