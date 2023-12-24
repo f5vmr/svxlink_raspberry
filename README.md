@@ -57,7 +57,7 @@ The next stage is to check and edit where necessary the <b>svxlink.conf</b> file
 Check the content and complete your location information near the bottom of the file. type <b>cntrl-o</b> and return then <b>cntrl-x</b> when finished to save your changes.
 To modify the Echolink information type <b>sudo nano svxlink.d/ModuleEchoLink.conf</b> and return. Make your changes to your EchoLink access here. then save the file as you did above with <b>svxlink.conf</b>. If you have not yet enabled svxlink in the <b>svxlink.conf</b> to may need to do this now, and remove the <b>#</b> comment header from the relevant lines.
 To incorporated the changes you will need to type <b>sudo systemctl restart svxlink.service</b> and return.
-If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too.
+<p>If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too. The old methods of adding the gpio configuration and setting a daemon start in /etc/rc.local are deprecated (no longer required), and in the case of using gpiod, then the modifying of gpio.conf is also no longer required.</p>
 <p>Everything introduced here is from the original presentation by Tobias SM0SVX.</p>
 
 
