@@ -25,38 +25,37 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <p>As discussed start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems.</p> 
 
-
-Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
+<p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case.</p> 
 <h3>The compilation</h3>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
 <p><The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
 
-Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .
+<p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .</p>
 
-Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b>
+<p>Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b></p>
 
 <p>The next commands refer to Raspberry OS Bullseye 32 bit lite (Debian 11). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.0 to php7.3 in the list of software the script will download. Failure to do this will crash the script. If you choose to ignored my advice and used Raspberry Bookworm Debian 12, then this will need to be changed to php8.2. There will be consequences if you use bookworm, just saying. Don't. </p>
 
-Now type <b>sudo ./svxlink_raspberry/install.sh</b> and return.
+<p>Now type <b>sudo ./svxlink_raspberry/install.sh</b> and return.</p>
 
-The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
+<p>The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.</p>
 
-At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.
+<p>At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
 
-At the end of the compilation type <b>sudo reboot</b> to restart the unit, if it hasn't been automatically. It should do so. If all is well the unit wil be only partly functional. 
+<p>At the end of the compilation type <b>sudo reboot</b> to restart the unit, if it hasn't been automatically. It should do so. If all is well the unit wil be only partly functional. </p>
 
-You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk. In the terminal type man svxlink.conf and the on-board documentation will be displayed.
+<p>You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk. In the terminal type man svxlink.conf and the on-board documentation will be displayed.</p>
 
 <p>To stop svxlink running type in the terminal <b>sudo systemctl stop svxlink.service</b> and to restart it type <b>sudo systemctl restart svxlink.service</b></p>
-The next stage will be to modify the three files <b>node_info.json</b>, <b>svxlink.conf</b>, and <b>ModuleEchoLink.conf</b>.
+<p>The next stage will be to modify the three files <b>node_info.json</b>, <b>svxlink.conf</b>, and <b>ModuleEchoLink.conf</b>.</p>
 <p>To obtain information for the node_info.json go to a PC Browser and enter <b>http://svxportal-uk.ddns.net:81</b> where you will find a dashboard.</p>
-Click <b>Register</b> at the top, completing the information. This information is held only to enable you to complete the next stage. Log in with the information you have just supplied, and click on <b font=color blue>Generate node_info.json</f></b>. Once complete, save the resulting file in your computer.</b>
-Open the terminal of the Raspberry Pi, and type <b>cd /etc/svxlink</b> followed by return. Then type <b>sudo nano node_info.json</b> and edit the information with the content of the file you have just saved on your PC. You can open the file with a text editor or notepad.
-When the editing is complete type <b>cntrl-o</b> and return at the keyboard for the terminal followed by <b>cntrl-x</b>.
-The next stage is to check and edit where necessary the <b>svxlink.conf</b> file. Type <b>sudo nano svxlink.conf</b> followed by return.
-Check the content and complete your location information near the bottom of the file. type <b>cntrl-o</b> and return then <b>cntrl-x</b> when finished to save your changes.
-To modify the Echolink information type <b>sudo nano svxlink.d/ModuleEchoLink.conf</b> and return. Make your changes to your EchoLink access here. then save the file as you did above with <b>svxlink.conf</b>. If you have not yet enabled svxlink in the <b>svxlink.conf</b> to may need to do this now, and remove the <b>#</b> comment header from the relevant lines.
-To incorporated the changes you will need to type <b>sudo systemctl restart svxlink.service</b> and return.
+<p>Click <b>Register</b> at the top, completing the information. This information is held only to enable you to complete the next stage. Log in with the information you have just supplied, click on <b>My Stations</b>, and click on <b font=color blue>Generate node_info.json</f></b>. Once complete, save the resulting file in your computer.</p>
+<p>Open the terminal of the Raspberry Pi, and type <b>cd /etc/svxlink</b> followed by return. Then type <b>sudo nano node_info.json</b> and edit the information with the content of the file you have just saved on your PC. You can open the file with a text editor or notepad.</p>
+<p>When the editing is complete type <b>cntrl-o</b> and return at the keyboard for the terminal followed by <b>cntrl-x</b>.</p>
+<p>The next stage is to check and edit where necessary the <b>svxlink.conf</b> file. Type <b>sudo nano svxlink.conf</b> followed by return.</p>
+<p>Check the content and complete your location information near the bottom of the file. type <b>cntrl-o</b> and return then <b>cntrl-x</b> when finished to save your changes.</p>
+<p>To modify the Echolink information type <b>sudo nano svxlink.d/ModuleEchoLink.conf</b> and return. Make your changes to your EchoLink access here. then save the file as you did above with <b>svxlink.conf</b>. If you have not yet enabled svxlink in the <b>svxlink.conf</b> to may need to do this now, and remove the <b>#</b> comment header from the relevant lines.</p>
+<p>To incorporated the changes you will need to type <b>sudo systemctl restart svxlink.service</b> and return.</p>
 <p>If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too. The old methods of adding the gpio configuration and setting a daemon start in /etc/rc.local are deprecated (no longer required), and in the case of using gpiod, then the modifying of gpio.conf is also no longer required.</p>
 <p>Everything introduced here is from the original presentation by Tobias SM0SVX.</p>
 
