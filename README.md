@@ -2,7 +2,7 @@
 <h2>Script build for Raspberry Pi - Repeater or Hotspot. Pour l'instruction en Français, voir en bas.</h2>
 
 <b>First Steps</b>
-<p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card (or a modified USB Soundcard and no interface). One or two transceivers (3 or 4 if you are making a double repeater, for which you will need a second USB soundcard.)</p>
+<p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card (or a modified USB Soundcard and no interface). One or two transceivers (3 or 4 if you are making a double repeater, for which you will probably need a second USB soundcard.)</p>
 
 <p>There are few raspberry images that work succesfully for this type of build, where there is a potential for using the eventual application in several directions.</p>
 
@@ -10,7 +10,7 @@
 
 <p>There are a number of pitfalls that you must avoid and that includes using Raspberry OS Bookworm Lite 64 bit (Debian 12). My strong recommendation is NOT to use this.</p>
 
-<p>In preference use Raspberry OS Bullseye Lite (Debian 11) 32 Bit, then you won't go wrong.</p>
+<p>Always use Raspberry OS Bullseye Lite (Debian 11) 32 Bit also known as legacy 32 bit, then you won't go wrong.</p>
 
 <p>There are a number of available interface boards that have a variety of uses, either as a hotspot or a repeater, or even a fill-in receiver/transceiver for an existing SVXLink repeater. The settings in this build are for a homebrew interface board using GPIO 23 for the Receive COS and GPIO 24 for the PTT controller, or alternative a modified CM-108 that can use udev and drive the PTT from the modification components.</p>
 
@@ -23,29 +23,29 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <h3>The programming of the SDCard</h3>
 
-<p>Start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above.</p> 
+<p>As discussed start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems.</p> 
 
 
 Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case. 
 <h3>The compilation</h3>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
-<p><The first step will be the following command: <b>sudo apt install -y git</b></p>  
+<p><The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
 
 Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .
 
 Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b>
 
-<p>The next commands refer to Raspberry OS Bullseye 32 bit lite (Debian 11). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.0 to php7.3 in the list of software the script will download. Failure to do this will crash the script.</p>
+<p>The next commands refer to Raspberry OS Bullseye 32 bit lite (Debian 11). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.0 to php7.3 in the list of software the script will download. Failure to do this will crash the script. If you choose to ignored my advice and used Raspberry Bookworm Debian 12, then this will need to be changed to php8.2. There will be consequences if you use bookworm, just saying. Don't. </p>
 
-Now type <b>sudo bash svxlink_raspberry/install.sh</b> and return.
+Now type <b>sudo ./svxlink_raspberry/install.sh</b> and return.
 
 The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.
 
-At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error.
+At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.
 
-At the end of the compilation type <b>sudo reboot</b> to restart the unit. If all is well the unit wil be only partly functional. 
+At the end of the compilation type <b>sudo reboot</b> to restart the unit, if it hasn't been automatically. It should do so. If all is well the unit wil be only partly functional. 
 
-You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk.
+You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk. In the terminal type man svxlink.conf and the on-board documentation will be displayed.
 
 <p>To stop svxlink running type in the terminal <b>sudo systemctl stop svxlink.service</b> and to restart it type <b>sudo systemctl restart svxlink.service</b></p>
 The next stage will be to modify the three files <b>node_info.json</b>, <b>svxlink.conf</b>, and <b>ModuleEchoLink.conf</b>.
