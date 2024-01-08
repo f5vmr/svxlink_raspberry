@@ -114,11 +114,10 @@ VERSIONS=svxlink/src/versions
 # Installing United Kingdom Sound files
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
- 	sudo mv en_GB.tar_.gz en_GB.tar.gz
-	sudo tar -zxvf en_GB.tar.gz
-	sudo rm en_GB.tar.gz
- 	cd en_GB/en_GB
-  	sudo mv * ..
+	sudo tar -zxvf en_GB.tar_.gz
+	sudo rm en_GB.tar_.gz
+ 	
+  
    	cd ..
     	sudo chmod 777 *
 	echo `date` backing up configuration to : $CONF.bak
