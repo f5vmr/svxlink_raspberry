@@ -118,8 +118,8 @@ VERSIONS=svxlink/src/versions
 	sudo rm en_GB.tar_.gz
  	
   
-   	cd ..
-    	sudo chmod 777 *
+   	cd /etc/svxlink
+    	sudo chmod 777 -R *
 	echo `date` backing up configuration to : $CONF.bak
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
