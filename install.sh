@@ -159,6 +159,11 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf	
+ 	echo Changing ModuleMetar Link
+  	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=
+%g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+
+  
 
 	fi
 	echo `date` "${RED} Authorise GPIO setup service and svxlink service${NORMAL}"
