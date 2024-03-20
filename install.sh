@@ -127,10 +127,10 @@ VERSIONS=svxlink/src/versions
 	cd $HOME
 	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
 	sudo mkdir /home/pi/scripts
-	sudo cp -r svxlink_raspberry/svxlink.conf $OP
-#	sudo cp -r svxlink_raspberry/gpio.conf $OP
-#	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
-	sudo cp -r svxlink_raspberry/resetlog.sh scripts/resetlog.sh
+	sudo cp -f svxlink_raspberry/svxlink.conf $OP
+#	sudo cp -f svxlink_raspberry/gpio.conf $OP
+#	sudo cp -f svxlink_raspberry/node_info.json $OP/node_info.json
+	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(crontab -l 2>/dev/null; echo "59 23 * * * /bin/bash /home/pi/scripts/resetlog.sh ") | crontab -
 #
 	echo `date` Setting Callsign to $CALL
