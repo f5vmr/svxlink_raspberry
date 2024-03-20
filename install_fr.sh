@@ -128,11 +128,11 @@ VERSIONS=svxlink/src/versions
 	cd $HOME
 	echo -e `date` "${ROUGE} Téléchargement des dossiers config${NORMAL}"
 	sudo mkdir /home/$USER/scripts
-	sudo cp -r svxlink_raspberry/svxlink.conf.fr $CONF
-	sudo cp -r svxlink_raspberry/gpio.conf $GPIO
-	sudo cp -r svxlink_raspberry/node_info.json $OP/node_info.json
- 	sudo cp -r svxlink_raspberry/resetlog.sh /home/$USER/scripts/resetlog.sh
-	(crontab -l 2>/dev/null; echo "59 23 * * * /home/$USER scripts/resetlog.sh ") | crontab -
+	sudo cp -f svxlink_raspberry/svxlink.conf.fr $CONF
+	sudo cp -f svxlink_raspberry/gpio.conf $GPIO
+	sudo cp -f svxlink_raspberry/node_info.json $OP/node_info.json
+ 	sudo cp -f svxlink_raspberry/resetlog.sh /home/$USER/scripts/resetlog.sh
+	(crontab -l 2>/dev/null; echo "59 23 * * * /home/$USER/scripts/resetlog.sh ") | crontab -
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
