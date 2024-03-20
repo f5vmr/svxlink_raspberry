@@ -50,7 +50,7 @@ done
 
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
-HOME=/home/pi
+HOME=/home/$USER
 OP=/etc/svxlink
 cd
 sudo apt-get update
