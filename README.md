@@ -23,7 +23,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <h3>The programming of the SDCard</h3>
 
-<p>As discussed start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems.</p> 
+<p>As discussed start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems. Because if the following procedures, always make the default user 'pi'. Failure to do so may cause inefficiencies later.</p> 
 
 <p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user as 'pi' and password 'raspberry' in lower case.</p> 
 <h3>The compilation</h3>
@@ -57,6 +57,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 <p>To modify the Echolink information type <b>sudo nano svxlink.d/ModuleEchoLink.conf</b> and return. Make your changes to your EchoLink access here. then save the file as you did above with <b>svxlink.conf</b>. If you have not yet enabled svxlink in the <b>svxlink.conf</b> to may need to do this now, and remove the <b>#</b> comment header from the relevant lines.</p>
 <p>To incorporated the changes you will need to type <b>sudo systemctl restart svxlink.service</b> and return.</p>
 <p>If you need to make changes to the <b>gpio.conf</b> file you will also need to restart the gpio service too. The old methods of adding the gpio configuration and setting a daemon start in /etc/rc.local are deprecated (no longer required), and in the case of using gpiod, then the modifying of gpio.conf is also no longer required.</p>
+<p>At the start of the build I mentioned making the default user 'pi'. The reason is that in following the instruction precisely you have created a cronjob that uses this default user name 'pi' as the relative file location to run the unique log rotation system. If you have chosen to ignore my advice then you will have to modify the crontab -e accordingly.</p> 
 <p>Everything introduced here is from the original presentation by Tobias SM0SVX.</p>
 
 
