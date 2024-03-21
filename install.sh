@@ -131,7 +131,7 @@ VERSIONS=svxlink/src/versions
 #	sudo cp -f svxlink_raspberry/gpio.conf $OP
 #	sudo cp -f svxlink_raspberry/node_info.json $OP/node_info.json
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
-	(crontab -l 2>/dev/null; echo "59 23 * * * /bin/bash /home/$USER/scripts/resetlog.sh ") | crontab -
+	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/$USER/scripts/resetlog.sh ") | sudo crontab -
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
