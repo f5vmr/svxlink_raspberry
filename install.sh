@@ -124,7 +124,7 @@ VERSIONS=svxlink/src/versions
 	cd $OP
 	sudo cp -p $CONF $CONF.bak
 #
-	cd $HOME
+	cd pi
 	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
 	sudo mkdir /home/$USER/scripts
 	sudo cp -f svxlink_raspberry/svxlink.conf $OP
