@@ -50,7 +50,7 @@ done
 
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
-HOME=/home/pi
+HOME=/home/pi/
 OP=/etc/svxlink
 cd
 sudo apt-get update
@@ -121,21 +121,21 @@ VERSIONS=svxlink/src/versions
    	cd /etc/svxlink
     	sudo chmod 777 -R *
 	echo `date` backing up configuration to : $CONF.bak
-	cd $OP
+	
 	sudo cp -p $CONF $CONF.bak
 #
 	cd pi
 	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
 	sudo mkdir /home/pi/scripts
-	sudo cp -f svxlink_raspberry/svxlink.conf $OP
-#	sudo cp -f svxlink_raspberry/gpio.conf $OP
-#	sudo cp -f svxlink_raspberry/node_info.json $OP/node_info.json
+	sudo cp -f svxlink_raspberry/svxlink.conf /etc/svxlink/
+#	sudo cp -f svxlink_raspberry/gpio.conf /etc/svxlink/
+#	sudo cp -f svxlink_raspberry/node_info.json /etc/svxlink/node_info.json
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 #
 	echo `date` Setting Callsign to $CALL
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
-	sudo sed -i "s/MYCALL/$CALL/g" $OP/node_info.json
+	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 #
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
