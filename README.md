@@ -23,7 +23,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. <b> You MUST make the user 'pi' - please do not deviate from my advice above, as you will get issues. </b> You can however use your own password. There are versions of Raspberry Pi Imager for all operating systems. It allows for full WiFi usage. <b>Always check the SSH box on the second tab.</b> </p> 
 
-<p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user and password.</p> 
+<p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user pi and your password.</p> 
 <h3>The compilation</h3>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
 <p><The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
