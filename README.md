@@ -8,9 +8,7 @@
 
 <p>Whilst this in itself is not an image, it will take the hard work out of the physical compilation, although it leaves a little work for the user to place the finishing touches to the final assembly.</p>
 
-<p>There are a number of pitfalls that you must avoid and that includes using Raspberry OS Bookworm Lite 64 bit (Debian 12). My strong recommendation is NOT to use this.</p>
-
-<p>Always use Raspberry OS Bullseye Lite (Debian 11) 32 Bit also known as legacy 32 bit, then you won't go wrong.</p>
+Always use Raspberry OS Bookworm Lite (Debian 12) 32 Bit then you won't go wrong.</p>
 
 <p>There are a number of available interface boards that have a variety of uses, either as a hotspot or a repeater, or even a fill-in receiver/transceiver for an existing SVXLink repeater. The settings in this build are for a homebrew interface board using GPIO 23 for the Receive COS and GPIO 24 for the PTT controller, or alternative a modified CM-108 that can use udev and drive the PTT from the modification components.</p>
 
