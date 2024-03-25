@@ -21,7 +21,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <h3>The programming of the SDCard</h3>
 
-<p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems. </p> 
+<p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. <b> You MUST make the user 'pi' - please do not deviate from my advice above, as you will get issues. </b> You can however use your own password. There are versions of Raspberry Pi Imager for all operating systems. </p> 
 
 <p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user and password.</p> 
 <h3>The compilation</h3>
