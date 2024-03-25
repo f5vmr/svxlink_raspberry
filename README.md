@@ -21,7 +21,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <h3>The programming of the SDCard</h3>
 
-<p>As discussed start with a download of <b>Raspberry OS Bullseye Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems. </p> 
+<p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. please do not ignore my advice above, as you can get issues. There are versions for all operating systems. </p> 
 
 <p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user and password.</p> 
 <h3>The compilation</h3>
@@ -32,7 +32,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <p>Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b></p>
 
-<p>The next commands refer to Raspberry OS Bullseye 32 bit lite (Debian 11). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.0 to php7.3 in the list of software the script will download. Failure to do this will crash the script. If you choose to ignored my advice and used Raspberry Bookworm Debian 12, then this will need to be changed to php8.2. There will be consequences if you use bookworm, just saying. Don't. </p>
+<p>The next commands refer to Raspberry OS Bookworm 32 bit lite (Debian 12). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.2 to php7.3 in the list of software the script will download. Failure to do this will crash the script. </p>
 
 <p>Now type <b>sudo ./svxlink_raspberry/install.sh</b> and return.</p>
 
@@ -61,7 +61,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 <b><h2>Français</h2></b>
 <p>Cette Installation est pour un Raspberry Pi Tous marques. Les paramètres du RRF sont inclues.</p>
 <p>IMPORTANT - Toute activité au terminal doit être en USER <b>PI</b>  - Ne Jamais utiliser ROOT</p> 
-<p>1.  Téléchargement du Raspberry OS Lite Bullseye - L'equivalence de Debian 11.</p>
+<p>1.  Téléchargement du Raspberry OS Lite Bookworm - L'equivalence de Debian 12.</p>
 <p>2.  Utilisation de Raspberry Pi SDCard writer est importante, particulairement si le Wi-Fi soit necessaire.</p>
 <p>3.  Après Installation de la carteSD dedans le Raspberry, fait marcher le système, la carte-son inclu s'il y en a.</p>
 <p>4.  Avec SSH d'un ordinateur au réseau, il faut trouver le terminal - ssh pi@192.168.#.# -p 22 dans votre réseau par un écran de command d'un PC par exemple. le mot-pass normale soit "raspberry".</p>
