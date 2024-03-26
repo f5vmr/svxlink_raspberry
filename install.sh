@@ -11,7 +11,7 @@ sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/conf
 sudo cp /home/pi/svxlink_raspberry/asound.conf /etc/modprobe.d/asound.conf
 echo snd-aloop > /etc/modules
 sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
-card=NUL
+card=false
 while true; do
         echo "Do you have a modified CM-108 USB Card? - Y/N "
         read yn
