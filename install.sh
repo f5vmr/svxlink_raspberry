@@ -11,6 +11,7 @@ sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/conf
 sudo cp /home/pi/svxlink_raspberry/asound.conf /etc/modprobe.d/asound.conf
 echo snd-aloop > /etc/modules
 sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
+card=NUL
 while true; do
         echo "Do you have a modified CM-108 USB Card? - Y/N "
         read yn
@@ -50,48 +51,49 @@ done
 
 CONF=/etc/svxlink/svxlink.conf
 GPIO=/etc/svxlink/gpio.conf
-HOME=/home/pi/
 OP=/etc/svxlink
 cd
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl gnupg
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-NODE_MAJOR=20
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+# uprating repositories for nodejs and future expansion
+	echo -e `date` " ${YELLOW}  *** updates and upgrades *** ${NORMAL}"
+	sudo apt-get update
+	sudo apt-get install -y ca-certificates curl gnupg
+	sudo mkdir -p /etc/apt/keyrings
+	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+	NODE_MAJOR=20
+	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
-sudo apt update
-sudo apt upgrade -y
-VERSIONS=svxlink/src/versions
+	sudo apt update
+	sudo apt upgrade -y
+	VERSIONS=svxlink/src/versions
 
 	echo -e `date` " ${YELLOW}  *** commence build *** ${NORMAL}"
 
-# Installing other packages
+# Installing other packages required for svxlink compilation
 	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 	echo         
-	echo -e "${GREEN} Enter the node callsign: \n ${NORMAL}"
+	echo -e `date` "${GREEN} Enter the node callsign: \n ${NORMAL}"
 	echo
 	read CallVar
-	if [ “$CallVar” == “” ]; then
-		echo “Sorry - Start this program again with a valid callsign”
+	if [ "$CallVar" == "" ]; then
+		echo "Sorry - Start this program again with a valid callsign"
 		exit 1
 	fi
 	CALL=${CallVar^^}
 	echo
-	echo `date` Creating Node $CALL
+	echo `date` "${GREEN} Creating Node " $CALL " *** ${NORMAL}"
 # Creating Groups and Users
 
 	echo -e `date` "${YELLOW} Creating Groups and Users ${NORMAL}"
-        sudo mkdir /etc/svxlink
-        sudo groupadd svxlink
+	sudo mkdir /etc/svxlink
+    sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
 
 
 # Downloading Source Code for SVXLink
-	echo -e `date` "${YELLOW} downloading SVXLink source code … ${NORMAL}"
+	echo -e `date` "${YELLOW} downloading SVXLink source code ... ${NORMAL}"
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -100,32 +102,31 @@ VERSIONS=svxlink/src/versions
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
 # Compilation
-	cd
+	echo -e `date` "${YELLOW} Compiling ... ${NORMAL}"
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
 	sudo make doc
-	echo `date` Installing SVXlink
+	echo `date` "${GREEN}Installing SVXLink${NORMAL}"
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
 	sudo cp *.tcl ./local
 	sudo ldconfig
 # Installing United Kingdom Sound files
+	echo -e `date` "${GREEN} Installing Voice Files ${NORMAL}"
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
 	sudo tar -zxvf en_GB.tar_.gz
 	sudo rm en_GB.tar_.gz
- 	
-  
    	cd /etc/svxlink
-    	sudo chmod 777 -R *
+    sudo chmod 777 -R *
+# Backing up installed svxlink.conf and replacing it from the script.
 	echo `date` backing up configuration to : $CONF.bak
-	
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e `date` "${RED} Downloading prepared configuration files from G4NAB …${NORMAL}"
+	echo -e `date` "${RED} Downloading prepared configuration files from the script …${NORMAL}"
 	sudo mkdir /home/pi/scripts
 	sudo cp -f svxlink_raspberry/svxlink.conf /etc/svxlink/
 #	sudo cp -f svxlink_raspberry/gpio.conf /etc/svxlink/
@@ -133,7 +134,7 @@ VERSIONS=svxlink/src/versions
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 #
-	echo `date` Setting Callsign to $CALL
+	echo `date` "${GREEN} Setting Callsign to "$CALL"${NORMAL}"
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 #
@@ -151,22 +152,19 @@ VERSIONS=svxlink/src/versions
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	if [ $card=true ] ;
 	then
-	#sudo sed -i "/PTT_TYPE/iHID_DEVICE=\/dev\/hidraw0" $CONF
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
 	sudo sed -i "s/PTT_PORT=GPIO/PTT_PORT=\/dev\/hidraw0/g" $CONF
 	sudo sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
+	fi
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.conf	
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf	
- 	echo Changing ModuleMetar Link
+ 	echo "${RED}Changing ModuleMetar Link${NORMAL}"
   	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=
 %g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-
-  
-
-	fi
-	echo `date` "${RED} Authorise GPIO setup service and svxlink service${NORMAL}"
+	echo `date` "${RED} Authorise GPIO setup service (Unused) and svxlink service${NORMAL}"
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
