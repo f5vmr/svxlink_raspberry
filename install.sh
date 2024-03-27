@@ -128,6 +128,7 @@ cd
 	cd
 	echo -e `date` "${RED} Downloading prepared configuration files from the script …${NORMAL}"
 	sudo mkdir /home/pi/scripts
+ 	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/svxlink.conf /etc/svxlink/
 #	sudo cp -f svxlink_raspberry/gpio.conf /etc/svxlink/
 #	sudo cp -f svxlink_raspberry/node_info.json /etc/svxlink/node_info.json
