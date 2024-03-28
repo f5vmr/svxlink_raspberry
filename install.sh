@@ -1,5 +1,5 @@
 #!/bin/bash
-# Auto run audio_update.sh
+whiptail --title "SVXLink Build" --msgbox "The basic build requires that we remove the on-board Soundcard and the HDMI Soundcard. Hit OK to continue" 8 78
 export LANGUAGE=en_GB.UTF-8
 GREEN="\033[1;32m"
 NORMAL="\033[0;39m"
@@ -11,29 +11,20 @@ sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/conf
 sudo cp /home/pi/svxlink_raspberry/asound.conf /etc/modprobe.d/asound.conf
 echo snd-aloop > /etc/modules
 sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
+
 card=false
-while true; do
-        echo "Do you have a modified CM-108 USB Card? - Y/N "
-        read yn
-        case $yn in
-                [Yy]* )
-                echo "Ok, Let's add the updated rules"
+
+if whiptail --title "USB Soundcard" --yesno "Do you have a modified CM108 Soundcard or Similar." 8 78; then
+    echo "Ok, Let's add the updated rules"
                 sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
                 sudo udevadm control --reload-rules
                 sudo udevadm trigger
                 card=true
-                break
-                ;;
-                [Nn]* )
-                echo "ok, then I will make no other changes"
+else
+    echo "ok, then I will make no other changes"
                 card=false
-                break
-                ;;
-                * ) echo "Please answer Y or N."
-                ;;
-        esac
-        
-done
+fi
+
 
 
                 if [ "$card" = true ] ;
@@ -44,13 +35,14 @@ done
                 fi
                 
                 echo "Audio Updates including Dummy Sound Card for Darkice complete."
-
+				echo soundcard="$card"	
+exit
 #
-# Auto run install.sh
+# 
 #
 
-CONF=/etc/svxlink/svxlink.conf
-GPIO=/etc/svxlink/gpio.conf
+CONF="/etc/svxlink/svxlink.conf"
+GPIO="/etc/svxlink/gpio.conf"
 OP=/etc/svxlink
 cd
 # uprating repositories for nodejs and future expansion
