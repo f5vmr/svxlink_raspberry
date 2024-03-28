@@ -1,5 +1,5 @@
 {
-    "nodeLocation": "Ashington",
+    "nodeLocation": "Where",
     "hidden": false,
     "sysop": "MYCALL",
     "qth": [
@@ -13,7 +13,7 @@
             "rx": {
                 "K": {
                     "name": "Rx1",
-                    "freq": 145.3375,
+                    "freq": 145.2375,
                     "sqlType": "COR",
                     "ant": {
                         "comment": "Vertical",
