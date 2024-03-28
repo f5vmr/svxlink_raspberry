@@ -59,7 +59,7 @@ OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 14 78 3 \
     fi
 }
 function query_network {
-    OPTION=$(whiptail --title "$TITLE" --menu "Select Network Type" 14 78 3 \
+    NETWORK=$(whiptail --title "$TITLE" --menu "Select Network Type" 14 78 3 \
     "1" "Stand Alone" \
     "2" "Svxportal-UK" 3>&1 1>&2 2>&3)
     exitstatus=$?

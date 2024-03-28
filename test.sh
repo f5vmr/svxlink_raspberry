@@ -3,11 +3,13 @@
 source ./functions/init.sh
 welcome_message
 install_dependencies
-kill_sound_cards
+#kill_sound_cards
 get_CallVar
+echo $CALL
 node_type
-call_sign
+echo $OPTION
 query_network
+
 menu_end
 exit
 whiptail --title "SVXLink Build" --msgbox "The basic build requires that we remove the on-board Soundcard and the HDMI Soundcard. Hit OK to continue" 8 78
