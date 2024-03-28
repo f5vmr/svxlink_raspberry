@@ -53,11 +53,11 @@ whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary 
 
 
 # Function to prompt user for name input
-CALL=$(get_CallVar)
+get_CallVar()
 ########## REQUEST CALLSIGN ##########
 # Main loop
 
-CALL=${CALL^^}
+
 # Use the non-empty name
 echo "Node Callsign is now $CALL!"
 ######## GROUPS AND USERS ##########

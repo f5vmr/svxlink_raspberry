@@ -22,7 +22,7 @@ function kill_sound_cards {
 #echo snd-aloop > /etc/modules
 #sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 }
-function get_CallVar{
+function get_CallVar(){
 while true; do
     user_input=$(get_CallVar)
     
@@ -37,7 +37,7 @@ done
 CALL=${user_input^^}
 }
 # Use the non-empty name
-echo "Node Callsign is now $CALL!"
+
 function node_type {
 OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 14 78 3 \
     "1" "Simplex Single Frequency Node" \
