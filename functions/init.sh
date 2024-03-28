@@ -38,19 +38,8 @@ done
 #CALL=${user_input^^}
 }
 
-function get_user_input() {
-    global result
-    result=$(whiptail --inputbox "Enter a string:" 8 50 3>&1 1>&2 2>&3)
-    echo "$result"
-}
 
-main() {
-    local input
-    input=$(get_user_input)
-    whiptail --msgbox "You entered: $input" 8 50
-}
 
-main
 
 # Use the non-empty name
 
