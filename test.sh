@@ -57,7 +57,7 @@ CALL=$(get_CallVar)
 ########## REQUEST CALLSIGN ##########
 # Main loop
 
-CALL=${(CALL)^^}
+CALL=($CALL^^)
 # Use the non-empty name
 echo "Node Callsign is now $CALL!"
 ######## GROUPS AND USERS ##########
@@ -67,7 +67,7 @@ echo "Node Callsign is now $CALL!"
 ######## COMPILING ##########
 
 ######## CONFIGURING VOICES ##########
-source ./language.sh
+source ./functions/language.sh
 which_language
 exit
 #
