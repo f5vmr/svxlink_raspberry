@@ -15,13 +15,29 @@ RED="\033[1;31m"
 YELLOW="\033[1;33m"
 }
 function kill_sound_cards {
-echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
-sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
-sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/config.txt
-sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
-echo snd-aloop > /etc/modules
-sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
+#echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
+#sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
+#sudo sed -i "s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g" /boot/config.txt
+#sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
+#echo snd-aloop > /etc/modules
+#sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 }
+function get_CallVar{
+while true; do
+    user_input=$(get_CallVar)
+    
+    # Check if input is empty
+    if [ -z "$user_input" ]; then
+        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 40
+    else
+        # If input is not empty, break the loop
+        break
+    fi
+done
+CALL=${user_input^^}
+}
+# Use the non-empty name
+echo "Node Callsign is now $CALL!"
 function node_type {
 OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 14 78 3 \
     "1" "Simplex Single Frequency Node" \

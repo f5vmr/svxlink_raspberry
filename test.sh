@@ -1,5 +1,14 @@
 #!/bin/bash
 ########## INIT ##########
+source ./functions/init.sh
+welcome_message
+install_dependencies
+kill_sound_cards
+node_type
+call_sign
+query_network
+menu_end
+
 whiptail --title "SVXLink Build" --msgbox "The basic build requires that we remove the on-board Soundcard and the HDMI Soundcard. Hit OK to continue" 8 78
 export LANGUAGE=en_GB.UTF-8
 GREEN="\033[1;32m"
@@ -44,24 +53,11 @@ whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary 
 
 
 # Function to prompt user for name input
-get_CallVar() {
-    call=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)
-    echo "$call"
-}
+CALL=$(get_CallVar)
 ########## REQUEST CALLSIGN ##########
 # Main loop
-while true; do
-    user_input=$(get_CallVar)
-    
-    # Check if input is empty
-    if [ -z "$user_input" ]; then
-        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 40
-    else
-        # If input is not empty, break the loop
-        break
-    fi
-done
-CALL=${user_input^^}
+
+CALL=${(CALL)^^}
 # Use the non-empty name
 echo "Node Callsign is now $CALL!"
 ######## GROUPS AND USERS ##########

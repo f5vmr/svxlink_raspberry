@@ -1,6 +1,8 @@
 #!/bin/bash
 ########## INITIALISE ##########
-source "${BASH_SOURCE%/*}/functions/init.sh"
+source ./functions/init.sh
+########## Welcome Message ##########
+welcome_message
 
 card=false
 ########### USB SOUND CARD ##########
