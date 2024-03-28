@@ -1,4 +1,5 @@
 #!/bin/bash
+########## INITIALISE ##########
 whiptail --title "SVXLink Build" --msgbox "The basic build requires that we remove the on-board Soundcard and the HDMI Soundcard. Hit OK to continue" 8 78
 export LANGUAGE=en_GB.UTF-8
 GREEN="\033[1;32m"
@@ -13,7 +14,7 @@ echo snd-aloop > /etc/modules
 sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
 
 card=false
-
+########### USB SOUND CARD ##########
 if whiptail --title "USB Soundcard" --yesno "Do you have a modified CM108 Soundcard or Similar." 8 78; then
     echo "Ok, Let's add the updated rules"
                 sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
@@ -44,7 +45,7 @@ exit
 CONF="/etc/svxlink/svxlink.conf"
 GPIO="/etc/svxlink/gpio.conf"
 OP=/etc/svxlink
-
+########## BUILD ##########
 whiptail --title "Updating" --msgbox "Uprating repositories for nodejs and future expansion. Hit OK to continue" 8 78
 
 	echo -e `date` " ${YELLOW}  *** updates and upgrades *** ${NORMAL}"
@@ -60,34 +61,34 @@ whiptail --title "Updating" --msgbox "Uprating repositories for nodejs and futur
 	VERSIONS=svxlink/src/versions
 
 	echo -e `date` " ${YELLOW}  *** commence build *** ${NORMAL}"
-
+############ BUILD ESSENTIALS ##########
 whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary for Svxlink. Hit OK to continue" 8 78
 
 	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
-CallVar=$(whiptail --inputbox "What is the node Callsign?" 8 39 Blue --title "Node Callsign" 3>&1 1>&2 2>&3)
-                                                                        # A trick to swap stdout and stderr.
-# Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
-exitstatus=$?
-if [ $exitstatus = 0 ]; then
-    echo "User selected Ok and entered " $CallVar
-else
-    echo "User selected Cancel."
-fi
+get_CallVar() {
+    call=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)
+    echo "$call"
+}
 
-echo "(Exit status was $exitstatus)"         
-	echo -e `date` "${GREEN} Enter the node callsign: \n ${NORMAL}"
-	echo
-	read CallVar
-	if [ "$CallVar" == "" ]; then
-		echo "Sorry - Start this program again with a valid callsign"
-		exit 1
-	fi
-	CALL=${CallVar^^}
-	echo
+########## REQUEST CALLSIGN ##########
+while true; do
+    user_input=$(get_CallVar)
+    
+    # Check if input is empty
+    if [ -z "$user_input" ]; then
+        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 40
+    else
+        # If input is not empty, break the loop
+        break
+    fi
+done
+CALL=${user_input^^}
+# Use the non-empty name
+
 	echo `date` "${GREEN} Creating Node " $CALL " *** ${NORMAL}"
-# Creating Groups and Users
 
+########## GROUPS AND USERS ##########
 	echo -e `date` "${YELLOW} Creating Groups and Users ${NORMAL}"
 	sudo mkdir /etc/svxlink
     sudo groupadd svxlink
@@ -95,9 +96,9 @@ echo "(Exit status was $exitstatus)"
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
 
+########## DOWNLOADING SOURCE CODE ##########
 
-# Downloading Source Code for SVXLink
-	echo -e `date` "${YELLOW} downloading SVXLink source code ... ${NORMAL}"
+	echo -e `date` "${YELLOW} ########## Downloading SVXLink source code ########## ${NORMAL}"
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -105,32 +106,34 @@ echo "(Exit status was $exitstatus)"
 	
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo `date` New Version: $NEWVERSION
-# Compilation
-	echo -e `date` "${YELLOW} Compiling ... ${NORMAL}"
+
+########## COMPILING ##########
+	echo -e `date` "${YELLOW} ########## Compiling ########## ${NORMAL}"
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
 	sudo make doc
-	echo `date` "${GREEN}Installing SVXLink${NORMAL}"
+	echo `date` "${GREEN}########## Installing SVXLink ########## ${NORMAL}"
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
 	sudo cp *.tcl ./local
 	sudo ldconfig
-# Installing United Kingdom Sound files
-	echo -e `date` "${GREEN} Installing Voice Files ${NORMAL}"
+########### CONFIGURATION VOICES ##########
+	echo -e `date` "${GREEN} ########## Installing Voice Files ########## ${NORMAL}"
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
 	sudo tar -zxvf en_GB.tar_.gz
 	sudo rm en_GB.tar_.gz
    	cd /etc/svxlink
     sudo chmod 777 -R *
-# Backing up installed svxlink.conf and replacing it from the script.
+
+########### BACKUP CONFIGURATION ##########
 	echo `date` backing up configuration to : $CONF.bak
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e `date` "${RED} Downloading prepared configuration files from the script …${NORMAL}"
+	echo -e `date` "${RED} ########## Downloading prepared configuration files from the scripts ##########${NORMAL}"
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/svxlink.conf /etc/svxlink/
@@ -138,11 +141,11 @@ echo "(Exit status was $exitstatus)"
 #	sudo cp -f svxlink_raspberry/node_info.json /etc/svxlink/node_info.json
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
-#
+
 	echo `date` "${GREEN} Setting Callsign to "$CALL"${NORMAL}"
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
-#
+
 	echo `date` Setting Squelch Hangtime to 10
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
 #	
@@ -155,6 +158,8 @@ echo "(Exit status was $exitstatus)"
 #
 	echo `date` Changing Log file
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
+	########## INSTALLING DASHBOARD ##########
+	echo `date` "${YELLOW} ######## Installing Dashboard ######## ${NORMAL}"
 	if [ $card=true ] ;
 	then
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF

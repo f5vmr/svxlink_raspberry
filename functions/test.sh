@@ -1,4 +1,5 @@
 #!/bin/bash
+########## INIT ##########
 whiptail --title "SVXLink Build" --msgbox "The basic build requires that we remove the on-board Soundcard and the HDMI Soundcard. Hit OK to continue" 8 78
 export LANGUAGE=en_GB.UTF-8
 GREEN="\033[1;32m"
@@ -13,7 +14,7 @@ YELLOW="\033[1;33m"
 #sudo cp /home/pi/svxlink_raspberry/loopback.conf /etc/asound.conf
 
 card=false
-
+######## SOUNDCARD CHECK #########
 if whiptail --title "USB Soundcard" --yesno "Do you have a modified CM108 Soundcard or Similar." 8 78; then
     echo "Ok, Let's add the updated rules"
  #               sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
@@ -35,17 +36,19 @@ fi
                 fi
                 
                 echo "Audio Updates including Dummy Sound Card for Darkice complete."
-				echo soundcard="$card"	
+				echo soundcard="$card"
+######## BUILDING ##########
 whiptail --title "Updating" --infobox "Uprating repositories for nodejs and future expansion" 8 78 
+######## BUILD ESSENTIALS ##########
 whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary for Svxlink. Hit OK to continue" 8 78
-#!/bin/bash
+
 
 # Function to prompt user for name input
 get_CallVar() {
     call=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)
     echo "$call"
 }
-
+########## REQUEST CALLSIGN ##########
 # Main loop
 while true; do
     user_input=$(get_CallVar)
@@ -61,6 +64,12 @@ done
 CALL=${user_input^^}
 # Use the non-empty name
 echo "Node Callsign is now $CALL!"
+######## GROUPS AND USERS ##########
 
+######## DOWNLOAD SOURCE CODE ##########
+
+######## COMPILING ##########
+
+######## CONFIGURING VOICES ##########
 exit
 #
