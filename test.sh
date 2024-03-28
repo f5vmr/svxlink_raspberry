@@ -60,7 +60,7 @@ while true; do
 done
 CALL=${user_input^^}
 # Use the non-empty name
-echo "Hello, $CALL!"
+echo "Node Callsign is now $CALL!"
 
 exit
 #
