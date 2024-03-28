@@ -86,7 +86,8 @@ function query_network {
 function menu_end {
     END_MESSAGE="The build is complete. Please reboot the Pi to complete the installation"
     if (whiptail --title "$TITLE" --yes-button "REBOOT NOW" --no-button "CANCEL" --yesno "$END_MESSAGE" 8 78) then
-    echo "Rebooting Now!";sudo reboot;
+    echo "Rebooting Now!";
+    #sudo reboot;
     else
     echo "Exiting without a reboot";exit;
     fi

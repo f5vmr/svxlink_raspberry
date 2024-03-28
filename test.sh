@@ -1,6 +1,6 @@
 #!/bin/bash
 ########## INIT ##########
-source functions/init.sh
+source ./functions/init.sh
 welcome_message
 install_dependencies
 kill_sound_cards
