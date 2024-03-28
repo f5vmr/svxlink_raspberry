@@ -3,7 +3,7 @@ TITLE="SVXLink Build" $VERSION Setup
 
 function welcome_message {
     WELCOME="Welcome to the SVXLink Build Script.\n\nThis script will install a build of SVXLink with user pi and password raspberry"
-whiptail --title "$TITLE" --msgbox "$WELCOME\n\n Hit OK to continue" 8 78
+whiptail --center --title "$TITLE" --msgbox "$WELCOME\n\n Hit OK to continue" 8 78
 }
 ###### install ######
 
@@ -22,7 +22,7 @@ function kill_sound_cards {
 #echo snd-aloop > /etc/modules
 #sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 }
-function get_CallVar{
+function get_CallVar {
 CALL=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)    
 while true; do
     #user_input=$(get_CallVar)
