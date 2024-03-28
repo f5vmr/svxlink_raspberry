@@ -1,5 +1,5 @@
 #!/bin/bash
-TITLE="SVXLink Build" $VERSION Setup
+TITLE="SVXLink Build" VERSION="24.02"
 
 function welcome_message {
     WELCOME="Welcome to the SVXLink Build Script.\n\nThis script will install a build of SVXLink with user pi and password raspberry"
