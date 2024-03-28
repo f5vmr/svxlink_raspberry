@@ -22,7 +22,7 @@ function kill_sound_cards {
 #echo snd-aloop > /etc/modules
 #sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 }
-function get_CallVar(){
+function get_CallVar {
 while true; do
     user_input=$(get_CallVar)
     
