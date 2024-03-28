@@ -48,7 +48,7 @@ get_CallVar() {
 
 # Main loop
 while true; do
-    user_input=$(get_CallVar)
+    user_input=${(get_CallVar)^^}
     
     # Check if input is empty
     if [ -z "$user_input" ]; then
@@ -58,7 +58,7 @@ while true; do
         break
     fi
 done
-CALL=${user_input^^}
+CALL=$user_input
 # Use the non-empty name
 echo "Hello, $CALL!"
 
