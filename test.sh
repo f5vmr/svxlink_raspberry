@@ -53,6 +53,7 @@ whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary 
 
 
 # Function to prompt user for name input
+source ./functions/init.sh
 get_CallVar
 ########## REQUEST CALLSIGN ##########
 # Main loop
