@@ -3,7 +3,7 @@ TITLE="SVXLink Build" VERSION="24.02"
 
 function welcome_message {
     WELCOME="Welcome to the SVXLink Build Script.\n\nThis script will install a build of SVXLink with user pi and password raspberry"
-whiptail --center --title "$TITLE" --msgbox "$WELCOME\n\n Hit OK to continue" 8 78
+whiptail --title "$TITLE" --msgbox "$WELCOME\n\n Hit OK to continue" 8 78
 }
 ###### install ######
 
