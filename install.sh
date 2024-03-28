@@ -44,8 +44,9 @@ exit
 CONF="/etc/svxlink/svxlink.conf"
 GPIO="/etc/svxlink/gpio.conf"
 OP=/etc/svxlink
-cd
-# uprating repositories for nodejs and future expansion
+
+whiptail --title "Updating" --msgbox "Uprating repositories for nodejs and future expansion. Hit OK to continue" 8 78
+
 	echo -e `date` " ${YELLOW}  *** updates and upgrades *** ${NORMAL}"
 	sudo apt-get update
 	sudo apt-get install -y ca-certificates curl gnupg
@@ -60,10 +61,21 @@ cd
 
 	echo -e `date` " ${YELLOW}  *** commence build *** ${NORMAL}"
 
-# Installing other packages required for svxlink compilation
+whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary for Svxlink. Hit OK to continue" 8 78
+
 	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
-	echo         
+CallVar=$(whiptail --inputbox "What is the node Callsign?" 8 39 Blue --title "Node Callsign" 3>&1 1>&2 2>&3)
+                                                                        # A trick to swap stdout and stderr.
+# Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+    echo "User selected Ok and entered " $CallVar
+else
+    echo "User selected Cancel."
+fi
+
+echo "(Exit status was $exitstatus)"         
 	echo -e `date` "${GREEN} Enter the node callsign: \n ${NORMAL}"
 	echo
 	read CallVar

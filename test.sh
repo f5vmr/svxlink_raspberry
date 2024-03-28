@@ -36,5 +36,31 @@ fi
                 
                 echo "Audio Updates including Dummy Sound Card for Darkice complete."
 				echo soundcard="$card"	
+whiptail --title "Updating" --infobox "Uprating repositories for nodejs and future expansion" 8 78 
+whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary for Svxlink. Hit OK to continue" 8 78
+#!/bin/bash
+
+# Function to prompt user for name input
+get_CallVar() {
+    call=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)
+    echo "$call"
+}
+
+# Main loop
+while true; do
+    user_input=$(get_CallVar)
+    
+    # Check if input is empty
+    if [ -z "$user_input" ]; then
+        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 40
+    else
+        # If input is not empty, break the loop
+        break
+    fi
+done
+
+# Use the non-empty name
+echo "Hello, $user_input!"
+
 exit
 #
