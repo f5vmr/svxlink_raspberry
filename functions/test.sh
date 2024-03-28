@@ -71,6 +71,6 @@ echo "Node Callsign is now $CALL!"
 ######## COMPILING ##########
 
 ######## CONFIGURING VOICES ##########
-source language.sh"
+source language.sh
 exit
 #
