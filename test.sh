@@ -58,9 +58,9 @@ while true; do
         break
     fi
 done
-
+CALL=${user_input^^}
 # Use the non-empty name
-echo "Hello, $user_input!"
+echo "Hello, $CALL!"
 
 exit
 #
