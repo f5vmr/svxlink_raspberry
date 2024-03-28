@@ -2,7 +2,7 @@
 TITLE="SVXLink Build" $VERSION Setup
 
 function welcome_message {
-    WELCOME="Welcome to the SVXLink Build Script./n/nThis script will install a build of SVXLink with user pi and password raspberry"
+    WELCOME="Welcome to the SVXLink Build Script.\n\nThis script will install a build of SVXLink with user pi and password raspberry"
 whiptail --title "$TITLE" --msgbox "$WELCOME\n\n Hit OK to continue" 8 78
 }
 ###### install ######
@@ -22,20 +22,36 @@ function kill_sound_cards {
 #echo snd-aloop > /etc/modules
 #sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 }
-function get_CallVar {
+function get_CallVar{
+CALL=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)    
 while true; do
-    user_input=$(get_CallVar)
+    #user_input=$(get_CallVar)
     
     # Check if input is empty
-    if [ -z "$user_input" ]; then
+    if [ -z "$CALL" ]; then
         whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 40
     else
         # If input is not empty, break the loop
         break
     fi
 done
-CALL=${user_input^^}
+#CALL=${user_input^^}
 }
+
+function get_user_input() {
+    global result
+    result=$(whiptail --inputbox "Enter a string:" 8 50 3>&1 1>&2 2>&3)
+    echo "$result"
+}
+
+main() {
+    local input
+    input=$(get_user_input)
+    whiptail --msgbox "You entered: $input" 8 50
+}
+
+main
+
 # Use the non-empty name
 
 function node_type {

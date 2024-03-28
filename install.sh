@@ -57,12 +57,13 @@ whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary 
 
 	echo -e `date` " ${YELLOW} Installing required software packages${NORMAL}"
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
+########## REQUEST CALLSIGN ##########
 get_CallVar() {
     call=$(whiptail --inputbox "Enter the node callsign:" 8 40 3>&1 1>&2 2>&3)
     echo "$call"
 }
 
-########## REQUEST CALLSIGN ##########
+
 while true; do
     user_input=$(get_CallVar)
     

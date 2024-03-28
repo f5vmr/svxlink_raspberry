@@ -57,7 +57,7 @@ source ./functions/init.sh
 get_CallVar
 ########## REQUEST CALLSIGN ##########
 # Main loop
-
+CALL=${CALL^^}
 
 # Use the non-empty name
 echo "Node Callsign is now $CALL!"
