@@ -1,21 +1,21 @@
 #!/bin/bash
 ########## INITIALISE ##########
-source ./home/pi/svxlink_raspberry/functions/init.sh
+source "${BASH_SOURCE%/*}/functions/init.sh"
 ########## Welcome Message ##########
 welcome_message
 node_type
 ########### USB SOUND CARD ##########
-source ./home/pi/svxlink_raspberry/functions/soundcard.sh
+source "${BASH_SOURCE%/*}/functions/soundcard.sh"
 soundcard
 
 #
 # 
 #
 ########## UPDATE ##########
-source ./home/pi/svxlink_raspberry/functions/update.sh
+source "${BASH_SOURCE%/*}/functions/update.sh"
 update
 ########## REQUEST CALLSIGN ##########
-source ./home/pi/svxlink_raspberry/functions/callsign.sh
+source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
 exit
 ########## GROUPS AND USERS ##########
