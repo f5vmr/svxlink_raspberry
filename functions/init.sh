@@ -35,7 +35,9 @@ while true; do
         break
     fi
 done
-CALL=${user_input^^} >> /var/log/install.log
+CALL=${user_input^^} 
+echo date "*** Node Callsign $CALL **** ">> /var/log/install.log
+
 }
 
 
