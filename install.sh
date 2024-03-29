@@ -1,5 +1,6 @@
 #!/bin/bash
 # Auto run audio_update.sh
+
 export LANGUAGE=en_GB.UTF-8
 GREEN="\033[1;32m"
 NORMAL="\033[0;39m"
@@ -86,7 +87,7 @@ cd
 
 	echo -e `date` "${YELLOW} Creating Groups and Users ${NORMAL}"
 	sudo mkdir /etc/svxlink
-    sudo groupadd svxlink
+    	sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
 	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
 	sudo usermod -aG gpio svxlink
@@ -94,7 +95,6 @@ cd
 
 # Downloading Source Code for SVXLink
 	echo -e `date` "${YELLOW} downloading SVXLink source code ... ${NORMAL}"
-	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
 
@@ -125,7 +125,8 @@ cd
 	echo `date` backing up configuration to : $CONF.bak
 	sudo cp -p $CONF $CONF.bak
 #
-	cd
+	cd ..
+ 	cd ..
 	echo -e `date` "${RED} Downloading prepared configuration files from the script …${NORMAL}"
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
