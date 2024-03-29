@@ -1,21 +1,21 @@
 #!/bin/bash
 ########## INITIALISE ##########
-source ./functions/init.sh
+source .functions/init.sh
 ########## Welcome Message ##########
 welcome_message
 node_type
 ########### USB SOUND CARD ##########
-source ./functions/soundcard.sh
+source .functions/soundcard.sh
 soundcard
 
 #
 # 
 #
 ########## UPDATE ##########
-source ./functions/update.sh
+source .functions/update.sh
 update
 ########## REQUEST CALLSIGN ##########
-source ./functions/callsign.sh
+source .functions/callsign.sh
 callsign
 exit
 ########## GROUPS AND USERS ##########
