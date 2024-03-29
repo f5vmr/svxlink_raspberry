@@ -35,7 +35,7 @@ while true; do
         break
     fi
 done
-#CALL=${user_input^^}
+CALL=${user_input^^} >> /var/log/install.log
 }
 
 

@@ -23,5 +23,5 @@ fi
                 fi
                 
                 echo "Audio Updates including Dummy Sound Card for Darkice complete."
-				echo soundcard="$card"	>> /home/pi/var/log/install.log
+				echo soundcard="$card"	>> /var/log/install.log
 }
