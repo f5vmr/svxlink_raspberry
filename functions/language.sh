@@ -8,9 +8,11 @@ function which_language() {
 
     if [ "$OPTION" -eq 1 ]; then
             sudo sed -i 's/^# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen
+            sudo sed -i 's/^ fr_FR.UTF-8 UTF-8/# fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=en_GB.UTF-8
     elif [ "$OPTION" -eq 2 ]; then
+            sudo sed -i 's/^ en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/' /etc/locale.gen
             sudo sed -i 's/^# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=fr_FR.UTF-8
