@@ -1,0 +1,12 @@
+Running from install_copy.sh
+Language
+Initialise
+check_os
+welcome_message
+node_type
+sound_card
+##########
+update upgrade
+##########
+callsign
+groups
