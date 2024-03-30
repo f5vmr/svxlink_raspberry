@@ -15,9 +15,8 @@ function node_option {
         echo "You chose Repeater Node without SvxReflector"
     elif [ "$NODE_OPTION" -eq 4 ];
         echo "You chose Repeater Node with SvxReflector"
-        else
-            echo "You did not choose anything"
-            
+        else echo "You did not choose anything"
+
 fi
 node = true
 }
