@@ -1,6 +1,7 @@
 #!/bin/bash
 ########## INITIALISE ##########
-source ./functions/init.sh
+source ./functions/check_os.sh
+
 ########## Welcome Message ##########
 welcome_message
 
