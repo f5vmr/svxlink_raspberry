@@ -17,7 +17,7 @@ nodeoption
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/soundcard.sh"
 soundcard
-
+exit
 #
 # 
 #
