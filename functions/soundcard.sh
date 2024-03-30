@@ -52,7 +52,7 @@ echo "Variable assigned: $sound_card_variable"
     fi
     echo "HID is set to $HID"
     echo "GPIOD is set to $GPIOD"
-
+#    if [ "$HID" = true ] ; then 
 
     if card=true then
     echo "Ok, Let's add the updated rules"
@@ -60,10 +60,9 @@ echo "Variable assigned: $sound_card_variable"
      #           sudo udevadm control --reload-rules
      #           sudo udevadm trigger
                 
-else
-    echo "ok, then I will make no other changes"
-               
-fi               
+    else
+    echo "ok, then I will make no other changes"           
+    fi               
     echo "Audio Updates including Dummy Sound Card for Darkice complete."
 				
 }
