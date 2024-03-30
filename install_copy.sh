@@ -1,8 +1,11 @@
 #!/bin/bash
 ########## INITIALISE ##########
-source "${BASH_SOURCE%/*}/functions/init.sh"
+source "${BASH_SOURCE%/*}/functions/check_os.sh"
+check_os
 ########## Welcome Message ##########
-welcome_message
+source "${BASH_SOURCE%/*}/functions/welcome.sh"
+welcome
+exit
 node_type
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/soundcard.sh"
