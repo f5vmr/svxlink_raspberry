@@ -1,10 +1,10 @@
 #!/bin/bash
 # Assign the codename from the output of lsb_release -c to a variable
 function check_os {
-codename=$(lsb_release -c | grep -oP '(?<=Codename:\s)\w+')
+codename = $(lsb_release -c | grep -oP '(?<=Codename:\s)\w+')
 
 # Print the value of the variable
-if[$codename !="bookworm"] then
+if[ $codename != "bookworm" ] then
 whiptail --title "SVXLink" --msgbox "This script is only for the Bookworm Linux distribution.\n\n Shutdown and Change to OS Bookworm, with user pi." 10 60
 fi
 # Assign the current user of the terminal to a variable
