@@ -1,5 +1,5 @@
 #!/bin/bash
-node =false
+node = false
 function node_option {
     NODE_OPTION=$(whiptail --title "Svxlink" --menu "Please enter the type of node you want to use" 14 78 5 \
             "1" " Simplex Node without SvxReflector" \
@@ -16,5 +16,6 @@ function node_option {
     if [ "$NODE_OPTION" -eq 4 ]; then
 #        echo "You chose Repeater Node with SvxReflector"
 fi
+node = true
 }
             

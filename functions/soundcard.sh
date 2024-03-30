@@ -7,7 +7,7 @@ card=false
 lsusb_output=$(lsusb)
 
 # Check if the USB sound card is present in the lsusb output
-if echo "$lsusb_output" | grep -q "your_sound_card_identifier"; then
+if echo "$lsusb_output" | grep -q "C-Media"; then
     echo "USB sound card is present."
     USB_sound_card_present=true
 else
