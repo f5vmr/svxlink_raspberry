@@ -1,5 +1,5 @@
 #!/bin/bash
-function usbsoundcard {
+function soundcard {
 card=false
 #!/bin/bash
 
