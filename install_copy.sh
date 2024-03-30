@@ -1,5 +1,9 @@
 #!/bin/bash
 ########## INITIALISE ##########
+source "${BASH_SOURCE%/*}/functions/language.sh"
+which_language
+exit
+source "${BASH_SOURCE%/*}/functions/initialise.sh"
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
 ########## Welcome Message ##########
