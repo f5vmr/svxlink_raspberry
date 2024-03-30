@@ -15,6 +15,6 @@ function which_language() {
             ;;
     esac
 
-    echo "Default Language: $OPTION" >> /var/log/install.log
+    echo "Default Language: $OPTION" 
 }
 
