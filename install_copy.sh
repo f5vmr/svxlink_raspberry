@@ -5,7 +5,9 @@ check_os
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
-exit
+########## Language Selection ##########
+source "${BASH_SOURCE%/*}/functions/language.sh"
+language
 node_type
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/soundcard.sh"
