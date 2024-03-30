@@ -15,8 +15,8 @@ welcome
 source "${BASH_SOURCE%/*}/functions/node_type.sh"
 nodeoption
 ########### USB SOUND CARD ##########
-source "${BASH_SOURCE%/*}/functions/soundcard.sh"
-usbsoundcard
+source "${BASH_SOURCE%/*}/functions/sound_card.sh"
+soundcard
 exit
 #
 # 
