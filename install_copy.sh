@@ -27,21 +27,16 @@ update
 ########## REQUEST CALLSIGN ##########
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
-exit
 ########## GROUPS AND USERS ##########
 	echo -e `date` "${YELLOW} Creating Groups and Users ${NORMAL}"
-	sudo mkdir /etc/svxlink
-    sudo groupadd svxlink
-	sudo useradd -g svxlink -d /etc/svxlink svxlink
-	sudo usermod -aG audio,nogroup,svxlink,plugdev svxlink
-	sudo usermod -aG gpio svxlink
+source "${BASH_SOURCE%/*}/functions/groups.sh"
+make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
-
+source "${BASH_SOURCE%/*}/functions/source.sh"
 	echo -e `date` "${YELLOW} ########## Downloading SVXLink source code ########## ${NORMAL}"
 	cd
-	sudo git clone https://github.com/sm0svx/svxlink.git
-	sudo mkdir svxlink/src/build
+svxlink_source	
 
 	
 	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
