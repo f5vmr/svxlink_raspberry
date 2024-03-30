@@ -35,6 +35,7 @@ echo "Variable assigned: $sound_card_variable"
         "3" "Unmodified (use the GPIOD to control Squelch and PTT )" 3>&1 1>&2 2>&3)      
     if [ "$SOUND_OPTION" = "1" ] ; then
     HID=true
+    GPIOD=false
     card=true
     #No need to play with the GPIOD
     elif [ "$SOUND_OPTION" = "2" ] ; then
