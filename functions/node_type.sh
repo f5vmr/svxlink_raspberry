@@ -9,12 +9,15 @@ function node_option {
 
     if [ "$NODE_OPTION" -eq 1 ]; then
         echo "You chose Simplex Node without SvxReflector"
-    else [ "$NODE_OPTION" -eq 2 ]; then
+    elif [ "$NODE_OPTION" -eq 2 ]; then
         echo "You chose Simplex Node with SvxReflector"
-    else [ "$NODE_OPTION" -eq 3 ]; then
+    elif [ "$NODE_OPTION" -eq 3 ]; then
         echo "You chose Repeater Node without SvxReflector"
-    else [ "$NODE_OPTION" -eq 4 ];
+    elif [ "$NODE_OPTION" -eq 4 ];
         echo "You chose Repeater Node with SvxReflector"
+        else
+            echo "You did not choose anything"
+            
 fi
 node = true
 }
