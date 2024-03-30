@@ -18,35 +18,52 @@ fi
 # Assign the presence of the USB sound card to a variable
 if [ "$USB_sound_card_present" = true ]; then
     # If USB sound card is present, assign some value to a variable
-    sound_card_variable="your_value_for_sound_card_present"
+    sound_card_variable="C-Media USB Sound Device"
+    card=true
 else
     # If USB sound card is not present, assign another value to the variable
-    sound_card_variable="your_value_for_sound_card_absent"
+    sound_card_variable="Not present"
+    card=false
 fi
 
 # Print the assigned variable value
 echo "Variable assigned: $sound_card_variable"
-exit
-if whiptail --title "USB Soundcard" --yesno "Do you have a modified CM108 Soundcard or Similar." 8 78; then
+
+    SOUND_OPTION=$(whiptail --title "USB Soundcard" --menu "Select from the options below." 8 78;
+        "1" "Fully Modified for Transmit and Receive" \
+        "2" "Fully Modified for Transmit Only" \
+        "3" "Unmodified (use the GPIOD to control Squelch and PTT )" 3>&1 1>&2 2>&3)      
+    if [ "$SOUND_OPTION" = "1" ] ; then
+    HID=true
+    card=true
+    #No need to play with the GPIOD
+    elif [ "$SOUND_OPTION" = "2" ] ; then
+    HID=false
+    GPIOD=true
+    card=true
+    #still need to set the HID for Transmit
+    elif [ "$SOUND_OPTION" = "3" ] ; then
+    HID=false
+    GPIOD=true
+    card=false
+    #still need to set GPIOD for Transmit and Receive
+    else
+    echo "Invalid option"
+    fi
+    echo "HID is set to $HID"
+    echo "GPIOD is set to $GPIOD"
+#    if [ "$HID" = true ] ; then 
+
+    if card=true then
     echo "Ok, Let's add the updated rules"
                 sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
                 sudo udevadm control --reload-rules
                 sudo udevadm trigger
-                card=true
+                
 else
     echo "ok, then I will make no other changes"
-                card=false
-fi
-
-
-
-                if [ "$card" = true ] ;
-                then 
-                echo "Modified CM-108 soundcard present"
-                else
-                echo "Normal USB soundcard present"
-                fi
-                
-                echo "Audio Updates including Dummy Sound Card for Darkice complete."
-				echo soundcard="*** $card ***"	>> /var/log/install.log
+               
+fi               
+    echo "Audio Updates including Dummy Sound Card for Darkice complete."
+				
 }
