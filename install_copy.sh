@@ -13,7 +13,7 @@ source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
 ########## NODE Selection ##########
 source "${BASH_SOURCE%/*}/functions/node_type.sh"
-node_type
+node_option
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/soundcard.sh"
 soundcard
