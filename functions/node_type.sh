@@ -18,6 +18,6 @@ function nodeoption {
     else 
         echo "You did not choose anything"
 fi
-node = true
+node=true
 }
             
