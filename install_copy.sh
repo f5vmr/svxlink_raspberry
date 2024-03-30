@@ -1,18 +1,18 @@
 #!/bin/bash
-########## INITIALISE ##########
+########## LANGUAGE ##########
 source "${BASH_SOURCE%/*}/functions/language.sh"
-
-which_language
-
+#which_language
+########## INITIALISE ##########	 	
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
+initialise
+########## CHECK OS ##########
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
-########## Language Selection ##########
-source "${BASH_SOURCE%/*}/functions/language.sh"
-language
+########## NODE Selection ##########
+source "${BASH_SOURCE%/*}/functions/node_type.sh"
 node_type
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/soundcard.sh"
