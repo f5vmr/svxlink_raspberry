@@ -1,6 +1,6 @@
 #!/bin/bash
 node=false
-function node_option {
+function nodeoption {
     NODE_OPTION=$(whiptail --title "Svxlink" --menu "Please enter the type of node you want to use" 14 78 5 \
             "1" " Simplex Node without SvxReflector" \
             "2" " Simplex Node with SvxReflector" \
