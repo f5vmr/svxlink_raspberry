@@ -1,17 +1,17 @@
 #!/bin/bash
 ######## WHICH LANGUAGE ########
-## options en_GB or fr_FR ##
+## lang_options en_GB or fr_FR ##
 function which_language() {
-    OPTION=$(whiptail --title "$TITLE" --menu "Select Default Language" 14 78 3 \
+    LANG_OPTION=$(whiptail --title "$TITLE" --menu "Select Default Language" 14 78 3 \
         "1" "English - en_GB" \
         "2" "French - fr_FR" 3>&1 1>&2 2>&3)
 
-    if [ "$OPTION" -eq 1 ]; then
+    if [ "$LANG_OPTION" -eq 1 ]; then
             sudo sed -i 's/^# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen
             sudo sed -i 's/^ fr_FR.UTF-8 UTF-8/# fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=en_GB.UTF-8
-    elif [ "$OPTION" -eq 2 ]; then
+    elif [ "$LANG_OPTION" -eq 2 ]; then
             sudo sed -i 's/^ en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/' /etc/locale.gen
             sudo sed -i 's/^# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
