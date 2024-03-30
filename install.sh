@@ -1,8 +1,9 @@
 #!/bin/bash
 ########## INITIALISE ##########
 source ./functions/check_os.sh
-
+check_os
 ########## Welcome Message ##########
+source 
 welcome_message
 
 card=false
