@@ -27,7 +27,6 @@ $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
         value TEXT
     );"
 done)
-
 -- Insert data into tables
 $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
     category="${CATEGORIES[$i]}"
@@ -43,4 +42,5 @@ $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
     fi
     echo "COMMIT;"
 done)
+
 EOF
