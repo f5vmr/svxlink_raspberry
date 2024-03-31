@@ -26,12 +26,8 @@ fi
             command TEXT,
             value TEXT
         );"
-    done
 
-    # Insert data into tables
-    for ((i=0; i<${#CATEGORIES[@]}; i++)); do
-        category="${CATEGORIES[$i]}"
-        file="${FILES[$i]}"
+        # Insert data into table
         echo "-- Insert data into $category table"
         echo "BEGIN;"
         if [ -f "$file" ]; then
