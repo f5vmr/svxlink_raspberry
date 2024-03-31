@@ -7,7 +7,7 @@ DB_FILE="example.db"
 CATEGORIES=("Header","GLOBAL" "RepeaterLogic" "SimplexLogic" "ReflectorLogic" "LinkToReflector" "Macros" "Rx1" "Tx1" "Voter" "MultiTx" "NetRx" "NetTx" "QsoRecorder" "TxStream" "WbRx1" "Location")
 
 # Read the filenames for each category's content from category_list.txt
-FILES=($(<category_list.txt))
+FILES=($(<../config/category_list.txt))
 
 # Check if the number of categories matches the number of filenames
 if [ ${#CATEGORIES[@]} -ne ${#FILES[@]} ]; then
