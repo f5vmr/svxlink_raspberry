@@ -15,32 +15,32 @@ if [ ${#CATEGORIES[@]} -ne ${#FILES[@]} ]; then
     exit 1
 fi
 
-# Create the SQLite database file
-sudo sqlite3 "$DB_FILE" <<EOF
--- Create tables for categories
-$(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
-    category="${CATEGORIES[$i]}"
-    file="${FILES[$i]}"
-    echo "CREATE TABLE IF NOT EXISTS $category (
-        id INTEGER PRIMARY KEY,
-        command TEXT,
-        value TEXT
-    );"
-done)
+# Create the SQLite database file with elevated privileges using sudo
+{
+    # Create tables for categories
+    for ((i=0; i<${#CATEGORIES[@]}; i++)); do
+        category="${CATEGORIES[$i]}"
+        file="${FILES[$i]}"
+        echo "CREATE TABLE IF NOT EXISTS $category (
+            id INTEGER PRIMARY KEY,
+            command TEXT,
+            value TEXT
+        );"
+    done
 
--- Insert data into tables
-$(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
-    category="${CATEGORIES[$i]}"
-    file="${FILES[$i]}"
-    echo "-- Insert data into $category table"
-    echo "BEGIN;"
-    if [ -f "$file" ]; then
-        while IFS= read -r line; do
-            command=$(echo "$line" | cut -d '=' -f 1)
-            value=$(echo "$line" | cut -d '=' -f 2)
-            echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
-        done < "$file"
-    fi
-    echo "COMMIT;"
-done)
-EOF
+    # Insert data into tables
+    for ((i=0; i<${#CATEGORIES[@]}; i++)); do
+        category="${CATEGORIES[$i]}"
+        file="${FILES[$i]}"
+        echo "-- Insert data into $category table"
+        echo "BEGIN;"
+        if [ -f "$file" ]; then
+            while IFS= read -r line; do
+                command=$(echo "$line" | cut -d '=' -f 1)
+                value=$(echo "$line" | cut -d '=' -f 2)
+                echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
+            done < "$file"
+        fi
+        echo "COMMIT;"
+    done
+} | sudo sqlite3 "$DB_FILE"
