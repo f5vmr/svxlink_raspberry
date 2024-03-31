@@ -1,0 +1,3 @@
+[MultiTx]
+TYPE=Multi
+TRANSMITTERS=Tx1,Tx2,Tx3
