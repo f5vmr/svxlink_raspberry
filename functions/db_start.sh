@@ -16,7 +16,7 @@ if [ ${#CATEGORIES[@]} -ne ${#FILES[@]} ]; then
 fi
 
 # Create the SQLite database file
-sudo sqlite3 $DB_FILE <<EOF
+sudo sqlite3 "$DB_FILE" <<EOF
 -- Create tables for categories
 $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
     category="${CATEGORIES[$i]}"
@@ -38,7 +38,7 @@ $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
         while IFS= read -r line; do
             command=$(echo "$line" | cut -d '=' -f 1)
             value=$(echo "$line" | cut -d '=' -f 2)
-            echo "INSERT INTO $category (command, value) VALUES ($command, $value);"
+            echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
         done < "$file"
     fi
     echo "COMMIT;"
