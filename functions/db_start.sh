@@ -17,24 +17,29 @@ fi
 
 # Create the SQLite database file with elevated privileges using sudo
 {
-    # Create tables for categories
+    # Create tables for categories and insert data into tables
     for ((i=0; i<${#CATEGORIES[@]}; i++)); do
         category="${CATEGORIES[$i]}"
         file="${FILES[$i]}"
+        
+        # Create table for current category
         echo "CREATE TABLE IF NOT EXISTS $category (
             id INTEGER PRIMARY KEY,
             command TEXT,
             value TEXT
         );"
 
-        # Insert data into table
+        # Insert data into table for current category
         echo "-- Insert data into $category table"
         echo "BEGIN;"
         if [ -f "$file" ]; then
             while IFS= read -r line; do
-                command=$(echo "$line" | cut -d '=' -f 1)
-                value=$(echo "$line" | cut -d '=' -f 2)
-                echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
+                # Check if line is not commented out
+                if [[ $line != \#* ]]; then
+                    command=$(echo "$line" | cut -d '=' -f 1)
+                    value=$(echo "$line" | cut -d '=' -f 2)
+                    echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
+                fi
             done < "$file"
         fi
         echo "COMMIT;"
