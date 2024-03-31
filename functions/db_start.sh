@@ -4,10 +4,10 @@
 DB_FILE="example.db"
 
 # Define the list of categories
-CATEGORIES=("Header" "GLOBAL" "RepeaterLogic" "SimplexLogic" "ReflectorLogic" "LinkToReflector" "Macros" "Rx1" "Tx1" "Voter" "MultiTx" "NetRx" "NetTx" "QsoRecorder" "TxStream" "WbRx1" "Location")
+CATEGORIES=("GLOBAL" "RepeaterLogic" "SimplexLogic" "ReflectorLogic" "LinkToReflector" "Macros" "Rx1" "Tx1" "Voter" "MultiTx" "NetRx" "NetTx" "QsoRecorder" "TxStream" "WbRx1" "Location")
 
 # Read the filenames for each category's content from category_list.txt
-FILES=($(<../configs/category_list.txt))
+FILES=($(<category_list.txt))
 
 # Check if the number of categories matches the number of filenames
 if [ ${#CATEGORIES[@]} -ne ${#FILES[@]} ]; then
@@ -16,7 +16,7 @@ if [ ${#CATEGORIES[@]} -ne ${#FILES[@]} ]; then
 fi
 
 # Create the SQLite database file
-sudo sqlite3 $DB_FILE <<EOF
+sqlite3 $DB_FILE <<EOF
 -- Create tables for categories
 $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
     category="${CATEGORIES[$i]}"
@@ -38,11 +38,9 @@ $(for ((i=0; i<${#CATEGORIES[@]}; i++)); do
         while IFS= read -r line; do
             command=$(echo "$line" | cut -d '=' -f 1)
             value=$(echo "$line" | cut -d '=' -f 2)
-            echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
+            echo "INSERT INTO $category (command, value) VALUES ($command, $value);"
         done < "$file"
     fi
     echo "COMMIT;"
 done)
 EOF
-
-
