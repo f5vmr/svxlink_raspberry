@@ -4,7 +4,7 @@
 DB_FILE="example.db"
 
 # Define the list of categories
-CATEGORIES=("Header","GLOBAL" "RepeaterLogic" "SimplexLogic" "ReflectorLogic" "LinkToReflector" "Macros" "Rx1" "Tx1" "Voter" "MultiTx" "NetRx" "NetTx" "QsoRecorder" "TxStream" "WbRx1" "Location")
+CATEGORIES=("Header" "GLOBAL" "RepeaterLogic" "SimplexLogic" "ReflectorLogic" "LinkToReflector" "Macros" "Rx1" "Tx1" "Voter" "MultiTx" "NetRx" "NetTx" "QsoRecorder" "TxStream" "WbRx1" "Location")
 
 # Read the filenames for each category's content from category_list.txt
 FILES=($(<../configs/category_list.txt))
