@@ -34,14 +34,13 @@ fi
         echo "BEGIN;"
         if [ -f "$file" ]; then
             while IFS= read -r line; do
-                # Check if line is not commented out
-                if [[ $line != \#* ]]; then
-                    command=$(echo "$line" | cut -d '=' -f 1)
-                    value=$(echo "$line" | cut -d '=' -f 2)
-                    echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
-                fi
+                # Process all lines, including commented ones
+                command=$(echo "$line" | cut -d '=' -f 1)
+                value=$(echo "$line" | cut -d '=' -f 2)
+                echo "INSERT INTO $category (command, value) VALUES ('$command', '$value');"
             done < "$file"
         fi
         echo "COMMIT;"
     done
 } | sudo sqlite3 "$DB_FILE"
+
