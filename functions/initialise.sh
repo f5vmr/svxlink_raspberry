@@ -7,4 +7,6 @@ WWW_PATH=/var/www/
 GUI_IDENTIFIER="SVXlink"
 SVXLINK_VER="24.02"
 SOUNDS_DIR=/usr/share/svxlink/sounds/
+echo "Commencing initialisation" > /var/log/install.log
+
 }

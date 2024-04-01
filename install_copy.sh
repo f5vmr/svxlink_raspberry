@@ -1,7 +1,7 @@
 #!/bin/bash
 ########## LANGUAGE ##########
 source "${BASH_SOURCE%/*}/functions/language.sh"
-#which_language
+which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
 
 ########## INITIALISE ##########	 	
@@ -19,8 +19,6 @@ nodeoption
 ########### USB SOUND CARD ##########
 source "${BASH_SOURCE%/*}/functions/sound_card.sh"
 soundcard
-exit
-
 ########## UPDATE ##########
 source "${BASH_SOURCE%/*}/functions/update.sh"
 update
@@ -30,15 +28,15 @@ callsign
 ########## GROUPS AND USERS ##########
 	echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
-make_groups
+#make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
-source "${BASH_SOURCE%/*}/functions/source.sh"
+
 	echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log
-	cd
-
-
-svxlink_source	
+source "${BASH_SOURCE%/*}/functions/source.sh"
+#svxlink_source	
+#ls -l svxlink/src
+exit
 
 
 #	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
