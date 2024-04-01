@@ -19,7 +19,7 @@ if [ "$username" != "pi" ]; then echo "Please the reform the SDcard as user pi" 
 else whiptail --title "User check" --msgbox "User is pi" 8 78;
 fi
 ########## LOGGING ##########
-echo "OS is $OS_name and User is $current_user" >> /var/log/install.log'
+sudo sh -c 'echo "OS is $OS_name and User is $current_user" >> /var/log/install.log'
 
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
@@ -51,7 +51,8 @@ exit
 
 
 #	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
-	sudo sh -c 'echo -e(date) New Version: $NEWVERSION >> /var/log/install.log'
+	sudo sh -c 'echo -e (date) New Version: $NEWVERSION  >> /var/log/install.log'
+
 ########## INSTALLATION ##########	
 ########## COMPILING ##########
 	sudo sh -c 'echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/install.log'
