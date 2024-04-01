@@ -1,7 +1,8 @@
 #!/bin/bash
 ########## LANGUAGE ##########
+clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
-which_language
+#which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
 
 ########## INITIALISE ##########	 	
