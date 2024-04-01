@@ -37,13 +37,13 @@ update
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
 ########## GROUPS AND USERS ##########
-	sudo echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log
+sudo sh -c 'echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log'
 source "${BASH_SOURCE%/*}/functions/groups.sh"
 #make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
 
-	sudo echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log
+sudo sh -c 'echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log'
 source "${BASH_SOURCE%/*}/functions/source.sh"
 #svxlink_source	
 #ls -l svxlink/src
