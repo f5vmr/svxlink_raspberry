@@ -3,7 +3,7 @@
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
-exit
+break
 ########## LANGUAGE ##########
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
