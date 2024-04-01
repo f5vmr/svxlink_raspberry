@@ -5,7 +5,6 @@ function get_current_user() {
 }
 function usercheck {
     # Get the current user
-    global current_user
     current_user=$(get_current_user) >> /var/log/install.log
 
     # Check if the current user is 'pi'
