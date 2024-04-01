@@ -13,6 +13,5 @@ function usercheck {
         echo "This script is only for the pi user. Please run with user pi."
         exit 1
     fi
-    
 }
 

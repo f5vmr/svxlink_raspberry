@@ -15,7 +15,7 @@ function check_os {
 
 
 # Source the file containing the functions
-source "./check_user.sh"
+./check_user.sh
 
 # Call the usercheck function
 usercheck
