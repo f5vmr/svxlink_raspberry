@@ -41,7 +41,7 @@ OP=/etc/svxlink
 ########## BUILD ##########
 whiptail --title "Updating" --msgbox "Uprating repositories for nodejs and future expansion. Hit OK to continue" 8 78
 
-	echo -e $(date) " ${YELLOW}  *** updates and upgrades *** ${NORMAL}" >> /var/log/install.log
+	sudo echo -e $(date) " ${YELLOW}  *** updates and upgrades *** ${NORMAL}" >> /var/log/install.log
 	sudo apt-get update
 	sudo apt-get install -y ca-certificates curl gnupg
 	sudo mkdir -p /etc/apt/keyrings
@@ -53,11 +53,11 @@ whiptail --title "Updating" --msgbox "Uprating repositories for nodejs and futur
 	sudo apt upgrade -y
 	VERSIONS=svxlink/src/versions
 
-	echo -e $(date) " ${YELLOW}  *** commence build *** ${NORMAL}" >> /var/log/install.log
+	sudo echo -e $(date) " ${YELLOW}  *** commence build *** ${NORMAL}" >> /var/log/install.log
 ############ BUILD ESSENTIALS ##########
 whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary for Svxlink. Hit OK to continue" 8 78
 
-	echo -e $(date) " ${YELLOW} Installing required software packages${NORMAL}" >> /var/log/install.log
+	sudo echo -e $(date) " ${YELLOW} Installing required software packages${NORMAL}" >> /var/log/install.log
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 ########## REQUEST CALLSIGN ##########
 get_CallVar() {
@@ -83,7 +83,7 @@ CALL=${user_input^^}
 	echo $(date) ${GREEN} Creating Node " $CALL " *** ${NORMAL} >> /var/log/install.log
 
 ########## GROUPS AND USERS ##########
-	echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/install.log
 	sudo mkdir /etc/svxlink
     sudo groupadd svxlink
 	sudo useradd -g svxlink -d /etc/svxlink svxlink
@@ -92,7 +92,7 @@ CALL=${user_input^^}
 
 ########## DOWNLOADING SOURCE CODE ##########
 
-	echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/install.log
 	cd
 	sudo git clone https://github.com/sm0svx/svxlink.git
 	sudo mkdir svxlink/src/build
@@ -102,7 +102,7 @@ CALL=${user_input^^}
 	echo $(date) New Version: $NEWVERSION
 
 ########## COMPILING ##########
-	echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/install.log
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
@@ -114,7 +114,7 @@ CALL=${user_input^^}
 	sudo cp *.tcl ./local
 	sudo ldconfig
 ########### CONFIGURATION VOICES ##########
-	echo -e $(date) ${GREEN} "########## Installing Voice Files ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${GREEN} "########## Installing Voice Files ##########" ${NORMAL} >> /var/log/install.log
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
 	sudo tar -zxvf en_GB.tar_.gz
@@ -127,7 +127,7 @@ CALL=${user_input^^}
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e $(date) ${RED} "########## Downloading prepared configuration files from the scripts ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${RED} "########## Downloading prepared configuration files from the scripts ##########" ${NORMAL} >> /var/log/install.log
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
@@ -178,8 +178,8 @@ CALL=${user_input^^}
 	sudo systemctl start svxlink.service
 
 
-echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log
-echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log
+sudo echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log
+sudo echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log
 echo
 sleep 10
 

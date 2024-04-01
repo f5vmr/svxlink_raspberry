@@ -36,13 +36,13 @@ update
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
 ########## GROUPS AND USERS ##########
-	echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log
+	sudo echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
 #make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
 
-	echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log
+	sudo echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
 #svxlink_source	
 #ls -l svxlink/src
@@ -53,7 +53,7 @@ exit
 	echo $(date) New Version: $NEWVERSION
 ########## INSTALLATION ##########	
 ########## COMPILING ##########
-	echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/svxlink.log
+	sudo echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/svxlink.log
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
@@ -65,7 +65,7 @@ exit
 	sudo cp *.tcl ./local
 	sudo ldconfig
 ########### CONFIGURATION VOICES ##########
-	echo -e $(date) ${GREEN} "########## Installing Voice Files ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${GREEN} "########## Installing Voice Files ##########" ${NORMAL} >> /var/log/install.log
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
 	sudo tar -zxvf en_GB.tar_.gz
@@ -78,7 +78,7 @@ exit
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e $(date) ${RED} "########## Downloading prepared configuration files from the scripts ##########" ${NORMAL} >> /var/log/install.log
+	sudo echo -e $(date) ${RED} "########## Downloading prepared configuration files from the scripts ##########" ${NORMAL} >> /var/log/install.log
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
@@ -129,8 +129,8 @@ exit
 	sudo systemctl start svxlink.service
 
 
-echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log
-echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log
+sudo echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log
+sudo echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log
 echo
 sleep 10
 
