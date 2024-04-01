@@ -51,7 +51,7 @@ exit
 
 
 #	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
-	sudo sh -c 'echo -e (date) New Version: $NEWVERSION  >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) New Version: $NEWVERSION  >> /var/log/install.log'
 
 ########## INSTALLATION ##########	
 ########## COMPILING ##########
@@ -60,7 +60,7 @@ exit
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
 	sudo make doc
-	sudo sh -c 'echo -e (date) ${GREEN}"########## Installing SVXLink ##########" ${NORMAL} >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) ${GREEN}"########## Installing SVXLink ##########" ${NORMAL} >> /var/log/install.log'
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
@@ -76,7 +76,7 @@ exit
     sudo chmod 777 -R *
 
 ########### BACKUP CONFIGURATION ##########
-	sudo sh -c 'echo -e (date) backing up configuration to : $CONF.bak >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) backing up configuration to : $CONF.bak >> /var/log/install.log'
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
@@ -89,24 +89,24 @@ exit
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 
-	sudo sh -c 'echo -e (date) ${GREEN} Setting Callsign to "$CALL"${NORMAL} >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) ${GREEN} Setting Callsign to "$CALL"${NORMAL} >> /var/log/install.log'
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 
-	sudo sh -c 'echo -e (date) Setting Squelch Hangtime to 10 >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) Setting Squelch Hangtime to 10 >> /var/log/install.log'
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
 #	
-	sudo sh -c 'echo -e (date) Disabling audio distortion warning messages >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) Disabling audio distortion warning messages >> /var/log/install.log'
 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
-	sudo sh -c 'echo -e (date) Updating SplashScreen on startup >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) Updating SplashScreen on startup >> /var/log/install.log'
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
 	sudo chmod 0755 /etc/update-motd.d/10-uname
 #
-	sudo sh -c 'echo -e (date) Changing Log file >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) Changing Log file >> /var/log/install.log'
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	########## INSTALLING DASHBOARD ##########
-	sudo sh -c 'echo -e (date) ${YELLOW} "######## Installing Dashboard ########" ${NORMAL} >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) ${YELLOW} "######## Installing Dashboard ########" ${NORMAL} >> /var/log/install.log'
 	if [ $card=true ] ;
 	then
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
@@ -121,7 +121,7 @@ exit
  	sudo sh -c 'echo -e{RED}Changing ModuleMetar Link${NORMAL} >> /var/log/install.log'
   	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=
 %g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	sudo sh -c 'echo -e (date) ${RED} Authorise GPIO setup service (Unused) and svxlink service${NORMAL} >> /var/log/install.log'
+	sudo sh -c 'echo -e $(date) ${RED} Authorise GPIO setup service (Unused) and svxlink service${NORMAL} >> /var/log/install.log'
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
