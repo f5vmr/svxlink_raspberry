@@ -13,7 +13,7 @@ source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
 ########## CHECK USER ##########
 source "${BASH_SOURCE%/*}/functions/check_user.sh"
-check_user
+checkuser
 ########## LOGGING ##########
 echo "OS is $OS_name and User is $current_user" >> /var/log/install.log
 
