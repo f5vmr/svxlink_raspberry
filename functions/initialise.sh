@@ -10,7 +10,7 @@ SVXLINK_VER="24.02"
 SOUNDS_DIR=/usr/share/svxlink/sounds/
 username=$USER
 sudo touch /var/log/install.log
-setfacl -R -m u:$username:rwx $LOG_DIR
+sudo setfacl -R -m u:$username:rwx /var/log/install.log
 echo "Commencing initialisation" 
 
 
