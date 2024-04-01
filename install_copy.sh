@@ -11,6 +11,7 @@ initialise
 ########## CHECK OS ##########
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
+echo "OS is $OS_name and User is $current_user" >> /var/log/install.log
 
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"

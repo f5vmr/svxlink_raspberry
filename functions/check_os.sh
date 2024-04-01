@@ -9,7 +9,7 @@ if [ $OS_name != 'bookworm' ]; then
 whiptail --title "SVXLink" --msgbox "This script is only for the Bookworm Linux distribution.\n\n Shutdown and Change to OS Bookworm, with user pi." 8 78
 fi
 # Assign the current user of the terminal to a variable
-source check_user.sh"
+source check_user.sh
 user=$(get_current_user)
 current_user=$user
 
@@ -17,5 +17,5 @@ current_user=$user
 if [ $current_user != "pi" ]; then
 whiptail --title "SVXLink" --msgbox "This script is only for the pi user. Shutdown and reload the OS with user pi" 8 78
 fi
-echo "OS is " $OS_name " and User is " $current_user >> /var/log/install.log  
+ 
 }
