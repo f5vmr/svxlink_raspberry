@@ -17,5 +17,5 @@ current_user=$user
 if [ $current_user != "pi" ]; then
 whiptail --title "SVXLink" --msgbox "This script is only for the pi user. Shutdown and reload the OS with user pi" 8 78
 fi
-echo "OS is $OS_name and User is $current_user " >> /var/log/install.log  
+echo "OS is " $OS_name " and User is " $current_user >> /var/log/install.log  
 }
