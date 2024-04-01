@@ -20,9 +20,7 @@ nodeoption
 source "${BASH_SOURCE%/*}/functions/sound_card.sh"
 soundcard
 exit
-#
-# 
-#
+
 ########## UPDATE ##########
 source "${BASH_SOURCE%/*}/functions/update.sh"
 update
@@ -38,12 +36,14 @@ make_groups
 source "${BASH_SOURCE%/*}/functions/source.sh"
 	echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/svxlink.log
 	cd
+
+
 svxlink_source	
 
-	
+
 #	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
 	echo $(date) New Version: $NEWVERSION
-
+########## INSTALLATION ##########	
 ########## COMPILING ##########
 	echo -e $(date) ${YELLOW} "########## Compiling ##########" ${NORMAL} >> /var/log/svxlink.log
 	cd svxlink/src/build
