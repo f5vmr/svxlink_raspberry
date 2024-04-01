@@ -1,8 +1,4 @@
 #!/bin/bash
-########## LANGUAGE ##########
-source "${BASH_SOURCE%/*}/functions/language.sh"
-#which_language
-if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
 
 ########## INITIALISE ##########	 	
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
@@ -11,13 +7,13 @@ initialise
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
 ########## Welcome Message ##########
-source "${BASH_SOURCE%/*}/functions/welcome.sh"
+source "${BASH_SOURCE%/*}/functions/welcome_fr.sh"
 welcome
 ########## NODE Selection ##########
-source "${BASH_SOURCE%/*}/functions/node_type.sh"
+source "${BASH_SOURCE%/*}/functions/node_type_fr.sh"
 nodeoption
 ########### USB SOUND CARD ##########
-source "${BASH_SOURCE%/*}/functions/sound_card.sh"
+source "${BASH_SOURCE%/*}/functions/sound_card_fr.sh"
 soundcard
 exit
 #
@@ -30,47 +26,47 @@ update
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
 ########## GROUPS AND USERS ##########
-	echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/svxlink.log
+	echo -e $(date) ${YELLOW} Creating Groups and Users ${NORMAL} >> /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
 make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
 source "${BASH_SOURCE%/*}/functions/source.sh"
-	echo -e $(date) ${YELLOW} ########## Downloading SVXLink source code ########## ${NORMAL} >> /var/log/svxlink.log
+	echo -e $(date) ${YELLOW} ########## Téléchargements de codesource SVXLink ########## ${NORMAL} >> /var/log/install.log
 	cd
 svxlink_source	
 
 	
-#	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
+	NEWVERSION=`sudo grep “SVXLINK=“ $VERSIONS | awk -F= '{print $2}'`
 	echo $(date) New Version: $NEWVERSION
 
 ########## COMPILING ##########
-	echo -e $(date) ${YELLOW} ########## Compiling ########## ${NORMAL} >> /var/log/svxlink.log
+	echo -e $(date) ${YELLOW} ########## Compilation ########## ${NORMAL} >> /var/log/install.log
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
 	sudo make doc
-	echo $(date) ${GREEN}########## Installing SVXLink ########## ${NORMAL}
+	echo $(date) ${GREEN}########## Installation SVXLink ########## ${NORMAL} >> /var/log/install.log
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
 	sudo cp *.tcl ./local
 	sudo ldconfig
 ########### CONFIGURATION VOICES ##########
-	echo -e $(date) ${GREEN} ########## Installing Voice Files ########## ${NORMAL}
+	echo -e $(date) ${GREEN} ########## Installation de dossiers Voix ########## ${NORMAL}
 	cd /usr/share/svxlink/sounds
-	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/en_GB.tar_.gz
-	sudo tar -zxvf en_GB.tar_.gz
-	sudo rm en_GB.tar_.gz
+	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/fr_FR.tar_.gz
+	sudo tar -zxvf fr_FR.tar_.gz
+	sudo rm fr_FR.tar_.gz
    	cd /etc/svxlink
     sudo chmod 777 -R *
 
 ########### BACKUP CONFIGURATION ##########
-	echo $(date) backing up configuration to : $CONF.bak
+	echo $(date) ${GREEN} backing up configuration to : $CONF.bak ${NORMAL} >> /var/log/install.log
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e $(date) ${RED} ########## Downloading prepared configuration files from the scripts ##########${NORMAL}
+	echo -e $(date) ${RED} ########## Downloading prepared configuration files from the scripts ##########${NORMAL}GREEN
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
@@ -79,7 +75,7 @@ svxlink_source
 	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 
-	echo $(date) ${GREEN} Setting Callsign to "$CALL"${NORMAL}
+	echo $(date) ${GREEN} Setting Callsign to "$CALL"${NORMAL} >> /var/log/install.log
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 
@@ -96,7 +92,7 @@ svxlink_source
 	echo $(date) Changing Log file
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	########## INSTALLING DASHBOARD ##########
-	echo $(date) ${YELLOW} ######## Installing Dashboard ######## ${NORMAL} >> /var/log/svxlink.log
+	echo $(date) ${YELLOW} ######## Installing Dashboard ######## ${NORMAL} >> /var/log/install.log
 	if [ $card=true ] ;
 	then
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
@@ -111,7 +107,7 @@ svxlink_source
  	echo ${RED}Changing ModuleMetar Link${NORMAL}
   	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=
 %g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	echo $(date) ${RED} Authorise GPIO setup service (Unused) and svxlink service${NORMAL}
+	echo $(date) ${RED} Authorise GPIO setup service - Unused and svxlink service${NORMAL}
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
