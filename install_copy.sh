@@ -11,6 +11,7 @@ initialise
 ########## CHECK OS ##########
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
+exit_if_not_pi
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
