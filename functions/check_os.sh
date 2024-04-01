@@ -11,7 +11,7 @@ function check_os {
         else
         whiptail --title "SVXLink" --msgbox "Success - You have OS $OS_name" 8 78
     fi
-
+}
 
 
 # Source the file containing the functions
