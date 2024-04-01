@@ -32,7 +32,7 @@ make_groups
 
 ########## DOWNLOADING SOURCE CODE ##########
 source "${BASH_SOURCE%/*}/functions/source.sh"
-	echo -e $(date) ${YELLOW} ########## Téléchargements de codesource SVXLink ########## ${NORMAL} >> /var/log/install.log
+	echo -e $(date) ${YELLOW} "########## Téléchargements de codesource SVXLink ##########" ${NORMAL} >> /var/log/install.log
 	cd
 svxlink_source	
 
@@ -41,19 +41,19 @@ svxlink_source
 	echo $(date) New Version: $NEWVERSION
 
 ########## COMPILING ##########
-	echo -e $(date) ${YELLOW} ########## Compilation ########## ${NORMAL} >> /var/log/install.log
+	echo -e $(date) ${YELLOW} "########## Compilation ##########" ${NORMAL} >> /var/log/install.log
 	cd svxlink/src/build
 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 	sudo make
 	sudo make doc
-	echo $(date) ${GREEN}########## Installation SVXLink ########## ${NORMAL} >> /var/log/install.log
+	echo $(date) ${GREEN}"########## Installation SVXLink ##########" ${NORMAL} >> /var/log/install.log
 	sudo make install
 	cd /usr/share/svxlink/events.d
 	sudo mkdir local
 	sudo cp *.tcl ./local
 	sudo ldconfig
 ########### CONFIGURATION VOICES ##########
-	echo -e $(date) ${GREEN} ########## Installation de dossiers Voix ########## ${NORMAL}
+	echo -e $(date) ${GREEN} "########## Installation de dossiers Voix ##########" ${NORMAL} >> /var/log/install.log
 	cd /usr/share/svxlink/sounds
 	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/fr_FR.tar_.gz
 	sudo tar -zxvf fr_FR.tar_.gz
@@ -66,7 +66,7 @@ svxlink_source
 	sudo cp -p $CONF $CONF.bak
 #
 	cd
-	echo -e $(date) ${RED} ########## Downloading prepared configuration files from the scripts ##########${NORMAL}GREEN
+	echo -e $(date) ${RED} "########## Downloading prepared configuration files from the scripts ##########" ${NORMAL} >> /var/log/install.log
 	sudo mkdir /home/pi/scripts
  	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
 	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
@@ -92,7 +92,7 @@ svxlink_source
 	echo $(date) Changing Log file
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	########## INSTALLING DASHBOARD ##########
-	echo $(date) ${YELLOW} ######## Installing Dashboard ######## ${NORMAL} >> /var/log/install.log
+	echo $(date) ${YELLOW} "######## Installing Dashboard ########" ${NORMAL} >> /var/log/install.log
 	if [ $card=true ] ;
 	then
 	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
@@ -104,10 +104,10 @@ svxlink_source
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
 	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf	
- 	echo ${RED}Changing ModuleMetar Link${NORMAL}
+ 	echo ${RED}Changing ModuleMetar Link${NORMAL} >> /var/log/install.log
   	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=
 %g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	echo $(date) ${RED} Authorise GPIO setup service - Unused and svxlink service${NORMAL}
+	echo $(date) ${RED} Authorise GPIO setup service - Unused and svxlink service${NORMAL} >> /var/log/install.log
 	sudo systemctl enable svxlink_gpio_setup
 	sleep 10
 	sudo systemctl enable svxlink
@@ -117,8 +117,8 @@ svxlink_source
 	sudo systemctl start svxlink.service
 
 
-echo -e $(date) ${RED}Installation complete\n${NORMAL}
-echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}
+echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log
+echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log
 echo
 sleep 10
 
