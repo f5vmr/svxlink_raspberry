@@ -1,7 +1,7 @@
 #!/bin/bash
-echo $USER
+echo "user = " $USER
 
-echo $whoami
+echo "whoami = " $whoami
 
 exit
 #
