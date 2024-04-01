@@ -16,7 +16,7 @@ whiptail --title "Updates" --msgbox "Updates including nodejs For future expansi
 
 #	sudo apt update
 #	sudo apt upgrade -y
-	VERSIONS=svxlink/src/versions >> /var/log/install.log'   
+	VERSIONS=svxlink/src/versions >> /var/log/install.log   
 
 	sudo sh -c 'echo -e $(date) ${YELLOW}  *** commence build *** ${NORMAL} >> /var/log/install.log'
 ############ BUILD ESSENTIALS ##########
