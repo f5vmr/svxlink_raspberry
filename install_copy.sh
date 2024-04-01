@@ -1,15 +1,14 @@
 #!/bin/bash
+########## INITIALISE ##########	 	
+clear
+source "${BASH_SOURCE%/*}/functions/initialise.sh"
+initialise
+exit
 ########## LANGUAGE ##########
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
 #which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
-
-########## INITIALISE ##########	 	
-source "${BASH_SOURCE%/*}/functions/initialise.sh"
-initialise
-exit
-
 ########## CHECK OS ##########
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
