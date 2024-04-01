@@ -40,5 +40,7 @@ usercheck
 
 # Continue with the rest of your script...
 
-    current_user=$(get_current_user)
+    current_user=$user
+
+}
 
