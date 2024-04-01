@@ -13,16 +13,3 @@ function check_os {
     fi
 }
 
-
-# Source the file containing the functions
-source ./check_user.sh
-
-# Call the usercheck function
-usercheck
-
-# Continue with the rest of your script...
-
-echo $current_user
-
-}
-
