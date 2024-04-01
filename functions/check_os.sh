@@ -29,11 +29,10 @@ function check_os {
         exit 1  # Exit the script if the OS is not Bookworm
     fi
 
-    # Check if the current user is 'pi'
-    #!/bin/bash
+
 
 # Source the file containing the functions
-source check_user.sh
+source ./check_user.sh
 
 # Call the usercheck function
 usercheck
