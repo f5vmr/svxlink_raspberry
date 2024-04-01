@@ -61,7 +61,7 @@ whiptail --title "Build Essentials" --msgbox "Adding all the packages necessary 
 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial toilet -y
 ########## REQUEST CALLSIGN ##########
 get_CallVar() {
-    call=$(whiptail --inputbox "Enter the node callsign:" 14 78 3>&1 1>&2 2>&3)
+    call=$(whiptail --inputbox "Enter the node callsign:" 8 78 3>&1 1>&2 2>&3)
     echo "$call"
 }
 
@@ -71,7 +71,7 @@ while true; do
     
     # Check if input is empty
     if [ -z "$user_input" ]; then
-        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 14 78
+        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 78
     else
         # If input is not empty, break the loop
         break

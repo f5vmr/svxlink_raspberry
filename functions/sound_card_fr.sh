@@ -29,7 +29,7 @@ fi
 # Print the assigned variable value
 echo "Variable assigned: $sound_card_variable"
 
-    SOUND_OPTION=$(whiptail --title "USB Soundcard" --menu "Selectionner des options dessous." 14 78 4 \
+    SOUND_OPTION=$(whiptail --title "USB Soundcard" --menu "Selectionner des options dessous." 8 78 4 \
         "1" "Modifié pour Tx et Rx" \
         "2" "Modifié uniquement pour Tx" \
         "3" "Sans modification (utiliser GPIOD contrôler le Squelch et PTT )" 3>&1 1>&2 2>&3)      

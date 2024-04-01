@@ -15,7 +15,7 @@ check_os
 #source "${BASH_SOURCE%/*}/functions/check_user.sh"
 #usercheck
 if [ "$username" != "pi" ]; then echo "Please the reform the SDcard as user pi" ; exit; 
-else whiptail --title "User check" --msgbox "User is pi" 8 32;
+else whiptail --title "User check" --msgbox "User is pi" 8 78;
 fi
 ########## LOGGING ##########
 echo "OS is $OS_name and User is $current_user" >> /var/log/install.log

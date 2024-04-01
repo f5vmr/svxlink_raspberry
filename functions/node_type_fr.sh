@@ -1,7 +1,7 @@
 #!/bin/bash
 node=false
 function nodeoption {
-    NODE_OPTION=$(whiptail --title "Svxlink" --menu "SVP choisir le type de noed vous desirez?" 14 78 5 \
+    NODE_OPTION=$(whiptail --title "Svxlink" --menu "SVP choisir le type de noed vous desirez?" 8 78 5 \
             "1" " Simplex Noed sans SvxReflecteur" \
             "2" " Simplex Noed avec SvxReflecteur" \
             "3" "Repeater Noed sans SvxReflecteur" \

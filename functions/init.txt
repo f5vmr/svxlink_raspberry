@@ -23,13 +23,13 @@ YELLOW="\033[1;33m"
 #sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
 #}
 function get_CallVar {
-CALL=$(whiptail --inputbox "Enter the node callsign:" 14 78 3>&1 1>&2 2>&3)    
+CALL=$(whiptail --inputbox "Enter the node callsign:" 8 78 3>&1 1>&2 2>&3)    
 while true; do
     #user_input=$(get_CallVar)
     
     # Check if input is empty
     if [ -z "$CALL" ]; then
-        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 14 78
+        whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 78
     else
         # If input is not empty, break the loop
         break
@@ -46,7 +46,7 @@ echo date "*** Node Callsign $CALL **** ">> /var/log/install.log
 # Use the non-empty name
 
 function node_type {
-OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 14 78 3 \
+OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 8 78 3 \
     "1" "Simplex Single Frequency Node" \
     "2" "Duplex Repeater Node" 3>&1 1>&2 2>&3)
 
@@ -61,7 +61,7 @@ OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 14 78 3 \
     fi
 }
 function query_network {
-    NETWORK=$(whiptail --title "$TITLE" --menu "Select Network Type" 14 78 3 \
+    NETWORK=$(whiptail --title "$TITLE" --menu "Select Network Type" 8 78 3 \
     "1" "Stand Alone" \
     "2" "Svxportal-UK" 3>&1 1>&2 2>&3)
     exitstatus=$?
