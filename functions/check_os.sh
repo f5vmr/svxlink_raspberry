@@ -40,7 +40,7 @@ usercheck
 
 # Continue with the rest of your script...
 
-    current_user=$user
+echo $current_user
 
 }
 
