@@ -12,7 +12,8 @@ username=$USER
 sudo touch /var/log/install.log
 sudo chmod 777 /var/log/install.log
 sudo setfacl -R -m u:$username:rwx /var/log/install.log
+ls -l /var/log/install.log
 echo "Commencing initialisation" 
-
+exit
 
 }
