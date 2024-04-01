@@ -1,7 +1,6 @@
 #!/bin/bash
 function initialise {
-clear
-user=$(whoami)   
+clear  
 CONF_DIR=/etc/svxlink/
 LOG_DIR=/var/log/
 PID_DIR=/var/run/
