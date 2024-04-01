@@ -9,6 +9,8 @@ GUI_IDENTIFIER="SVXlink"
 SVXLINK_VER="24.02"
 SOUNDS_DIR=/usr/share/svxlink/sounds/
 username=$USER
-echo "Commencing initialisation" > /var/log/install.log
+sudo touch /var/log/install.log
+setfacl -R -m u:$username:rwx $LOG_DIR
+echo "Commencing initialisation" 
 
 }
