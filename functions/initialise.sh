@@ -13,4 +13,5 @@ sudo touch /var/log/install.log
 setfacl -R -m u:$username:rwx $LOG_DIR
 echo "Commencing initialisation" 
 
+
 }
