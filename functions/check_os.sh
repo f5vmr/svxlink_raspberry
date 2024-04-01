@@ -30,11 +30,15 @@ function check_os {
     fi
 
     # Check if the current user is 'pi'
-    source ./check_user.sh
+    #!/bin/bash
+
+# Source the file containing the functions
+source ./check_user.sh
+
+# Call the usercheck function
+usercheck
+
+# Continue with the rest of your script...
+
     current_user=$(get_current_user)
 
-    if [ "$current_user" != "pi" ]; then
-        whiptail --title "SVXLink" --msgbox "This script is only for the pi user. Shutdown and reload the OS with user pi" 8 78
-        exit 1  # Exit the script if the current user is not 'pi'
-    fi
-}
