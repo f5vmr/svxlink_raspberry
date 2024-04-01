@@ -1,6 +1,6 @@
 
 # Function to check the user
-usercheck() {
+function usercheck() {
     # Get the current user
     local current_user
     current_user=$(get_current_user) >> /var/log/install.log 2>&1
