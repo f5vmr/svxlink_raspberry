@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
 function get_current_user() {
-echo $(whoami)
+    if [ -n "$SUDO_USER" ]; then
+        echo "$SUDO_USER"
+    else
+        echo "$(logname)"
+    fi
 }
