@@ -14,4 +14,4 @@ usercheck
 if [ "$logname" != "pi" ]; then echo "Please the reform the SDcard as user pi" ; exit; 
 else whiptail --title "OS and user check" --msgbox "OS is $OS_name and User is $logname" 8 78;
 fi
-sudo ./install_copy.sh
+sudo ./install_main.sh
