@@ -20,5 +20,5 @@ done
 CALL=${user_input^^}
 # Use the non-empty name
 
-	echo -e "$(date)" "${GREEN} *** Creating Node " $CALL " *** ${NORMAL}" | tee /var/log/install.log    
+	echo -e "$(date)" "${GREEN} *** Creating Node " $CALL " *** ${NORMAL}" | tee -a  /var/log/install.log    
 }
