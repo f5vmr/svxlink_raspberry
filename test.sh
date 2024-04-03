@@ -3,7 +3,7 @@
 output=$(aplay -l)
 
 # Use grep to find the line containing the desired sound card
-line=$(echo "$output" | grep "USB soundcard")
+line=$(echo "$output" | grep "USB Audio")
 
 # Extract the card number from the line
 card_number=$(echo "$line" | awk '{print $2}' | tr -d ':')
