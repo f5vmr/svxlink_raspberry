@@ -1,7 +1,7 @@
 #!/bin/bash
 # Function to check the user
 function get_current_user() {
-    echo "$(LOGNAME)"
+    echo "$(logname)"
 }
 function usercheck {
     # Get the current user

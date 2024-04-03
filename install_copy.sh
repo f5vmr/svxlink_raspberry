@@ -1,9 +1,5 @@
 #!/bin/bash
-########## INITIALISE ##########	 	
-clear
-source "${BASH_SOURCE%/*}/functions/initialise.sh"
-initialise
-break
+
 ########## LANGUAGE ##########
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
@@ -11,7 +7,6 @@ source "${BASH_SOURCE%/*}/functions/language.sh"
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
 
 ########## LOGGING ##########
-sudo sh -c 'echo "OS is $OS_name and User is $current_user" >> /var/log/install.log'
 
 ########## Welcome Message ##########
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
