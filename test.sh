@@ -3,7 +3,7 @@
 set -e
 cat functions/config.txt
 echo "hello world" > test.txt
-whiptail --scrolltext 0 --title "SVXLink Configuration" --msgbox "$(cat test.txt)" 8 78
+whiptail --title "SVXLink Configuration" --msgbox "$(functions/config.txt)" 8 78
 
 
 whiptail --title "Sound Card" --msgbox "This script will determine the USB soundcard's location.  It will then display the location in the terminal." 8 78
