@@ -1,5 +1,5 @@
 #!/bin/bash
-######## WHICH LANGUAGE ########
+#### WHICH LANGUAGE ####
 ## lang_options en_GB or fr_FR ##
 function which_language() {
     LANG_OPTION=$(whiptail --title "$TITLE" --menu "Select Default Language" 8 78 3 \

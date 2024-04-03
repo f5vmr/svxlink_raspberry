@@ -20,7 +20,7 @@ whiptail --title "Mis à jour" --msgbox "Mis à jour les répositoires pour node
 	VERSIONS=svxlink/src/versions | tee -a   /var/log/install.log   
 
 	echo -e "$(date)" "${YELLOW}  *** commence build *** ${NORMAL}" | tee -a  /var/log/install.log
-############ BUILD ESSENTIALS ##########
+###### BUILD ESSENTIALS ####
 whiptail --title "Build Essentials" --msgbox "Addition tous les paquets necessaires pour Svxlink. Tapé OK pour continuer" 8 78
 
 	echo -e "$(date)" "${YELLOW} **** Installation des paquets **** ${NORMAL}" | tee -a  /var/log/install.log

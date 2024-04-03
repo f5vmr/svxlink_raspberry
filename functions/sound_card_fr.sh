@@ -54,7 +54,7 @@ echo "Variable assigned: $sound_card_variable"
     echo "HID is set to $HID"
     echo "GPIOD is set to $GPIOD"
 #    if [ "$HID" = true ] ; then 
-########## updates the udev rules for the USB sound card #########
+#### updates the udev rules for the USB sound card #####
     if [ "$card" = true ]; then
     echo "Ok, allons y - changer les règles udev pour le USB sound card"
      #           sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/

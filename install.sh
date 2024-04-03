@@ -1,14 +1,14 @@
-########## INSTALLATION SCRIPT ##########
+#### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
-########## INITIALISE ##########	 	
+#### INITIALISE ####	 	
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
-########## CHECK OS ##########
+#### CHECK OS ####
 source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
-########## CHECK USER ##########
+#### CHECK USER ####
 source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
-########## SuperUser Install ##########
+#### SuperUser Install ####
 sudo ./install_main.sh
