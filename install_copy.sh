@@ -33,9 +33,6 @@ source "${BASH_SOURCE%/*}/functions/groups.sh"
 sudo sh -c 'echo -e $(date) ${YELLOW} "########## Downloading SVXLink source code ##########" ${NORMAL} >> /var/log/install.log'
 source "${BASH_SOURCE%/*}/functions/source.sh"
 #svxlink_source	
-#ls -l svxlink/src
-
-
 
 #	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
 	sudo sh -c 'echo -e $(date) New Version: $NEWVERSION  >> /var/log/install.log'
