@@ -4,10 +4,15 @@ input_file="svxlink.conf"
 output_file="svxlink.db"
 
 header_written=false
+header_lines=0
 
 while IFS= read -r line; do
     line=$(echo "$line" | tr -d '\r\n') # Remove carriage return and newline characters
-    if [[ $line == \[*]* ]]; then
+    if [ $header_lines -lt 5 ]; then
+        # Write the first five lines as header without parsing them
+        echo "$line" >> "$output_file"
+        ((header_lines++))
+    elif [[ $line == \[*]* ]]; then
         category=${line:1:-1}
         # Write header category without parameters if not already written
         if [ "$category" == "Header" ] && [ "$header_written" = false ]; then
