@@ -9,15 +9,7 @@ clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
 #which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
-########## CHECK OS ##########
-source "${BASH_SOURCE%/*}/functions/check_os.sh"
-check_os
-########## CHECK USER ##########
-#source "${BASH_SOURCE%/*}/functions/check_user.sh"
-#usercheck
-if [ "$logname" != "pi" ]; then echo "Please the reform the SDcard as user pi" ; exit; 
-else whiptail --title "User check" --msgbox "User is pi" 8 78;
-fi
+
 ########## LOGGING ##########
 sudo sh -c 'echo "OS is $OS_name and User is $current_user" >> /var/log/install.log'
 

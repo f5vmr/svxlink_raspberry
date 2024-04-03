@@ -9,7 +9,7 @@ function check_os {
         whiptail --title "SVXLink" --msgbox "This script is only for the Bookworm Linux distribution.\n\n Shutdown and Change to OS Bookworm, with user pi." 8 78
         exit 1  # Exit the script if the OS is not Bookworm
         else
-        whiptail --title "SVXLink" --msgbox "Success - You have OS $OS_name and user $LOGNAME" 8 78
+        whiptail --title "SVXLink" --msgbox "Success - You have OS $OS_name" 8 78
     fi
 }
 
