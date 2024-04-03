@@ -80,17 +80,17 @@ svxlink_source
 	sudo sed -i "s/MYCALL/$CALL/g" $CONF
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 
-	echo $(date) Setting Squelch Hangtime to 10 | tee /var/log/install.log
+	echo $(date) ${YELLOW} Setting Squelch Hangtime to 10 ${NORMAL} | tee /var/log/install.log
 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF 
 #	
-	echo $(date) Disabling audio distortion warning messages | tee /var/log/install.log
+	echo $(date) ${YELLOW} Disabling audio distortion warning messages ${NORMAL} | tee /var/log/install.log
 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
-	(date) Updating SplashScreen on startup >> /var/log/install.log'
+	echo $(date) ${GREEN} Updating SplashScreen on startup ${NORMAL}  | tee /var/log/install.log
 	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
 	sudo chmod 0755 /etc/update-motd.d/10-uname
 #
-	echo $(date) Changing Log file | tee /var/log/install.log 		
+	echo $(date) ${GREEN} Changing Logfile suffix ${NORMAL}| tee /var/log/install.log 		
 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	########## INSTALLING DASHBOARD ##########
 	echo $(date) ${YELLOW} "######## Installing Dashboard ########" ${NORMAL} | tee /var/log/install.log
@@ -119,7 +119,7 @@ svxlink_source
 
 
 echo $(date) ${RED}Installation complete\n${NORMAL} |tee /var/log/install.log
-echo $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} |tee /var/log/install.log
+echo $(date) "${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}" |tee /var/log/install.log
 echo
 sleep 3
 

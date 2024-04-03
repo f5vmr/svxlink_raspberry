@@ -3,7 +3,7 @@
 
 function usercheck {
     # Get the current user
-    current_user=$(logname) >> /var/log/install.log
+    current_user=$(logname) | tee  /var/log/install.log
     
     # Check if the current user is 'pi'
    if [ "$logname" != "pi" ]; then 

@@ -17,7 +17,7 @@ whiptail --title "Mis à jour" --msgbox "Mis à jour les répositoires pour node
 
 #	sudo apt update
 #	sudo apt upgrade -y
-	VERSIONS=svxlink/src/versions >> /var/log/install.log'   
+	VERSIONS=svxlink/src/versions | tee  /var/log/install.log   
 
 	echo $(date) ${YELLOW}  *** commence build *** ${NORMAL} | tee /var/log/install.log
 ############ BUILD ESSENTIALS ##########

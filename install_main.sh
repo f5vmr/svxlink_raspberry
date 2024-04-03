@@ -126,7 +126,7 @@ sleep 3
 
 echo $(date) ${RED}Installation complete\n${NORMAL} | tee /var/log/install.log
 sleep 3
-echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} | tee /var/log/install.log
+echo -e $(date) "${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}" | tee /var/log/install.log
 sleep 3
 exit
 
