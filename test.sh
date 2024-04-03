@@ -1,5 +1,14 @@
 #!/bin/bash
-sudo aplay -l 
+# Run aplay -l and capture the output
+output=$(aplay -l)
+
+# Use grep to find the line containing the desired sound card
+line=$(echo "$output" | grep "USB soundcard")
+
+# Extract the card number from the line
+card_number=$(echo "$line" | awk '{print $2}' | tr -d ':')
+
+echo "The USB soundcard is located at card $card_number."
 
 
 #
