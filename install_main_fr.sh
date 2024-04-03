@@ -119,7 +119,7 @@ svxlink_source
 
 
 echo -e "$(date)" "${RED}Installation complete\n${NORMAL}" |tee /var/log/install.log
-echo -e "$(date)" ""${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}"" |tee /var/log/install.log
+echo -e "$(date)" ""${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL}" |tee /var/log/install.log
 echo
 sleep 3
 

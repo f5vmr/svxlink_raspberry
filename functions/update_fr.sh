@@ -6,7 +6,7 @@ OP=/etc/svxlink
 
 whiptail --title "Mis à jour" --msgbox "Mis à jour les répositoires pour nodejs et l'éxpansion pou l'avenire. Tapé OK pour continuer" 8 78
 
-	echo -e "$(date)" " "${YELLOW}  *** updates and upgrades *** ${NORMAL}"" | tee /var/log/install.log
+	echo -e "$(date)" " "${YELLOW}  *** updates and upgrades *** ${NORMAL}" | tee /var/log/install.log
 
 #	sudo apt-get update
 #	sudo apt-get install -y ca-certificates curl gnupg
