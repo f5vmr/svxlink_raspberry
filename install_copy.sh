@@ -128,6 +128,7 @@ sudo sh -c 'echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/i
 sleep 1
 sudo sh -c 'echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log'
 sleep 1
+exit
 
 
 #sudo reboot
