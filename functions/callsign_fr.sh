@@ -20,5 +20,5 @@ done
 CALL=${user_input^^}
 # Use the non-empty name
 
-	echo -e "$(date)" "${GREEN} *** Creation du Noed " $CALL " *** ${NORMAL}" | tee -a  /var/log/install.log  
+	echo -e "$(date)" "${GREEN} #### Creation du Noed " $CALL " #### ${NORMAL}" | tee -a  /var/log/install.log  
 }
