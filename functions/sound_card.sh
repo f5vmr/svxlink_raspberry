@@ -67,3 +67,4 @@ echo "Variable assigned: $sound_card_variable"
 
     echo ${GREEN}Audio Updates including Dummy Sound Card for Darkice complete${NORMAL}
 				
+}
