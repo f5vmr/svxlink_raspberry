@@ -20,5 +20,5 @@ done
 CALL=${user_input^^}
 # Use the non-empty name
 
-	sudo sh -c 'echo $(date) ${GREEN} *** Creating Node " $CALL " *** ${NORMAL} >> /var/log/install.log'    
+	echo $(date) ${GREEN} *** Creating Node " $CALL " *** ${NORMAL} | tee /var/log/install.log    
 }
