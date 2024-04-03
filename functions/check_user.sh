@@ -1,16 +1,17 @@
 #!/bin/bash
 # Function to check the user
-#function get_current_user() {
-#    echo $(logname)
-#}
+
 function usercheck {
     # Get the current user
     current_user=$(logname) >> /var/log/install.log
     
     # Check if the current user is 'pi'
-    if [ "$current_user" != "pi" ]; then
-        echo "This script is only for the pi user. Please re-install OS Bookworm with user pi."
-        exit 1
-    fi
+   if [ "$logname" != "pi" ]; then 
+   echo "Please the reform the SDcard as user pi" ; exit; 
+
+    else whiptail --title "OS and user check" --msgbox "OS is $OS_name and User is $logname" 8 78;
+fi
+    echo "OS = OS_name  and Current user is $logname" | tee /var/log/install.log
+
 }
 
