@@ -1,8 +1,9 @@
 #!/bin/bash
 # Run aplay -l and capture the output
-whiptail --scrolltext 5 --title "Sound Card" --msgbox $(cat functions/config.txt) 8 78
+whiptail --scrolltext 0 --title "SVXLink Configuration" --msgbox "$(cat functions/config.txt)" 8 78
 
-whiptail --title "Sound Card" --msgbox "This script will determine the USB soundcard's location.  It will then display the location in the terminal." 10 60
+
+whiptail --title "Sound Card" --msgbox "This script will determine the USB soundcard's location.  It will then display the location in the terminal." 8 78
 
 output=$(aplay -l)
 
