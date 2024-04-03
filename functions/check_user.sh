@@ -9,7 +9,7 @@ function usercheck {
     
     # Check if the current user is 'pi'
     if [ "$current_user" != "pi" ]; then
-        echo "This script is only for the pi user. Please run with user pi."
+        echo "This script is only for the pi user. Please re-install OS Bookworm with user pi."
         exit 1
     fi
 }
