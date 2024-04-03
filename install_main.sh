@@ -125,9 +125,9 @@ sleep 3
 #	sudo systemctl start svxlink.service
 
 
-echo -e "$(date)" "${RED}Installation complete ${NORMAL}" | tee /var/log/install.log
+echo -e $(date) "${RED} Installation complete ${NORMAL}" | tee /var/log/install.log
 sleep 3 
-echo -e $(date)" "${GREEN} Rebooting SVXLink ${NORMAL}" | tee /var/log/install.log
+echo -e $(date) "${GREEN} Rebooting SVXLink ${NORMAL}" | tee /var/log/install.log
 sleep 3
 exit
 
