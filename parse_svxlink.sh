@@ -1,7 +1,7 @@
 #!/bin/bash
 
-input_file="svxlink.conf"
-output_file="svxlink.db"
+input_file="/etc/svx/svxlink.conf"
+output_file="/etc/svxlink/svxlink.db"
 
 header_written=false
 header_lines=0
