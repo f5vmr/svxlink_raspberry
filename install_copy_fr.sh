@@ -109,18 +109,18 @@ svxlink_source
 %g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	sudo sh -c 'echo -e $(date) ${RED} Authorise GPIO setup service - Unused and svxlink service${NORMAL} >> /var/log/install.log'
 	sudo systemctl enable svxlink_gpio_setup
-	sleep 10
+	sleep 3
 	sudo systemctl enable svxlink
-	sleep 10
+	sleep 3
 	sudo systemctl start svxlink_gpio_setup.service
-	sleep 10
+	sleep 3
 	sudo systemctl start svxlink.service
 
 
 sudo sh -c 'echo -e $(date) ${RED}Installation complete\n${NORMAL} >> /var/log/install.log'
 sudo sh -c 'echo -e $(date) ${GREEN} Reboot - Redémarrer SVXLink\n\n\n${NORMAL} >> /var/log/install.log'
 echo
-sleep 10
+sleep 3
 
 sudo reboot
 
