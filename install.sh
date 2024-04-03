@@ -14,6 +14,6 @@ if [ "$logname" != "pi" ]; then echo "Please the reform the SDcard as user pi" ;
 else whiptail --title "User check" --msgbox "User is pi" 8 78;
 fi
 
-echo "OS is $OS_name and User is $logname" >> /var/log/install.log'
+echo "OS is $OS_name and User is $logname" >> /var/log/install.log
 
 sudo ./install_copy.sh
