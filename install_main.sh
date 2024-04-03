@@ -113,7 +113,7 @@ sleep 3
  	echo $(date) ${RED}Changing ModuleMetar Link ${NORMAL} | tee /var/log/install.log
 sleep 3
 #  	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=%g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-	echo $(date) ${RED} Authorise GPIO setup service (Unused) and svxlink service${NORMAL} | tee /var/log/install.log
+	echo $(date) ${RED} Authorise GPIO setup service - no longer used and svxlink service${NORMAL} | tee /var/log/install.log
 sleep 3
 #	sudo systemctl enable svxlink_gpio_setup
 	sleep 3
