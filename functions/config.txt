@@ -1,1 +1,7 @@
-We are now about to configure SVXLink to your Specifications that you have made already
+We are now about to configure SVXLink to your Specifications that you have made already.
+They will be exchanged with those held in the SVXLink default configuration.
+In the event that you need to change them in the future, you will be able to do so in the Web Dashboard.
+The first change will be to the sound configuration, selecting the USB soundcard in use.
+The subsequent changes will be to the SVXLink configuration, which is a bit more involved.
+At the end of the configuration, you will be able to access the Web Dashboard from the IP address given you.
+The address will be fixed by the software permanently.

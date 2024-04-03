@@ -1,6 +1,7 @@
 #!/bin/bash
 # Run aplay -l and capture the output
-whiptail --scrolltext 0 --title "Sound Card" --msgbox functions/config.txt 10 60
+whiptail --scrolltext 0 --title "Sound Card" --msgbox functions/config.txt 8 78
+
 whiptail --title "Sound Card" --msgbox "This script will determine the USB soundcard's location.  It will then display the location in the terminal." 10 60
 
 output=$(aplay -l)
