@@ -14,9 +14,12 @@ welcome
 #### NODE Selection ####
 source "${BASH_SOURCE%/*}/functions/node_type.sh"
 nodeoption
+echo -e "$(date)" "${YELLOW} #### Node Type: $NODEOPTION #### ${NORMAL}" | tee -a  /var/log/install.log
 ##### USB SOUND CARD ####
 source "${BASH_SOURCE%/*}/functions/sound_card.sh"
 soundcard
+echo -e "$(date)" "${YELLOW} #### Sound Card: $HID $GPIOD $card #### ${NORMAL}" | tee -a  /var/log/install.log	
+echo -e "$(date)" "${YELLOW} #### Checking Alsa #### ${NORMAL}" | tee -a  /var/log/install.log
 #### UPDATE ####
 source "${BASH_SOURCE%/*}/functions/update.sh"
 update

@@ -1,7 +1,5 @@
 #!/bin/bash
-echo "user = " $USER
+sudo aplay -l 
 
-echo "whoami = " $whoami
 
-exit
 #
