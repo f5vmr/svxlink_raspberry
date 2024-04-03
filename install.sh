@@ -1,2 +1,4 @@
 logname=$LOGNAME
-sudo ./install_copy.sh
+echo $logname 
+  
+#sudo ./install_copy.sh
