@@ -39,7 +39,7 @@ echo "Variable assigned: $sound_card_variable"
     card=true
     #No need to play with the GPIOD
     elif [ "$SOUND_OPTION" = "2" ] ; then
-    HID=false
+    HID=true
     GPIOD=true
     card=true
     #still need to set the HID for Transmit

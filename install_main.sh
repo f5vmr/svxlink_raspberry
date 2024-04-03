@@ -127,6 +127,10 @@ sleep 3
 
 echo -e "$(date)" "${GREEN} #### Installation complete #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
+echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
+source "${BASH_SOURCE%/*}/functions/configure.sh"
+config
+
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 exit
