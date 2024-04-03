@@ -18,15 +18,11 @@ while IFS= read -r line; do
         # Parameter heading
         parameter_heading=$(echo "$line" | cut -d '=' -f 1 | sed 's/# *//')
         parameter=$(echo "$line" | cut -d '=' -f 2-)
-        if [ "$header_written" = true ]; then
-            echo "$category,$parameter_heading,$parameter" >> "$output_file"
-        fi
+        echo "$category,$parameter_heading,$parameter" >> "$output_file"
     elif [[ -n "$line" ]]; then
         # Regular parameter
         parameter_heading=$(echo "$line" | cut -d '=' -f 1)
         parameter=$(echo "$line" | cut -d '=' -f 2-)
-        if [ "$header_written" = true ]; then
-            echo "$category,$parameter_heading,$parameter" >> "$output_file"
-        fi
+        echo "$category,$parameter_heading,$parameter" >> "$output_file"
     fi
 done < "$input_file"
