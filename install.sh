@@ -1,4 +1,5 @@
-logname=`whoami`
+########## INSTALLATION SCRIPT ##########
+# Setting non-superuser elements #
 ########## INITIALISE ##########	 	
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
@@ -11,7 +12,7 @@ check_os
 source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
 if [ "$logname" != "pi" ]; then echo "Please the reform the SDcard as user pi" ; exit; 
-else whiptail --title "User check" --msgbox "User is pi" 8 78;
+else whiptail --title "OS and user check" --msgbox "OS is $OS_name and User is $logname" 8 78;
 fi
 
 echo "OS is $OS_name and User is $logname" >> /var/log/install.log
