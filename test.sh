@@ -1,7 +1,8 @@
 #!/bin/bash
 # Run aplay -l and capture the output
-set -x
+set -e
 cat functions/config.txt
+
 echo "testing" | whiptail --scrolltext 10 --title "SVXLink Configuration" --msgbox "$(cat functions/config.txt)" 8 78
 
 
