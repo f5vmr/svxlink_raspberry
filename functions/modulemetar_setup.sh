@@ -34,7 +34,7 @@ selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 27
 
       
       
-      $selected 
+      #$selected 
     else
     exit 1
     fi
