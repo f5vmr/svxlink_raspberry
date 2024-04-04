@@ -5,7 +5,7 @@
 whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60
     if [ $? -eq 0 ]; then
 selected=$(whiptail --title "Metar Info" --checklist \
-    "choose which Airports:" 30 78  \
+    "choose which Airports:" 10 78  \
         1 "EGLL" \
         2 "EGKK" \
         3 "EGCC" \
