@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define options for the checklist
-airports=(EGLL,EGKK,EGCC,EGBB,EGSS,EGPF,EGPH,EGPD,EGPK,EGHH,EGHI,EGNT,EGNX,EGGW,EGGD,EGCN,EGNM,EGNS,EGAA,EGBD)
+airports=("EGLL" "EGKK" "EGCC" "EGBB" "EGSS" "EGPF" "EGPH" "EGPD" "EGPK" "EGHH" "EGHI" "EGNT" "EGNX" "EGGW" "EGGD" "EGCN" "EGNM" "EGNS" "EGAA" "EGBD")
   
 
 # Calculate the height and width of the checklist window
