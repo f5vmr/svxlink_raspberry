@@ -25,6 +25,8 @@ selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 27
         "EGNS" "Ronaldsway" OFF \
         "EGAA" "Belfast Aldergrove" OFF \
         "EGBD" "Belfast City" OFF 3>&1 1>&2 2>&3)
+        selected=$(echo "$selected" | sed 's/"//g')
+        selected=$(echo "$selected" | tr ' ' ',')
       echo $selected 
     else
     exit 1
