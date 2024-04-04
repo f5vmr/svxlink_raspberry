@@ -1,34 +1,34 @@
 #!/bin/bash
-
 ##### Metar Info #####
+ airports=("EGLL" "EGKK" "EGCC" "EGBB" "EGSS" "EGPF" "EGPH" "EGPD" "EGPK" "EGHH" "EGHI" "EGNT" "EGNX" "EGGW" "EGGD" "EGCN" "EGNM" "EGNS" "EGAA" "EGBD")
+ 
+whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60
+    if [ $? -eq 0 ]; then
+selected=$(whiptail --title "Metar Info" --checklist \
+    "choose which Airports:" 30 78  \
+        1 "EGLL" \
+        2 "EGKK" \
+        3 "EGCC" \
+        4 "EGBB" \
+        5 "EGSS" \
+        6 "EGPF" \
+        7 "EGPH" \
+        8 "EGPD" \
+        9 "EGPK" \
+        10 "EGHH" \
+        11 "EGHI" \
+        12 "EGNT" \
+        13 "EGNX" \
+        14 "EGGW" \
+        15 "EGGD" \
+        16 "EGCN" \
+        17 "EGNM" \
+        18 "EGNS" \
+        19 "EGAA" \
+        20 "EGBD"  3>&1 1>&2 2>&3)
 
-# Define options for the checklist
-airports=("EGLL" "EGKK" "EGCC" "EGBB" "EGSS" "EGPF" "EGPH" "EGPD" "EGPK" "EGHH" "EGHI" "EGNT" "EGNX" "EGGW" "EGGD" "EGCN" "EGNM" "EGNS" "EGAA" "EGBD")
+    
 
-# Calculate the height and width of the checklist window
-height=$(( ${#airports[@]} + 2)) # Add 2 to account for title and button row
-width=80
-
-# Ask the user if they wish to configure the module
-if whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60; then
-    # Construct the options list for whiptail with manual multicolumn formatting
-    options=()
-    for airport in "${airports[@]}"; do
-        options+=("$airport" "$airport")
-    done
-
-    # Show the checklist with custom formatting
-    selected=$(whiptail --title "Metar Info" --separate-output --checklist \
-        "Choose which Airports:" $height $width $((height - 5)) \
-        "${options[@]}" 3>&1 1>&2 2>&3)
-
-    # Display selected options
-    echo "Airports selected:"
-    for choice in $selected; do
-        echo "- $choice"
-    done
 else
     exit 1
-fi
-
-
+    fi
