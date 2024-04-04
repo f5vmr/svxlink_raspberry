@@ -4,7 +4,7 @@
  
 whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60
     if [ $? -eq 0 ]; then
-selected()=$(whiptail --title "Metar Info" --checklist "choose which Airports:" $airports 10 78  \
+selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" $airports 10 78  \
         "EGLL" "London Heathrow" OFF \
         "EGKK" "London Gatwick" OFF \
         "EGCC" "Manchester" OFF \
@@ -25,7 +25,7 @@ selected()=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 
         "EGNS" "Ronaldsway" OFF \
         "EGAA" "Belfast Aldergrove" OFF \
         "EGBD" "Belfast City" OFF 3>&1 1>&2 2>&3)
-      
+      echo $selected 
     else
     exit 1
     fi
