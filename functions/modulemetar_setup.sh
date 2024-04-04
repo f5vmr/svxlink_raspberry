@@ -6,7 +6,7 @@ airports=(EGLL,EGKK,EGCC,EGBB,EGSS,EGPF,EGPH,EGPD,EGPK,EGHH,EGHI,EGNT,EGNX,EGGW,
 
 whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60
     if [ $? -eq 0 ]; then
-    whiptail --title "Metar Info" --checklist $airports 20 60 \
+    whiptail --title "Metar Info" --checklist $airports 20 78 \
     "EGLL" "EGLL" OFF \
     "EGKK" "EGKK" OFF \
     "EGCC" "EGCC" OFF \
