@@ -11,7 +11,7 @@ line=$(echo "$output" | grep "USB Audio")
 
 # Extract the card number from the line
 card_number=$(echo "$line" | awk '{print $2}' | tr -d ':')
-whiptail --title "Sound Card" --msgbox "The USB soundcard is located at card $(card_number{card_number#"card "})." 8 78
+whiptail --title "Sound Card" --msgbox "The USB soundcard is located at card $(card_number${card_number#"card "})." 8 78
 
 
 
