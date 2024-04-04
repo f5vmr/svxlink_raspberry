@@ -110,12 +110,25 @@ sleep 3
 #	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
 clear
+	echo -e "$(date)" "${YELLOW} #### Checking IP Addresses #### ${NORMAL}" | tee -a  /var/log/install.log
+	sleep 3
+	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
+	ipaddress
+clear
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
-source "${BASH_SOURCE%/*}/functions/dash_install.sh"
+	source "${BASH_SOURCE%/*}/functions/dash_install.sh"
 dashboard
 clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
+	whiptail --tile "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
+
+sleep 3
+	clear
+	echo -e "$(date)" "${GREEN} #### Setting up Node #### ${NORMAL}" | tee -a  /var/log/install.log
+source "${BASH_SOURCE%/*}/functions/node_setup.sh"
+nodesetup
+
 #	if [ $card=true ] ;
 #	then
 #	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
