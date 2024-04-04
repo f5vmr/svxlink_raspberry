@@ -59,11 +59,6 @@ sed -i 's/AUDIO_DEV=alsa:plughw:0/AUDIO_DEV=alsa:plughw:$card_number/g' /etc/svx
         # 2. HID on Transmit and GPIOD on Receive determined by $HID=true $GPIOD=true $card=true
         # 3. HID on Transmit and Receive determined by $HID=true $GPIOD=false $card=true
 
-
-
-
-
-
 if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
 then
         ptt_direction=$(whiptail --title "PTT" --radiolist "Please select PTT direction" 8 78 3 \
