@@ -10,12 +10,11 @@ height=$(( ${#airports[@]} + 1)) # Add 1 to ensure height is at least 1
 width=78
 
 # Ask the user if they wish to configure the module
-whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60
-if [ $? -eq 0 ]; then
+if whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 10 60; then
     # Construct the options list for whiptail
     options=()
     for airport in "${airports[@]}"; do
-        options+=("$airport" "")
+        options+=("$airport" "$airport" OFF)
     done
 
     # Show the checklist with custom formatting
@@ -31,3 +30,4 @@ if [ $? -eq 0 ]; then
 else
     exit 1
 fi
+
