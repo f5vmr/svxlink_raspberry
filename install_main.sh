@@ -6,8 +6,6 @@ source "${BASH_SOURCE%/*}/functions/language.sh"
 #which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
 
-#### LOGGING ####
-
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
@@ -139,7 +137,11 @@ source "${BASH_SOURCE%/*}/functions/echolink_setup.sh"
 echolink_setup
 	sleep 3
 	clear
-
+	echo -e "$(date)" "${RED} #### Changing ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
+	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
+	propagationmonitor
+	sleep 3
+	clear
 	echo -e "$(date)" "${RED} #### Setting up svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	sudo systemctl enable svxlink_gpio_setup
@@ -153,9 +155,9 @@ sleep 3
 
 echo -e "$(date)" "${GREEN} #### Installation complete #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
-echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
-source "${BASH_SOURCE%/*}/functions/configure.sh"
-config
+#echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
+#source "${BASH_SOURCE%/*}/functions/configure.sh"
+#config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3

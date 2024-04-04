@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 function make_groups {
    echo -e "$(date)" "${YELLOW} Creating Groups and Users ${NORMAL}" | tee -a  /var/log/install.log
 #	sudo mkdir /etc/svxlink
