@@ -37,12 +37,14 @@ source "${BASH_SOURCE%/*}/functions/groups.sh"
 echo -e "$(date)" "${YELLOW} #### Downloading SVXLink source code #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
 #svxlink_source	
-
-#	NEWVERSION= `sudo grep "SVXLINK=" $VERSIONS | awk -F= '{print $2}'
+#### INSTALLATION ####
+clear
+#	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
 	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
-#### INSTALLATION ####	
+	
 #### COMPILING ####
+clear
 	echo -e "$(date)" "${YELLOW} #### Compiling #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	cd svxlink/src/build
@@ -56,6 +58,7 @@ sleep 3
 #	sudo cp *.tcl ./local
 #	sudo ldconfig
 ##### CONFIGURATION VOICES ####
+clear
 	echo -e "$(date)" "${GREEN} #### Installing Voice Files #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	cd /usr/share/svxlink/sounds
@@ -66,6 +69,7 @@ sleep 3
 #   sudo chmod 777 -R *
 #
 ##### BACKUP CONFIGURATION ####
+clear
 	echo -e "$(date)" "${GREEN} #### Backing up configuration to : $CONF.bak #### ${NORMAL}"| tee -a  /var/log/install.log
 sleep 3
 #	sudo cp -p $CONF $CONF.bak
@@ -79,7 +83,7 @@ sleep 3
 #	sudo cp -f svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
 #	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
 #	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
-
+clear
 	echo -e "$(date)" "${GREEN} #### Setting Callsign to $CALL #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	sudo sed -i "s/MYCALL/$CALL/g" $CONF
@@ -87,22 +91,31 @@ sleep 3
 
 #	echo -e "$(date)" "${GREEN} #### Setting Squelch Hangtime to 10 mS ${NORMAL}" | tee -a  /var/log/install.log
 #	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
-#	
+#
+clear	
 	echo -e "$(date)" "${YELLOW} #### Disabling audio distortion warning messages #### ${NORMAL}"| tee -a  /var/log/install.log
+
 sleep 3
 #	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 #
+clear
 	echo -e "$(date)" "${GREEN} #### Updating SplashScreen on startup #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
 #	sudo chmod 0755 /etc/update-motd.d/10-uname
 #
+clear
 	echo -e "$(date)" "${YELLOW} #### Changing Log file suffix ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
+clear
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
+source "${BASH_SOURCE%/*}/functions/dash_install.sh"
+dashboard
+clear
+	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
 #	if [ $card=true ] ;
 #	then
 #	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
