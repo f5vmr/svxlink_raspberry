@@ -81,7 +81,7 @@ sleep 3
 #	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
 #	sudo cp -f svxlink_raspberry/configs/gpio.conf /etc/svxlink/
 #	sudo cp -f svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
-#	sudo cp -f svxlink_raspberry/resetlog.sh scripts/resetlog.sh
+#	sudo cp -f svxlink_raspberry/resetlog.sh /home/pi/scripts/resetlog.sh
 #	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 clear
 	echo -e "$(date)" "${GREEN} #### Setting Callsign to $CALL #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -129,18 +129,8 @@ sleep 3
 source "${BASH_SOURCE%/*}/functions/node_setup.sh"
 nodesetup
 
-#	if [ $card=true ] ;
-#	then
-#	sudo sed -i "s/PTT_TYPE=GPIO/PTT_TYPE=Hidraw/g" $CONF
-#	sudo sed -i "s/PTT_PORT=GPIO/PTT_PORT=\/dev\/hidraw0/g" $CONF
-#	sudo sed -i "s/PTT_PIN=gpio24/HID_PTT_PIN=GPIO3/g" $CONF
-#	fi
-#	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-#	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.conf	
-#	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-#	sudo sed -i "s/\#MUTE/MUTE/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
-#	sudo sed -i "s/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf	
  	echo -e "$(date)" "${RED} #### Changing ModuleMetar Link #### ${NORMAL}" | tee -a  /var/log/install.log
+
 sleep 3
 #  	sudo sed -i "s%#LINK=data/observations/metar/stations%LINK=/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&hoursBeforeNow=3&stationString=%g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
 	echo -e "$(date)" "${RED} #### Setting up svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
