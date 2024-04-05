@@ -5,7 +5,7 @@ airports=("EGLL" "EGKK" "EGCC" "EGBB" "EGSS" "EGPF" "EGPH" "EGPD" "EGPK" "EGHH" 
   
 
 ## Calculate the height and width of the checklist window
-height=$(( ${#airports[@]} / 2 )) # Divide by 2 to account for descriptions
+height=$(( ${#airports[@]} / 2 )) ## Divide by 2 to account for descriptions
 width=60
 
 ## Show the checklist with custom formatting
