@@ -15,9 +15,9 @@ if [ $? -eq 0 ]; then
     sed -i "s/MyName/$echosysop/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/Fq,/$echofreq/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/MyTown/$echolocation/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/#DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.conf
+    sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     else
     ##nothing to do
     fi
