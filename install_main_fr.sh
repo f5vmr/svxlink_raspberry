@@ -112,11 +112,11 @@ sleep 3
 dashboard
 clear
 	echo -e "$(date)" "${GREEN} #### Tableau installé #### ${NORMAL}" | tee -a  /var/log/install.log
-	whiptail --tile "IP Addresses" --msgbox "Tableau de Bord installé. Please note your IP address is $eth_ip or $wan_ip" 8 78
+	whiptail --tile "IP Addresses" --msgbox "Tableau de Bord installé. Noter bien l'adresse IP $eth_ip ou $wan_ip" 8 78
 
 sleep 3
 	clear
-	echo -e "$(date)" "${GREEN} #### Defninir du Noed #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${GREEN} #### Définir du Noed #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/node_setup.sh"
 nodesetup
 echo -e "$(date)" "${RED} #### Changement du ModuleMetar #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -126,17 +126,17 @@ modulemetar
 	clear
 	sleep 3
 	clear
-	echo -e "$(date)" "${RED} #### Changing ModuleEchoLink Link #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${RED} #### Changement du ModuleEchoLink #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/echolink_setup.sh"
 echolink_setup
 	sleep 3
 	clear
-	echo -e "$(date)" "${RED} #### Changing ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${RED} #### Changement du ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
 	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
 	propagationmonitor
 	sleep 3
 	clear
-	echo -e "$(date)" "${RED} #### Setting up svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${RED} #### Définir du svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 #	sudo systemctl enable svxlink_gpio_setup
 	sleep 3
@@ -147,7 +147,7 @@ sleep 3
 #	sudo systemctl start svxlink.service
 
 
-echo -e "$(date)" "${GREEN} #### Installation complete #### ${NORMAL}" | tee -a  /var/log/install.log
+echo -e "$(date)" "${GREEN} #### Installation complète #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
 #echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 #source "${BASH_SOURCE%/*}/functions/configure.sh"
