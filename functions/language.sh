@@ -19,7 +19,7 @@ function which_language() {
             sudo update-locale LANG=fr_FR.UTF-8
             echo "Langue maintenant fr_FR" | tee -a   /var/log/install.log
     else
-        # Default action if no valid option is selected
+        ## Default action if no valid option is selected
         echo "No valid option selected."
     fi
 

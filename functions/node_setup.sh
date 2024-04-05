@@ -13,7 +13,7 @@ function nodeset {
     node="unset"
 fi
 whiptail --title "Node" --msgbox "You have select node-type $node" 8 78 --defaultyes
-# Time to change the node
+## Time to change the node
 if [ $NODE_OPTION  == "1" ]; then
 sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=SimplexLogic/g' /etc/svxlink/svxlink.conf
 sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
@@ -32,13 +32,13 @@ sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxli
 else
 node="unset"
 fi
-#That's the Logics taken care of now we need to change the sound card settings 
+##That's the Logics taken care of now we need to change the sound card settings 
 output=$(aplay -l)
 
-# Use grep to find the line containing the desired sound card
+## Use grep to find the line containing the desired sound card
 line=$(echo "$output" | grep "USB Audio")
 
-# Extract the card number from the line
+## Extract the card number from the line
 card_number=$(echo "$line" | awk '{print $2}' | tr -d ':')
 whiptail --title "Sound Card" --msgbox "The USB soundcard is located at card $card_number." 8 78
 

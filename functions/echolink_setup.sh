@@ -2,7 +2,7 @@
 ## Set up echolink
 whiptail --title "Setup EchoLink?" --yesno "This will install EchoLink and configure it" 8 87 
 if [ $? -eq 0 ]; then
-    # "Installing echolink"
+    ## "Installing echolink"
     sed -i 's/#MUTE_LOGIC/MUTE_LOGIC/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
         echocall=$(whiptail --title "Callsign A2ABC-L or -R?" --inputbox "Enter your callsign (-L or -R) as registered" 8 20 3>&1 1>&2 2>&3)
         echopass=$(whiptail --title "Password?" --passwordbox "Enter your password" 8 20 3>&1 1>&2 2>&3)
@@ -19,5 +19,5 @@ if [ $? -eq 0 ]; then
     sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
 
     else
-    #nothing to do
+    ##nothing to do
     fi
