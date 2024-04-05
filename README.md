@@ -26,7 +26,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 <p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user <b>pi</b> and your password.</p> 
 <h2>The compilation</h2>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
-<p><The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
+<p>The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
 
 <p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
@@ -38,7 +38,7 @@ A copy of the design can be found on g4nab.co.uk. There is also a page showing t
 
 <p>Everything else will have been constructed for you</p>
 
-<p>The script will compile the running configuration as you proceed. It can only be run once, due to the nature of the program. Allow yourself an uninterupted period of 1 hour, to answer the questions put to you, and the accompanying install. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. However the Raspberry Pi Zero will present a challenge due to the lack of an external USB socket. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
+<p>The script will compile the running configuration as you proceed. It can only be run once, due to the nature of the program. Allow yourself an uninterupted period of 1 hour, to answer the questions put to you, and the accompanying install. <b>Remember to note down any "usernames and passwords" that you provide</b>. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. However the Raspberry Pi Zero will present a challenge due to the lack of an external USB socket. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
 
 <p>During the compilation, you will be notified of the Active IP Address of your node. Make a note of it. You will need it to proceed.</p>
 
