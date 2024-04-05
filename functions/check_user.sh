@@ -1,11 +1,11 @@
 #!/bin/bash
-# Function to check the user
+## Function to check the user
 
 function usercheck {
-    # Get the current user
+    ## Get the current user
     current_user=$(logname) | tee -a   /var/log/install.log
     
-    # Check if the current user is 'pi'
+    ## Check if the current user is 'pi'
    if [ "$logname" != "pi" ]; then 
    echo "Please the reform the SDcard as user pi" ; exit; 
 

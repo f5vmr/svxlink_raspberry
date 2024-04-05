@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function check_os {
-    # Retrieve the OS codename
+    ## Retrieve the OS codename
     OS_name=$(lsb_release -c | grep -oP '(?<=Codename:\s)\w+')
 
-    # Check if the OS is Bookworm
+    ## Check if the OS is Bookworm
     if [ "$OS_name" != 'bookworm' ]; then
         whiptail --scrolltext --title "SVXLink" --msgbox "This script is only for the Bookworm Linux distribution. Shutdown and Change to OS Bookworm, with user pi." 8 78
-        exit 1  # Exit the script if the OS is not Bookworm
+        exit 1  ## Exit the script if the OS is not Bookworm
     fi
 }
 
