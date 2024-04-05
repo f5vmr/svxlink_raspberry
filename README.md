@@ -1,50 +1,57 @@
-# svxlink_raspberry
-<h2>Script build for Raspberry Pi - Repeater or Hotspot. Pour l'instruction en Français, voir en bas.</h2>
+# svxlink install 
+<h2>Menu build for Raspberry Pi - Repeater or Hotspot. Pour l'instruction en Français, voir en bas.</h2>
 
-<b>First Steps</b>
-<p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card (or a modified USB Soundcard and no interface). One or two transceivers (3 or 4 if you are making a double repeater, for which you will probably need a second USB soundcard.)</p>
+<b>Your First Steps</b>
+<p>Requirements: Raspberry Pi of any mark. USB Soundcard, and an interface card (or a modified USB Soundcard and no interface). One or two transceivers</p>
+<p>If your are suitably experienced, you will be able to modify the installation once it is complete. But this system will provide you with a working system, and you can then modify it to your own needs.</p>
 
-<p>There are few raspberry images that work succesfully for this type of build, where there is a potential for using the eventual application in several directions.</p>
+<p>There are very few raspberry images that work succesfully for this type of build, where there is a potential for using the eventual application in several directions.</p>
 
-<p>Whilst this in itself is not an image, it will take the hard work out of the physical compilation, although it leaves a little work for the user to place the finishing touches to the final assembly.</p>
+<p>Whilst this in itself is not an image, it will take the hard work out of the physical compilation, although it may leave you a little work to do, if you need to change your immediate specification.</p>
 
-Always use Raspberry OS Bookworm Lite (Debian 12) 32 Bit then you won't go wrong.</p>
+<h2><p>Always use Raspberry OS Bookworm Lite (Debian 12) 32 Bit then you won't go wrong.</p></h2>
 
-<p>There are a number of available interface boards that have a variety of uses, either as a hotspot or a repeater, or even a fill-in receiver/transceiver for an existing SVXLink repeater. The settings in this build are for a homebrew interface board using GPIO 23 for the Receive COS and GPIO 24 for the PTT controller, or alternative a modified CM-108 that can use udev and drive the PTT from the modification components.</p>
+<p>There are a number of available interface boards that have a variety of uses, either as a hotspot or a repeater, or even a fill-in receiver/transceiver for an existing SVXLink repeater. The settings in this build are for a homebrew interface board using GPIOD 23/18/8 for the Receive COS and GPIOD 24/17/7 for the PTT controller, or alternative a fully modified CM-108 that can use 'udev' and drive the PTT and COS from the modification components. There is an also intermediate version for the CM-108 where only the transmit modification has been done that will you use 'udev' for the transmit, and give you options for the receive GPIOD 23/18/8.</p>
 
-<p>When using the GPIO Pins, an earth pin is also require, so using this combination, pins 14,16 and 18 are all adjacent and ideally placed for these functions.</p>
-<p>Pin 14 is the Earth, Pin 16 is GPIO 23 and Pin 18 is GPIO 24.</p>
+<p>When using the GPIO and GPIOD Pins, an earth pin is also require, so using this combination, pins 14,16 and 18 are all adjacent and ideally placed for these functions. Pin 14 is the Earth, Pin 16 is GPIO 23 and Pin 18 is GPIO 24.</p>
 
 <p>For a second set of transceivers, you can consider GPIO 17 and 18 as COS & PTT for those.</p> 
 
 A copy of the design can be found on g4nab.co.uk. There is also a page showing the modification instructions for a CM-108 USB Sound Card.
 
-<h3>The programming of the SDCard</h3>
+<h2>The programming of the SDCard</h2>
 
-<p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the Raspberry Pi Image builder from the same source. <b> You MUST make the user 'pi' - please do not deviate from my advice above, as you will get issues. </b> You can however use your own password. There are versions of Raspberry Pi Imager for all operating systems. It allows for full WiFi usage. <b>Always check the SSH box on the second tab.</b> </p> 
+<p>As discussed start with a download of <b>Raspberry OS Bookworm Lite</b> from RaspberryPi.org. Then use a 8 or 16 GB MicroSD Card and transfer the image to the card using the <b>Raspberry Pi Image builder</b> from the same source. <b> You MUST make the user 'pi' - please do not deviate from my advice above, as you will get issues. </b> You can however use your own password. There are versions of Raspberry Pi Imager for all operating systems. It allows for full WiFi usage. <b>Always check the SSH box on the second tab.</b> </p> 
 
-<p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user pi and your password.</p> 
-<h3>The compilation</h3>
+<p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user <b>pi</b> and your password.</p> 
+<h2>The compilation</h2>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
 <p><The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
 
-<p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_raspberry.git</b> .</p>
+<p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
-<p>Once this is installed type the following command: <b>sudo chmod +x svxlink_raspberry/*.sh</b></p>
+<p>Once this is installed type the following command: <b>./svxlink_install/install.sh</b></p>
 
-<p>The next commands refer to Raspberry OS Bookworm 32 bit lite (Debian 12). If you wish to use Raspberry OS Buster (Debian 10) such as for the F8ASB Hotspot then you need to edit the svxlink_raspberry/install.sh script by changing php8.2 to php7.3 in the list of software the script will download. Failure to do this will crash the script. </p>
+<p>The following menus will guide you through the installation, all the way to run-time. You will need to know before you begin, the status of your transceiver, whether the PTT and COS are Active High or Active Low, the status and type of your USB soundcard, modified or unmodified. With a fully modified usb soundcard, there is no reason that would prevent this installation on another Linux based computer running Debian 12. It has to be Debian 12, or some of the features will fail.</p>
 
-<p>Now type <b>sudo ./svxlink_raspberry/install.sh</b> and return.</p>
+<p>You will need to have decided the callsign of your node ahead of the installation. Do not use additional symbols or numbers at this stage. The callsign should be of standard notation. If you have decided to install EchoLink, then have ready your registration information. If you wish to use ModuleMetarInfo, the Airport Weather application, then read about the ICAO codes, and discoverd the major airports around you. It will not work for airports that do not provide a weather service in real time. If you wish to explore the ModulePropagationMonitor, then this can be installed later. </p>
 
-<p>The script will now update the software. You will be required to add the callsign of the node prior to the compilation of the software so watch for the prompt.</p>
+<p>Everything else will have been constructed for you</p>
 
-<p>At the end of the script the running configuration will be compiled with the given callsign. Then the fun begins. Go and have a coffee or even lunch as the compilation will take about an hour possibly longer. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
+<p>The script will compile the running configuration as you proceed. It can only be run once, due to the nature of the program. Allow yourself an uninterupted period of 1 hour, to answer the questions put to you, and the accompanying install. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. However the Raspberry Pi Zero will present a challenge due to the lack of an external USB socket. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
 
-<p>At the end of the compilation type <b>sudo reboot</b> to restart the unit, if it hasn't been automatically. It should do so. If all is well the unit wil be only partly functional. </p>
+<p>During the compilation, you will be notified of the Active IP Address of your node. Make a note of it. You will need it to proceed.</p>
+
+<p>At the end of the compilation, the system will automatically reboot, about which you will be notified.</p>
+
+<p>The next step will be to open an internet browser such as 'Chrome' and type in the IP Address and enter. The dashboard will be displayed.If your USB soundcard is flashing then the node should be fully operational.</p>
+
+<h2> Troubleshooting </h2>
 
 <p>You will need to understand the svxlink.conf file and how to make adjustments for Simplex or Repeater operation. In any case you may need to refer to the svxlink.org main page, or svxlink amateur radio users page on facebook, or contact me. For further information also consult the svxlink pages on g4nab.co.uk. In the terminal type man svxlink.conf and the on-board documentation will be displayed.</p>
 
 <p>To stop svxlink running type in the terminal <b>sudo systemctl stop svxlink.service</b> and to restart it type <b>sudo systemctl restart svxlink.service</b></p>
+
 <p>The next stage will be to modify the three files <b>node_info.json</b>, <b>svxlink.conf</b>, and <b>ModuleEchoLink.conf</b>.</p>
 <p>To obtain information for the node_info.json go to a PC Browser and enter <b>http://svxportal-uk.ddns.net:81</b> where you will find a dashboard.</p>
 <p>Click <b>Register</b> at the top, completing the information. This information is held only to enable you to complete the next stage. Log in with the information you have just supplied, click on <b>My Stations</b>, and click on <b font=color blue>Generate node_info.json</f></b>. Once complete, save the resulting file in your computer.</p>
