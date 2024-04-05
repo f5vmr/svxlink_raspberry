@@ -2,6 +2,8 @@
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome_fr.sh"
 welcome
+source "${BASH_SOURCE%/*}/functions/configure_fr.sh"
+configure_fr
 #### NODE Selection ####
 source "${BASH_SOURCE%/*}/functions/node_type_fr.sh"
 nodeoption

@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 #### Kill OnBoard Soundcards ####
 source "${BASH_SOURCE%/*}/functions/kill_onboard.sh"
 kill_sound_cards
@@ -8,10 +10,11 @@ clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
 #which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
-
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
+source "${BASH_SOURCE%/*}/functions/configure.sh"
+configure
 #### NODE Selection ####
 source "${BASH_SOURCE%/*}/functions/node_type.sh"
 nodeoption
