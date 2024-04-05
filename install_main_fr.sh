@@ -5,12 +5,12 @@ welcome
 #### NODE Selection ####
 source "${BASH_SOURCE%/*}/functions/node_type_fr.sh"
 nodeoption
-echo -e "$(date)" "${YELLOW} #### Node Type: $NODEOPTION #### ${NORMAL}" | tee -a  /var/log/install.log
+echo -e "$(date)" "${YELLOW} #### Type du Noed: $NODEOPTION #### ${NORMAL}" | tee -a  /var/log/install.log
 ##### USB SOUND CARD ####
 source "${BASH_SOURCE%/*}/functions/sound_card_fr.sh"
 soundcard
-echo -e "$(date)" "${YELLOW} #### Sound Card: $HID $GPIOD $card #### ${NORMAL}" | tee -a  /var/log/install.log	
-echo -e "$(date)" "${YELLOW} #### Checking Alsa #### ${NORMAL}" | tee -a  /var/log/install.log
+echo -e "$(date)" "${YELLOW} #### Carte de son : $HID $GPIOD $card #### ${NORMAL}" | tee -a  /var/log/install.log	
+echo -e "$(date)" "${YELLOW} #### Verification d'Alsa #### ${NORMAL}" | tee -a  /var/log/install.log
 #### UPDATE ####
 source "${BASH_SOURCE%/*}/functions/update_fr.sh"
 update
@@ -21,13 +21,13 @@ callsign
 clear
 echo -e "$(date)" "${YELLOW} #### Creation des Groupes and Users #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
-#make_groups
+# make_groups
 
 #### DOWNLOADING SOURCE CODE ####
 
 echo -e "$(date)" "${YELLOW} #### Téléchargement du code source du SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
-#svxlink_source	
+# svxlink_source	
 #### INSTALLATION ####
 clear
 #	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
@@ -149,16 +149,16 @@ sleep 3
 
 echo -e "$(date)" "${GREEN} #### Installation complète #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
-#echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
-#source "${BASH_SOURCE%/*}/functions/configure.sh"
-#config
+# echo -e "$(date)" "${GREEN} #### Configuration SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
+# source "${BASH_SOURCE%/*}/functions/configure.sh"
+# config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 exit
 
 
-#sudo reboot
+# sudo reboot
 
 
 	
