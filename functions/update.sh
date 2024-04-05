@@ -6,7 +6,7 @@ OP=/etc/svxlink
 
 whiptail --title "Updates" --msgbox "Updates including nodejs For future expansion." 8 78
 
-	echo -e "$(date)" " "${YELLOW}  #### updates and upgrades #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${YELLOW}  #### updates and upgrades #### ${NORMAL}" | tee -a  /var/log/install.log
 #	sudo apt-get update
 #	sudo apt-get install -y ca-certificates curl gnupg
 #	sudo mkdir -p /etc/apt/keyrings

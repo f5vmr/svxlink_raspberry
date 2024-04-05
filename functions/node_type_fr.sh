@@ -14,7 +14,7 @@ function nodeoption {
     elif [ "$NODE_OPTION" -eq 3 ]; then
         echo "Choisi Noed Répéteur sans SvxReflecteur"
     elif [ "$NODE_OPTION" -eq 4 ]; then
-        echo "Coisi Noed Répéteur avec SvxReflecteur"
+        echo "Choisi Noed Répéteur avec SvxReflecteur"
     else 
         echo "N'aucune option choisie"
 fi
