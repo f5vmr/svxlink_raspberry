@@ -7,4 +7,5 @@ function kill_sound_cards {
  sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
  echo snd-aloop > /etc/modules
  sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
+ sudo /sbin/alsa force-reload
  }
