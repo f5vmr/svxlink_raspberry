@@ -1,10 +1,5 @@
 #!/bin/bash
 
-
-#### Kill OnBoard Soundcards ####
-source "${BASH_SOURCE%/*}/functions/kill_onboard.sh"
-kill_sound_cards
-echo -e "$(date)" "${YELLOW} #### On Board Sound Cards Killed #### ${NORMAL}" | tee -a  /var/log/install.log
 #### LANGUAGE ####
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"

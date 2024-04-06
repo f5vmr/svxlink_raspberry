@@ -1,6 +1,7 @@
 #### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
-#### INITIALISE ####	 	
+#### INITIALISE ####
+cd svxlink_install	 	
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise

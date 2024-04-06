@@ -9,8 +9,6 @@ SVXLINK_VER="24.02"
 SOUNDS_DIR=/usr/share/svxlink/sounds/
 username=$USER
 logname=$(whoami)
-sudo touch /var/log/install.log
-sudo chmod 777 /var/log/install.log
-sudo setfacl -R -m u:$username:rwx /var/log/install.log
+
 echo "Commencing initialisation" 
 }
