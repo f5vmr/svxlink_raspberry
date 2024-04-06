@@ -10,16 +10,19 @@ TOTAL=${#PACKAGES[@]}
 PROGRESS=0
 
 ## Function to update progress
-update_progress() {
-    PROGRESS=$((PROGRESS + 1))
-    echo "$(($PROGRESS * 100 / $TOTAL))"
-}
+#!/bin/bash
 
-## Loop through packages and install them
-for package in "${PACKAGES[@]}"; do
-    sudo apt install -y "$package" > /dev/null 2>&1
-    update_progress | whiptail --backtitle "Installing" --title "Installation Progress" --gauge "Installing $package" 6 60 0
-done
+# Unload sound modules
+sudo modprobe -r snd_bcm2835
+sudo modprobe -r snd_usb_audio
+sudo modprobe -r vc4
+sudo modprobe -r snd-aloop
 
-## All packages installed
-whiptail --backtitle "Installing" --title "Installation Progress" --msgbox "All packages installed successfully!" 6 60
+# Load sound modules in desired order
+sudo modprobe snd_usb_audio
+sudo modprobe snd_aloop
+sudo modprobe snd_bcm2835
+sudo modprobe vc4
+
+# Reload ALSA configuration
+sudo alsactl restore
