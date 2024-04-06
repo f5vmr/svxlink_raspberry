@@ -15,7 +15,7 @@ PROGRESS=0
 # Unload sound modules
 sudo modprobe -r snd_bcm2835
 sudo modprobe -r snd_usb_audio
-sudo modprobe -r vc4
+sudo modprobe -r -f vc4
 sudo modprobe -r snd-aloop
 
 # Load sound modules in desired order
