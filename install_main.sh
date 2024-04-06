@@ -1,5 +1,6 @@
 #!/bin/bash
-
+source "${BASH_SOURCE%/*}/functions/kill_soundcards.sh"
+kill_soundcards
 #### LANGUAGE ####
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"

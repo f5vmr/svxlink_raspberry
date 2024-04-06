@@ -12,6 +12,6 @@
     sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
     echo snd-aloop > /etc/modules
     sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
-    sudo /sbin/alsa force-reload
+    sudo /sbin/alsactl force-reload
     echo -e "$(date)" "${YELLOW} #### Reboot - login and run ./install.sh #### ${NORMAL}" | tee -a  /var/log/install.log
     sudo shutdown -r now
