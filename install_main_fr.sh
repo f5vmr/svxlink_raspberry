@@ -23,13 +23,13 @@ callsign
 clear
 echo -e "$(date)" "${YELLOW} #### Creation des Groupes and Users #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
- # make_groups
+ make_groups
 
 #### DOWNLOADING SOURCE CODE ####
 
 echo -e "$(date)" "${YELLOW} #### Téléchargement du code source du SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
- # svxlink_source	
+ svxlink_source	
 #### INSTALLATION ####
 clear
  #	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
@@ -58,8 +58,8 @@ sleep 3
  #	sudo wget https://g4nab.co.uk/wp-content/uploads/2023/08/fr_FR.tar_.gz
  #	sudo tar -zxvf fr_FR.tar_.gz
  #	sudo rm fr_FR.tar_.gz
- #  	cd /etc/svxlink
- #   sudo chmod 777 -R *
+  	cd /etc/svxlink
+   sudo chmod 777 -R *
 ##### BACKUP CONFIGURATION ####
 clear
 	echo -e "$(date)" "${GREEN} #### Sauvegarder la configuration à : $CONF.bak #### ${NORMAL}"| tee -a  /var/log/install.log
@@ -69,7 +69,7 @@ sleep 3
  #	cd
  #	echo -e "$(date)" "${RED} #### Téléchargement de Dossiers de configuration du scripts #### ${NORMAL}" | tee -a  /var/log/install.log
  #	sudo mkdir /home/pi/scripts
- # 	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
+ 	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
  #	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  #	sudo cp -f svxlink_raspberry/configs/gpio.conf /etc/svxlink/
  #	sudo cp -f svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
@@ -148,16 +148,16 @@ sleep 3
 
 echo -e "$(date)" "${GREEN} #### Installation complète #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
- # echo -e "$(date)" "${GREEN} #### Configuration SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
- # source "${BASH_SOURCE%/*}/functions/configure.sh"
- # config
+ echo -e "$(date)" "${GREEN} #### Configuration SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
+ source "${BASH_SOURCE%/*}/functions/configure.sh"
+ config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 exit
 
 
- # sudo reboot
+ sudo reboot
 
 
 	
