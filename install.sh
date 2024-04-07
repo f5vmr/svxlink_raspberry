@@ -1,7 +1,8 @@
 #### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
 #### INITIALISE ####
-cd svxlink_raspberry	 	
+home=/home/pi/svxlink_raspberry 	
+cd $home
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
