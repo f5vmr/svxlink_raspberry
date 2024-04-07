@@ -14,4 +14,4 @@ source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
 cd $home
 #### SuperUser Install ####
-sudo ./install_main.sh
+sudo ./svxlink_raspberry/install_main.sh
