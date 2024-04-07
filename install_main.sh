@@ -4,8 +4,8 @@ kill_soundcards
 #### LANGUAGE ####
 clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
-#which_language
-if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_copy_fr.sh;  fi
+ #* which_language
+if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_main_fr.sh;  fi
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
