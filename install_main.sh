@@ -1,5 +1,5 @@
 #!/bin/bash
-cd svxlink_raspberry
+
 source "${BASH_SOURCE%/*}/functions/kill_soundcards.sh"
 kill_soundcards
 #### LANGUAGE ####
