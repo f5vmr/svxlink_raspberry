@@ -7,7 +7,6 @@ function kill_soundcards {
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
     sudo setfacl -R -m u:$username:rwx /var/log/install.log
-    sudo cp svxlink_install/install.sh ../
     echo -e "$(date)" "${YELLOW} #### On Board Soundcards to be removed #### ${NORMAL}" | tee -a  /var/log/install.log
     sudo chmod 777 /etc/modules
     echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
