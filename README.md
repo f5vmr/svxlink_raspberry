@@ -22,15 +22,12 @@
 
 <p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
-<p>Once this is installed type the following command: <b>./svxlink_install/install.sh</b></p>
-
-<p>The menus displayed will guide you through the installation, all the way to run-time. You will need to know before you begin, the status of your transceiver, whether the PTT and COS are Active High or Active Low, the status and type of your USB soundcard, modified or unmodified. With a fully modified usb soundcard, there is no reason that would prevent this installation on another Linux based computer running Debian 12. It has to be Debian 12, or some of the features will fail.</p>
-
-<p>You will need to have decided the callsign of your node ahead of the installation. Do not use additional symbols or numbers at this stage. The callsign should be of standard notation. If you have decided to install EchoLink, then have ready your registration information. If you wish to use ModuleMetarInfo, the Airport Weather application, then read about the ICAO codes, and discoverd the major airports around you. It will not work for airports that do not provide a weather service in real time. If you wish to explore the ModulePropagationMonitor, then this can be installed later. </p>
-
+<p>The menus displayed will guide you through the installation, all the way to run-time. You will <b>need to know before you begin</b>, the status of your transceiver, whether the PTT and COS are Active High or Active Low, the status and type of your USB soundcard, modified, partly modified or unmodified. With a fully modified usb soundcard, there is no reason that would prevent this installation on another Linux based computer running Debian 12. It has to be Debian 12, or some of the features will fail. Decide also the callsign of your node. Do not use additional symbols or numbers at this stage. The callsign should be of standard notation. If you have decided to install EchoLink, then have ready your registration information. If you wish to use ModuleMetarInfo, the Airport Weather application, then read about the ICAO codes, and discoverd the major airports around you. It will not work for airports that do not provide a weather service in real time. If you wish to explore the ModulePropagationMonitor, then this can be installed later.</p>
 <p>Everything else will have been constructed for you</p>
-
+<h2>Beginning the install</h2>
 <p>The script will compile the running configuration as you proceed. It can only be run once, due to the nature of the program. Allow yourself an uninterupted period of 1 hour, to answer the questions put to you, and the accompanying install. <b>Remember to note down any "usernames and passwords" that you provide</b>. A Raspberry Pi 3 or 4 will take less time, and a Raspberry Pi zero possibly longer than 90 minutes. However the Raspberry Pi Zero will present a challenge due to the lack of an external USB socket. Hopefully there should be no reported error. I have just completed a build on a raspberry pi 3A from card format to working node in 50 minutes, with no errors.</p>
+
+<p>Type the following command at the current prompt: <b>./svxlink_install/install.sh</b></p>
 
 <p>During the compilation, you will be notified of the Active IP Address of your node. Make a note of it. You will need it to proceed.</p>
 
@@ -81,11 +78,12 @@
 <p>La première étape sera la commande suivante : <b>sudo apt install -y git</b> car sans cela, vous ne pouvez pas télécharger depuis GitHub.</p>
 <p>Maintenant, la commande suivante : <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
-<p>Une fois installé, tapez la commande suivante : <b>./svxlink_install/install.sh</b></p>
+
 <p>Les menus affichés vous guideront tout au long de l'installation, jusqu'à l'exécution. Vous aurez besoin de comprendre avant de commencer l'état de votre émetteur-récepteur, si le PTT et le COS sont Active High ou Active Low, l'état et le type de votre carte son USB, modifiée ou non. Avec une carte son USB entièrement modifiée, il n'y a aucune raison qui empêcherait cette installation sur un autre ordinateur Linux exécutant Debian 12. Il doit s'agir de Debian 12, sinon certaines fonctionnalités échoueront.</p>
 <p>Vous devrez avoir décidé de l'indicatif de votre nœud avant l'installation. N'utilisez pas de symboles ou de chiffres supplémentaires à ce stade. L'indicatif doit être de notation standard. Si vous avez décidé d'installer EchoLink, préparez vos informations d'enregistrement. Si vous souhaitez utiliser ModuleMetarInfo, l'application Météo Aéroportuaire, alors renseignez-vous sur les codes OACI et découvrez les principaux aéroports autour de vous. Cela ne fonctionnera pas pour les aéroports qui ne fournissent pas de service météo en temps réel. Si vous souhaitez explorer ModulePropagationMonitor, celui-ci pourra être installé ultérieurement. </p>
 <p>Tout le reste aura été construit pour vous</p>
 <p>Le script compilera la configuration en cours au fur et à mesure. Il ne peut être exécuté qu'une seule fois, en raison de la nature du programme. Accordez-vous une période ininterrompue d'1 heure, pour répondre aux questions qui vous sont posées, et à l'installation qui l'accompagne. <b>N'oubliez pas de noter tous les « noms d'utilisateur et mots de passe » que vous fournissez</b>. Un Raspberry Pi 3 ou 4 prendra moins de temps, et un Raspberry Pi zéro peut-être plus de 90 minutes. Cependant, le Raspberry Pi Zero présentera un défi en raison de l'absence de prise USB externe. Espérons qu'aucune erreur ne soit signalée. Je viens de terminer une construction sur un Raspberry Pi 3A du format carte au nœud de travail en 50 minutes, sans erreur.</p>
+<p>Une fois installé, tapez la commande suivante : <b>./svxlink_install/install.sh</b></p>
 <p>Lors de la compilation, vous serez informé de l'adresse IP active de votre nœud. Prenez-en note. Vous en aurez besoin pour continuer.</p>
 
 <p>À la fin de la compilation, le système redémarrera automatiquement, ce dont vous serez informé.</p>
