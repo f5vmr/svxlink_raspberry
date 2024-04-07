@@ -4,9 +4,7 @@ function kill_soundcards {
     sudo mkdir /etc/alsa
     sudo touch /etc/alsa/state-daemon.conf
     sudo systemctl restart alsa-state.service
-    sudo touch /var/log/install.log
-    sudo chmod 777 /var/log/install.log
-    sudo setfacl -R -m u:$username:rwx /var/log/install.log
+
     echo -e "$(date)" "${YELLOW} #### On Board Soundcards to be removed #### ${NORMAL}" | tee -a  /var/log/install.log
     sudo chmod 777 /etc/modules
     echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
