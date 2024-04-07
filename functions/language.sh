@@ -2,7 +2,7 @@
 #### WHICH LANGUAGE ####
 ## lang_options en_GB or fr_FR ##
 function which_language() {
-    LANG_OPTION=$(whiptail --title "$TITLE" --menu "Select Default Language" 8 78 3 \
+    LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 8 78 4 \
         "1" "English - en_GB" \
         "2" "French - fr_FR" 3>&1 1>&2 2>&3)
 
