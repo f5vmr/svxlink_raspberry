@@ -31,13 +31,13 @@ callsign
 clear
 echo -e "$(date)" "${YELLOW} #### Creating Groups and Users #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
-#make_groups
+make_groups
 
 #### DOWNLOADING SOURCE CODE ####
 
 echo -e "$(date)" "${YELLOW} #### Downloading SVXLink source code #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
-#svxlink_source	
+svxlink_source	
 #### INSTALLATION ####
 clear
  #	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
