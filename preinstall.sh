@@ -13,5 +13,5 @@ cd $home
     sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
     echo snd-aloop > /etc/modules
     sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
-    sudo cp install.sh ../
+    sudo cp install.sh /home/pi/install.sh
     sudo shutdown -r now
