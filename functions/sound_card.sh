@@ -1,5 +1,6 @@
 #!/bin/bash
 function soundcard {
+
 card=false
 
 ## Run lsusb and filter the output to check for a USB sound card
