@@ -1,6 +1,8 @@
 #!/bin/bash
 #### LANGUAGE ####
  # clear
+cd /home/pi
+
 source "${BASH_SOURCE%/*}/functions/language.sh"
 which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_main_fr.sh;  fi
@@ -108,6 +110,7 @@ sleep 3
 #* 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
  # clear
+	cd /home/pi
 	echo -e "$(date)" "${YELLOW} #### Checking IP Addresses #### ${NORMAL}" | tee -a  /var/log/install.log
 	sleep 3
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
