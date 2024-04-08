@@ -114,6 +114,7 @@ sleep 2
 	echo -e "$(date)" "${YELLOW} #### Checking IP Addresses #### ${NORMAL}" | tee -a  /var/log/install.log
 	sleep 2
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
+	
 	ipaddress
  # clear
 	cd /home/pi
@@ -124,7 +125,7 @@ install_dash
  # clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
 	whiptail --title "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
-	cd /home/pi
+	cd /home/pi/svxlink_raspberry
 sleep 2
 	 # clear
 	echo -e "$(date)" "${GREEN} #### Setting up Node #### ${NORMAL}" | tee -a  /var/log/install.log
