@@ -116,6 +116,7 @@ sleep 2
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
 	ipaddress
  # clear
+	cd /home/pi
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 2
 	source "${BASH_SOURCE%/*}/functions/dash_install.sh"
