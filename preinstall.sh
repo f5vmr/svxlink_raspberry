@@ -1,5 +1,8 @@
 #/bin/bash
-
+    home="/home/pi/svxlink_raspberry"
+    echo $home
+    cd $home
+    ls -l
     sudo apt install -y acl
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
@@ -16,4 +19,5 @@
     sudo touch /etc/alsa/state-daemon.conf
     sudo systemctl restart alsa-state.service
     echo "rebooting after soundcard configuration" >> /var/log/install.log
-    sudo shutdown -r now
+
+    #sudo shutdown -r now

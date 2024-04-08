@@ -9,6 +9,9 @@ SVXLINK_VER="24.02"
 SOUNDS_DIR=/usr/share/svxlink/sounds/
 username=$USER
 logname=$(whoami)
-
-echo -e $(date) "Commencing initialisation" >> /var/log/install.log
+GREEN="\033[1;32m"
+NORMAL="\033[0;39m"
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+echo -e $(date) "${GREEN}#### Commencing initialisation #### ${NORMAL}" >> /var/log/install.log
 }
