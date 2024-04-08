@@ -3,6 +3,7 @@
 #### INITIALISE ####
 home="/home/pi"
 cd $home
+ls -l
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
