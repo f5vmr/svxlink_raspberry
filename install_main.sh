@@ -128,7 +128,7 @@ sleep 3
 	 # clear
 	echo -e "$(date)" "${GREEN} #### Setting up Node #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/node_setup.sh"
-nodesetup
+nodeset
 	 # clear
  	echo -e "$(date)" "${RED} #### Changing ModuleMetar Link #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/modulemetar_setup.sh"
