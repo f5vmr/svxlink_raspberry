@@ -51,6 +51,7 @@ echo "Variable assigned: $sound_card_variable"
     fi
     echo "HID is set to $HID"
     echo "GPIOD is set to $GPIOD"
+
     if [ "$HID" = true ] ; then 
 #### updates the udev rules for the USB sound card #####
     if [ "$card" = true ]; then
@@ -62,7 +63,7 @@ echo "Variable assigned: $sound_card_variable"
     else
     echo "ok, then I will make no other changes"           
     fi 
-
+fi
     echo -e "$(date)" "${GREEN}Audio Updates including Dummy Sound Card for Darkice complete${NORMAL}" >> /var/log/install.log
 
 
