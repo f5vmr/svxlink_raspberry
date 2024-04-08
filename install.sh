@@ -1,7 +1,7 @@
 #### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
 #### INITIALISE ####
-home="/home/pi"
+home=/home/pi
 cd $home
 sudo sh -c 'echo "ls -l"' 
 clear

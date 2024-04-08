@@ -72,14 +72,14 @@ clear
 sleep 3
  	sudo cp -p $CONF $CONF.bak
 #
- 	cd /home/pi
+ 	cd $home
  	echo -e "$(date)" "${RED} #### Downloading prepared configuration files from the scripts #### ${NORMAL}" | tee -a  /var/log/install.log
  	sudo mkdir scripts
 	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
  	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  	sudo cp -f svxlink_raspberry/configs/gpio.conf /etc/svxlink/
  	sudo cp -f svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
- 	sudo cp -f svxlink_raspberry/resetlog.sh /home/pi/scripts/resetlog.sh
+ 	sudo cp -f svxlink_raspberry/resetlog.sh $home/scripts/resetlog.sh
  	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
 clear
 	echo -e "$(date)" "${GREEN} #### Setting Callsign to $CALL #### ${NORMAL}" | tee -a  /var/log/install.log
