@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# Get the IP address and device (wlan0 or eth0)
-ip_address=$(ip route get 1 | awk '{print $NF;exit}')
-device=$(ip route get 1 | awk '{print $5;exit}')
+# Get the IPv4 address and device (wlan0 or eth0)
+ip_address=$(ip -4 route get 1 | grep -oP 'src \K\S+')
+device=$(ip -4 route get 1 | grep -oP 'dev \K\S+')
 
-# Print the IP address and device
-echo "Current IP Address: $ip_address"
+# Print the IPv4 address and device
+echo "Current IPv4 Address: $ip_address"
 echo "Device: $device"
+
 
  
 
