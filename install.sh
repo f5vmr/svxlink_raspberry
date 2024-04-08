@@ -15,5 +15,5 @@ source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
 
 #### SuperUser Install ####
-#sudo ./install_main.sh
-sudo sh -c 'echo "ls -l *.sh"'
+sudo ./install_main.sh
+
