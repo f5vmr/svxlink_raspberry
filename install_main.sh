@@ -1,6 +1,6 @@
 #!/bin/bash
 #### LANGUAGE ####
-clear
+ # clear
 source "${BASH_SOURCE%/*}/functions/language.sh"
 which_language
 if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_main_fr.sh;  fi
@@ -25,7 +25,7 @@ update
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
 #### GROUPS AND USERS ####
-clear
+ # clear
 echo -e "$(date)" "${YELLOW} #### Creating Groups and Users #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/groups.sh"
 make_groups
@@ -36,13 +36,13 @@ echo -e "$(date)" "${YELLOW} #### Downloading SVXLink source code #### ${NORMAL}
 source "${BASH_SOURCE%/*}/functions/source.sh"
 svxlink_source	
 #### INSTALLATION ####
-clear
+ # clear
  #	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
 	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 	
 #### COMPILING ####
-clear
+ # clear
 	echo -e "$(date)" "${YELLOW} #### Compiling #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	cd svxlink/src/build
@@ -56,7 +56,7 @@ sleep 3
  	sudo cp *.tcl ./local
  	sudo ldconfig
 ##### CONFIGURATION VOICES ####
-clear
+ # clear
 	echo -e "$(date)" "${GREEN} #### Installing Voice Files #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	cd /usr/share/svxlink/sounds
@@ -67,7 +67,7 @@ sleep 3
    sudo chmod 777 -R *
 
 ##### BACKUP CONFIGURATION ####
-clear
+ # clear
 	echo -e "$(date)" "${GREEN} #### Backing up configuration to : $CONF.bak #### ${NORMAL}"| tee -a  /var/log/install.log
 sleep 3
  	sudo cp -p $CONF $CONF.bak
@@ -81,7 +81,7 @@ sleep 3
  	sudo cp -f /home/pi/svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
  	sudo cp -f /home/pi/svxlink_raspberry/resetlog.sh /home/pi/scripts/resetlog.sh
  	(sudo crontab -l 2>/dev/null; echo "59 23 * * * /home/pi/scripts/resetlog.sh ") | sudo crontab -
-clear
+ # clear
 	echo -e "$(date)" "${GREEN} #### Setting Callsign to $CALL #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	sudo sed -i "s/MYCALL/$CALL/g" $CONF
@@ -90,58 +90,58 @@ sleep 3
 	echo -e "$(date)" "${GREEN} #### Setting Squelch Hangtime to 10 mS ${NORMAL}" | tee -a  /var/log/install.log
  	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
  
-clear	
+ # clear	
 	echo -e "$(date)" "${YELLOW} #### Disabling audio distortion warning messages #### ${NORMAL}"| tee -a  /var/log/install.log
 
 sleep 3
  	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
 
-clear
+ # clear
 	echo -e "$(date)" "${GREEN} #### Updating SplashScreen on startup #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	sudo sed -i "s/MYCALL/$CALL/g" /etc/update-motd.d/10-uname
  	sudo chmod 0755 /etc/update-motd.d/10-uname
 
-clear
+ # clear
 	echo -e "$(date)" "${YELLOW} #### Changing Log file suffix ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
-clear
+ # clear
 	echo -e "$(date)" "${YELLOW} #### Checking IP Addresses #### ${NORMAL}" | tee -a  /var/log/install.log
 	sleep 3
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
 	ipaddress
-clear
+ # clear
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 	source "${BASH_SOURCE%/*}/functions/dash_install.sh"
 dashboard
-clear
+ # clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
 	whiptail --tile "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
 
 sleep 3
-	clear
+	 # clear
 	echo -e "$(date)" "${GREEN} #### Setting up Node #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/node_setup.sh"
 nodesetup
-	clear
+	 # clear
  	echo -e "$(date)" "${RED} #### Changing ModuleMetar Link #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/modulemetar_setup.sh"
 modulemetar
 	sleep 3
-	clear
+	 # clear
 	echo -e "$(date)" "${RED} #### Changing ModuleEchoLink Link #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/echolink_setup.sh"
 echolink_setup
 	sleep 3
-	clear
+	 # clear
 	echo -e "$(date)" "${RED} #### Changing ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
 	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
 	propagationmonitor
 	sleep 3
-	clear
+	 # clear
 	echo -e "$(date)" "${RED} #### Setting up svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
  	sudo systemctl enable svxlink_gpio_setup

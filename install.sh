@@ -4,7 +4,7 @@
 home=/home/pi
 cd $home
 sudo sh -c 'echo "ls -l"' 
-clear
+ # clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
 #### CHECK OS ####
