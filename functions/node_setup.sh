@@ -3,35 +3,29 @@
 function nodeset {
     if [ $NODE_OPTION  == "1" ]; then 
     node="Simplex without Svxreflector"
+    #* sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=SimplexLogic/g' /etc/svxlink/svxlink.conf
+    #* sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "2" ]; then
     node="Simplex with Svxreflector"
+    auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
+    #* sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
     elif [ $NODE_OPTION  == "3" ]; then
     node="Repeater without Svxreflector"
+    #* sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
+    #* sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
+    #* sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "4" ]; then
     node="Repeater with Svxreflector"
+    #* sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
+    #* sed -i 's/LOGICS=SimplexLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
+    auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
+    #* sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
     else    
     node="unset"
-fi
+    fi
 whiptail --title "Node" --msgbox "You have select node-type $node" 8 78 --defaultyes
 ## Time to change the node
-if [ $NODE_OPTION  == "1" ]; then
-#* sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=SimplexLogic/g' /etc/svxlink/svxlink.conf
-#* sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
-elif [ $NODE_OPTION  == "2" ]; then
-#* auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
-#* sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
-elif [ $NODE_OPTION  == "3" ]; then
-#* sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
-#* sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
-#* sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
-elif [ $NODE_OPTION  == "4" ]; then
-#* sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
-#* sed -i 's/LOGICS=SimplexLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
-auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
-#* sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
-else
-node="unset"
-fi
+
 ##That's the Logics taken care of now we need to change the sound card settings 
 output=$(aplay -l)
 

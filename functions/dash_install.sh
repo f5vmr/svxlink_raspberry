@@ -4,7 +4,7 @@
 
 function install_dash {
     ## install the dashboard
-    cd /var/www
+#*    cd /var/www/
 #*    sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html
 #*    ## change ownership of the dashboard
 #*    sudo chown -R svxlink:svxlink html
