@@ -3,7 +3,7 @@
 #### INITIALISE ####
 home="/home/pi"
 cd $home
-sudo -c 'echo "ls -l"' 
+sudo sh -c 'echo "ls -l"' 
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
@@ -16,4 +16,4 @@ source "${BASH_SOURCE%/*}/functions/check_user.sh"
 
 #### SuperUser Install ####
 #sudo ./install_main.sh
-sudo -c 'echo "ls -l *.sh"'
+sudo sh -c 'echo "ls -l *.sh"'
