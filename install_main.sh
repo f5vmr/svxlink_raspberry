@@ -119,7 +119,7 @@ sleep 3
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
 	source "${BASH_SOURCE%/*}/functions/dash_install.sh"
-dashboard
+install_dash
  # clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
 	whiptail --tile "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
