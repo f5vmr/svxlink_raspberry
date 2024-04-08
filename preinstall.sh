@@ -21,4 +21,4 @@
     sudo systemctl restart alsa-state.service
     echo "rebooting after soundcard configuration" >> /var/log/install.log
 
-    #sudo shutdown -r now
+    sudo shutdown -r now
