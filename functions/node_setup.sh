@@ -63,11 +63,11 @@ then
             "gpio 18" "as PTT Pin" OFF \
             "gpio 7" "as PTT Pin" OFF 3>&1 1>&2 2>&3)
         ptt_pin="${ptt_pin#"gpio "}"
-            if [$ptt_direction == "High"] then
+        if [$ptt_direction == "High"] then
     #*     sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
     #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
-            else [$ptt_direction == "Low"] 
+        elif [$ptt_direction == "Low"] 
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
@@ -84,7 +84,7 @@ then
             if [$cos_direction == "High"] then
     #*     sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*     sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
-        else [$cos_direction == "Low"] then
+        elif [$cos_direction == "Low"] then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
         fi
@@ -109,7 +109,7 @@ then
         if [$cos_direction == "High"] then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
-        else [$cos_direction == "Low"] then
+        elif [$cos_direction == "Low"] then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
         fi
@@ -121,7 +121,7 @@ elif [$HID == "true"] && [$GPIOD == "false"] && [$card == "true"] then
     #*    sed -i's/#HID_SQL_DET/HID_SQL_DET/g' /etc/svxlink/svxlink.conf
         if [ $cos_direction == "High" ] then
     #*    sed -i's/=VOL_DN/=VOL_UP/g' /etc/svxlink/svxlink.conf
-        else [$cos_direction == "Low"] then
+        elif [$cos_direction == "Low"] then
         ##leave it as it is.
         fi
 fi
