@@ -164,7 +164,7 @@ sleep 3
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
-exit
+#exit
 
 
 #* sudo reboot
