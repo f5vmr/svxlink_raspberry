@@ -1,9 +1,7 @@
 #### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
 #### INITIALISE ####
-home=/home/pi/svxlink_raspberry
-cd $home
-command 2>> /var/log/install.log
+command 2&1>> /var/log/install.log
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
@@ -15,4 +13,4 @@ source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
 cd $home
 #### SuperUser Install ####
-sudo ./svxlink_raspberry/install_main.sh
+sudo ./install_main.sh
