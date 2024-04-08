@@ -10,5 +10,5 @@ SOUNDS_DIR=/usr/share/svxlink/sounds/
 username=$USER
 logname=$(whoami)
 
-echo "Commencing initialisation" >> /var/log/install.log
+echo -e $(date) "Commencing initialisation" >> /var/log/install.log
 }

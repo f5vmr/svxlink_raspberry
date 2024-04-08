@@ -1,7 +1,7 @@
 #### INSTALLATION SCRIPT ####
 # Setting non-superuser elements #
 #### INITIALISE ####
-command 2&1>> /var/log/install.log
+
 clear
 source "${BASH_SOURCE%/*}/functions/initialise.sh"
 initialise
