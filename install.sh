@@ -12,7 +12,7 @@ source "${BASH_SOURCE%/*}/functions/check_os.sh"
 check_os
 #### CHECK USER ####
 source "${BASH_SOURCE%/*}/functions/check_user.sh"
-###usercheck
+usercheck
 
 #### SuperUser Install ####
 #sudo ./install_main.sh

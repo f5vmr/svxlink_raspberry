@@ -13,5 +13,5 @@ GREEN="\033[1;32m"
 NORMAL="\033[0;39m"
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
-echo -e "$(date)" "${GREEN}#### Commencing initialisation #### ${NORMAL}" >> /var/log/install.log
+echo -e "$(date)" "${GREEN} #### Commencing initialisation #### ${NORMAL}" >> /var/log/install.log
 }
