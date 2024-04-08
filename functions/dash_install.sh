@@ -53,11 +53,12 @@ function install_dash {
 #* sudo visudo -c
 
 ## Check if syntax check passed
-if [ $? -eq 0 ]; then
+
+#if [ $? -eq 0 ]; then
     echo "Lines added to sudoers successfully."
 else
     echo "Error: Failed to add lines to sudoers. Restoring backup."
-    sudo cp /etc/sudoers.bak /etc/sudoers
+#*    sudo cp /etc/sudoers.bak /etc/sudoers
 fi
 ## Add permissions to Apache2
 
