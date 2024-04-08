@@ -12,5 +12,8 @@
     sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
     echo snd-aloop > /etc/modules
     sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
+    sudo mkdir /etc/alsa
+    sudo touch /etc/alsa/state-daemon.conf
+    sudo systemctl restart alsa-state.service
     echo "rebooting after soundcard configuration" >> /var/log/install.log
     sudo shutdown -r now

@@ -11,6 +11,6 @@ check_os
 #### CHECK USER ####
 source "${BASH_SOURCE%/*}/functions/check_user.sh"
 usercheck
-cd $home
+
 #### SuperUser Install ####
 sudo ./install_main.sh
