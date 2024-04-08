@@ -125,7 +125,7 @@ install_dash
  # clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
 	whiptail --title "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
-	cd /home/pi/svxlink_raspberry
+	cd /home/pi/
 sleep 2
 	 # clear
 	echo -e "$(date)" "${GREEN} #### Setting up Node #### ${NORMAL}" | tee -a  /var/log/install.log
