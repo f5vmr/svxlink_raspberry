@@ -11,7 +11,7 @@ function usercheck {
 
     else whiptail --title "OS and user check" --msgbox "OS is $OS_name and User is $logname" 8 78;
 fi
-    echo -e "${GREEN} OS = $OS_name and Current user is $logname${NORMAL}" | tee -a  /var/log/install.log
+    
 
 }
 
