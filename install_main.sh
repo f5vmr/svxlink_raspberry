@@ -124,7 +124,7 @@ sleep 2
 install_dash
  # clear
 	echo -e "$(date)" "${GREEN} #### Dashboard installed #### ${NORMAL}" | tee -a  /var/log/install.log
-	whiptail --title "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $eth_ip or $wan_ip" 8 78
+	whiptail --title "IP Addresses" --msgbox "Dashboard installed. Please note your IP address is $ip_address on $device" 8 78
 	cd /home/pi/
 sleep 2
 	 # clear
@@ -137,6 +137,7 @@ source "${BASH_SOURCE%/*}/functions/modulemetar_setup.sh"
 modulemetar
 	sleep 2
 	 # clear
+	 cd /home/pi/
 	echo -e "$(date)" "${RED} #### Changing ModuleEchoLink Link #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/echolink_setup.sh"
 echolinksetup
