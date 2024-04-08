@@ -4,7 +4,7 @@
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
     sudo setfacl -R -m u:pi:rwx /var/log/install.log
-    sudo exec >> (tee -a /var/log/install.log) 2>&1
+    
     sudo chmod 777 /etc/modules
     sudo echo blacklist snd_bcm2835 > /etc/modprobe.d/raspi-blacklist.conf
     sudo sed -i "s/options snd-usb/#options snd-usb/g" /lib/modprobe.d/aliases.conf
