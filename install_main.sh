@@ -142,7 +142,7 @@ echolink_setup
 	 # clear
 	echo -e "$(date)" "${RED} #### Changing ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
 	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
-	propagationmonitor
+#	propagationmonitor
 	sleep 3
 	 # clear
 	echo -e "$(date)" "${RED} #### Setting up svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -158,9 +158,9 @@ sleep 3
 
 echo -e "$(date)" "${GREEN} #### Installation complete #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3 
- echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
- source "${BASH_SOURCE%/*}/functions/configure.sh"
- config
+## echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
+## source "${BASH_SOURCE%/*}/functions/configure.sh"
+## config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 3
