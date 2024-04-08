@@ -7,9 +7,10 @@ function check_os {
     ## Check if the OS is Bookworm
     if [ "$OS_name" != 'bookworm' ]; then
         whiptail --scrolltext --title "SVXLink" --msgbox "This script is only for the Bookworm Linux distribution. Shutdown and Change to OS Bookworm, with user pi." 8 78
-        exit 1  ## Exit the script if the OS is not Bookworm
+        
         echo -e "${RED} Closing down the script - Wrong OS ${NORMAL}" >> /etc/var/install.log
         sudo sh -c 'echo "sudo shutdown now"' >> /etc/var/install.log"
+        exit 1  ## Exit the script if the OS is not Bookworm
     fi
 }
 

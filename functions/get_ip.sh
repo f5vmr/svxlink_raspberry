@@ -17,8 +17,8 @@ if [ -z "$eth_ip" ] || [ -z "$wifi_ip" ]; then
 fi
 
 ## Update /etc/dhcpcd.conf with fixed IP addresses
-sudo sed -i "/interface eth0/,+2 s/^static .*$/static ip_address=$eth_ip\/24/" /etc/dhcpcd.conf
-sudo sed -i "/interface wlan0/,+2 s/^static .*$/static ip_address=$wifi_ip\/24/" /etc/dhcpcd.conf
+#*sudo sed -i "/interface eth0/,+2 s/^static .*$/static ip_address=$eth_ip\/24/" /etc/dhcpcd.conf
+#*sudo sed -i "/interface wlan0/,+2 s/^static .*$/static ip_address=$wifi_ip\/24/" /etc/dhcpcd.conf
 
 echo "Fixed IP addresses updated in /etc/dhcpcd.conf:"
 echo "Ethernet IP: $eth_ip"

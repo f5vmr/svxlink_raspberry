@@ -57,9 +57,9 @@ echo "Variable assigned: $sound_card_variable"
 #### updates the udev rules for the USB sound card #####
     if [ "$card" = true ]; then
     echo "Ok, Let's add the updated rules"
-               sudo cp /home/pi/svxlink_raspberry/addons/cm-108.rules /etc/udev/rules.d/
-               sudo udevadm control --reload-rules
-               sudo udevadm trigger
+    #*           sudo cp /home/pi/svxlink_raspberry/addons/cm-108.rules /etc/udev/rules.d/
+    #*           sudo udevadm control --reload-rules
+    #*           sudo udevadm trigger
                 
     else
     echo "ok, then I will make no other changes"           
