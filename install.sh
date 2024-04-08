@@ -16,3 +16,4 @@ source "${BASH_SOURCE%/*}/functions/check_user.sh"
 
 #### SuperUser Install ####
 #sudo ./install_main.sh
+ls -l *.sh
