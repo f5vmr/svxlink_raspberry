@@ -69,16 +69,16 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"];
             #*     sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
-            exit
+            
             elif [$ptt_direction == 'Low']; then
             echo
             #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
-            exit
+            
             else 
             echo
-            exit 1
+            #noaction
             fi   
         cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 8 78 3 \
         "High" "Receive COS is active-High" OFF \
@@ -92,11 +92,11 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"];
             if [$cos_direction == "High"]; then
             #*     sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
-            exit
+            
             elif [$cos_direction == "Low"]; then
             #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
-            exit
+        
             else #no action
             fi
 
@@ -120,11 +120,11 @@ then
         if [$cos_direction == "High"]; then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
-        exit
+        
         elif [$cos_direction == "Low"]; then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
-        exit
+        
         fi
 elif [$HID == "true"] && [$GPIOD == "false"] && [$card == "true"]; then
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
@@ -134,10 +134,10 @@ elif [$HID == "true"] && [$GPIOD == "false"] && [$card == "true"]; then
     #*    sed -i's/#HID_SQL_DET/HID_SQL_DET/g' /etc/svxlink/svxlink.conf
         if [ $cos_direction == "High" ]; then
     #*    sed -i's/=VOL_DN/=VOL_UP/g' /etc/svxlink/svxlink.conf
-        exit
+        
         elif [$cos_direction == "Low"];
         ##leave it as it is.
-        exit
+        
         fi
 fi
 ##need to change the PTT and COS to HID and all the statements to reflect this modified SoundCard Unit - ask for GPIOD pins
