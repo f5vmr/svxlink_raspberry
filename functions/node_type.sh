@@ -18,6 +18,7 @@ function nodeoption {
     else 
         echo "You did not choose anything"
 fi
-node=$NODE_OPTION
+echo Node Option $NODE_OPTION
+sleep 2
 }
             
