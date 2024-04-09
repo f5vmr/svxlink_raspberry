@@ -68,14 +68,14 @@ if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"]
             "gpio 18" "as PTT Pin" OFF \
             "gpio 7" "as PTT Pin" OFF 3>&1 1>&2 2>&3)
         ptt_pin="${ptt_pin#"gpio "}"
-            if [ "$ptt_direction" == "High"] 
+            if [ "$ptt_direction" == "High" ] 
             then
             echo
             #*     sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
             
-            elif [ "$ptt_direction" == "Low"] 
+            elif [ "$ptt_direction" == "Low" ] 
             then
             echo
             #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
@@ -86,10 +86,10 @@ if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"]
             echo
             #noaction
             fi   
-        cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 8 78 3 \
+        cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 8 78 2 \
         "High" "Receive COS is active-High" OFF \
         "Low" "Receive COS is active-Low" OFF 3>&1 1>&2 2>&3)
-        cos_pin=$(whiptail --title "COS Pin" --radiolist "Please enter COS Pin (gpio #)" 8 78 3\
+        cos_pin=$(whiptail --title "COS Pin" --radiolist "Please enter COS Pin (gpio #)" 8 78 3 \
             "gpio 23" "as COS Pin" ON \
             "gpio 17" "as COS Pin" OFF \
             "gpio 8" "as COS Pin" OFF 3>&1 1>&2 2>&3)
