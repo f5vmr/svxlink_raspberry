@@ -20,6 +20,7 @@ if [ echolinkyesno == "yes" ]; then
  #*   sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
  #*   sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.conf
 echo -e "$(date)" "${GREEN} Echolink is set up ${NORMAL}" >> /var/log/install.log
+fi
     else
     #echolinkyesno=no
 echo -e "$(date)" "${YELLOW} EchoLink is not set up ${NORMAL}" >> /var/log/install.log
