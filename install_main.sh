@@ -1,6 +1,6 @@
 #!/bin/bash
 #### LANGUAGE ####
- # clear
+clear
 cd /home/pi
 
 source "${BASH_SOURCE%/*}/functions/language.sh"
