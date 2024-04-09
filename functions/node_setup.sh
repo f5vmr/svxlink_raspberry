@@ -58,7 +58,7 @@ whiptail --title "Sound Card" --msgbox "The USB soundcard is located at card $ca
         ## 2. HID on Transmit and GPIOD on Receive determined by $HID=true $GPIOD=true $card=true
         ## 3. HID on Transmit and Receive determined by $HID=true $GPIOD=false $card=true
 
-if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"]
+if [ "$HID" == "false" ] && [ "$GPIOD" == "true" ] && [ "$card" == "false" ]
     then
         ptt_direction=$(whiptail --title "PTT" --radiolist "Please select PTT direction" 8 78 3 \
         "High" "Transmit PTT is active-High" OFF \
@@ -112,7 +112,7 @@ if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"]
             fi
 
 ##need to change the PTT and COS to GPIOD and all the statements to reflect this Unmodified SOundCard Unit - ask for GPIOD pins
-elif [ "$HID" == "true"] && [ "$GPIOD" == "true" ] && [ "$card" == "true"]
+elif [ "$HID" == "true" ] && [ "$GPIOD" == "true" ] && [ "$card" == "true" ]
 then
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
@@ -128,20 +128,20 @@ then
             "gpio 8" "as COS Pin" OFF 3>&1 1>&2 2>&3)
             cos_pin="${cos_pin#"gpio "}"
         ##need to change the PTT to HID and COS to GPIOD and all the statements to reflect this modified SoundCard Unit - ask for GPIOD pins
-        if [ "$cos_direction" == "High"] 
+        if [ "$cos_direction" == "High" ] 
         then
         echo making changes
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
         
-        elif [ "$cos_direction" == "Low"] 
+        elif [ "$cos_direction" == "Low" ] 
         then
         echo making changes
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
         
         fi
-elif [ "$HID" == "true"] && [ "$GPIOD" == "false"] && [ "$card" == "true"] 
+elif [ "$HID" == "true" ] && [ "$GPIOD" == "false" ] && [ "$card" == "true" ] 
 then
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
@@ -153,7 +153,7 @@ then
         echo making changes
     #*    sed -i's/=VOL_DN/=VOL_UP/g' /etc/svxlink/svxlink.conf
         
-        elif [ "$cos_direction" == "Low"]
+        elif [ "$cos_direction" == "Low" ]
         then
         echo no changes
         ##leave it as it is.
