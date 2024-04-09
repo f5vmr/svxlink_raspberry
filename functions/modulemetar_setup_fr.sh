@@ -3,7 +3,7 @@
  airports=("LFPG" "LFPO" "LFOB" "LFBL" "LFMN" "LFML" "LFBD" "LFRK" "LFRN" "LFRB" "LFRS" "LFBO" "LFMT" "LFLC" "LFLS" "LFLY" "LFLB" "LFST" "LFOT" "LFSL" "LFBE")
  
 whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 8 78 3>&1 1>&2 2>&3
-    if [ $? -eq 0 ] 
+    if [ $? -eq "0" ] 
     then
 selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 27 78 20 \
         "LFPG" "Paris Charles de Gaulle" OFF \

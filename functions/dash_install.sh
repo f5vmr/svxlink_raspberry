@@ -21,7 +21,7 @@ function install_dash {
 #*    sudo systemctl restart apache2.service
     ## Dashboard Permissions
     whiptail --title "Dashboard Permissions" --yesno "Do you want to add permissions to the dashboard?" 8 78
-    if [ $? -eq 0 ] 
+    if [ $? -eq "0" ] 
     then
     ## add permissions to the dashboard
 #*    sudo chmod -R 777 /var/www/html/config.inc.php
