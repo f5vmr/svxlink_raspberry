@@ -6,7 +6,8 @@ function usercheck {
     current_user=$(logname) | tee -a   /var/log/install.log
     
     ## Check if the current user is 'pi'
-   if [ "$logname" != "pi" ]; then 
+   if [ "$logname" != "pi" ] 
+   then 
    echo -e "${RED}Please the reformat the SDcard as user pi ${NORMAL}" ; exit; 
 
     else whiptail --title "OS and user check" --msgbox "OS is $operating_system and User is $logname" 8 78;

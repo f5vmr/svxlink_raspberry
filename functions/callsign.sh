@@ -10,7 +10,8 @@ while true; do
     user_input=$(get_CallVar)
     
     ## Check if input is empty
-    if [ -z "$user_input" ]; then
+    if [ -z "$user_input" ]
+    then
         whiptail --msgbox "Node Callsign cannot be empty. Please try again." 8 78
     else
         ## If input is not empty, break the loop
