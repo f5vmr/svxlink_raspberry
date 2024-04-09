@@ -1,12 +1,11 @@
 #/bin/bash
     home="/home/pi/svxlink_raspberry"
     echo $home
-    cd $home
-    
-#*    sudo apt install -y acl
-#*    sudo touch /var/log/install.log
-#*    sudo chmod 777 /var/log/install.log
-#*    sudo setfacl -R -m u:pi:rwx /var/log/install.log
+    cd $home  
+    sudo apt install -y acl
+    sudo touch /var/log/install.log
+    sudo chmod 777 /var/log/install.log
+    sudo setfacl -R -m u:pi:rwx /var/log/install.log
 #*    
 #*    sudo chmod 777 /etc/modules
 #*    sudo sh -c 'echo "blacklist snd_bcm2835" > /etc/modprobe.d/raspi-blacklist.conf'
