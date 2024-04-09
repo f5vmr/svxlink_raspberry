@@ -69,10 +69,13 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
             #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
             elif [$ptt_direction == "Low"] then
+            echo
             #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
-            else #no action
+            else 
+            echo
+            #no action
             fi   
         cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 8 78 3 \
         "High" "Receive COS is active-High" OFF \
