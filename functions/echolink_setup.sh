@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Set up echolink
 function echolinksetup {
-echolinkyesno=(whiptail --title "Setup EchoLink?" --yesno "This will install EchoLink and configure it" 8 87 )
+whiptail --title "Setup EchoLink?" --yesno "This will install EchoLink and configure it" 8 87 
 if [ echolinkyesno == yes ]; then
     ## "Installing echolink"
 #*    sed -i 's/#MUTE_LOGIC/MUTE_LOGIC/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf

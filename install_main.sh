@@ -9,23 +9,35 @@ if [ $LANG == "fr_FR.UTF8" ]; then sudo sh ./install_main_fr.sh;  fi
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
+echo welcome >> /var/log/install.log
+sleep 1 
+
 source "${BASH_SOURCE%/*}/functions/configure.sh"
 configure
+echo configure >> /var/log/install.log
+sleep 1
+
 #### NODE Selection ####
 source "${BASH_SOURCE%/*}/functions/node_type.sh"
 nodeoption
 echo -e "$(date)" "${YELLOW} #### Node Type: $NODEOPTION #### ${NORMAL}" | tee -a  /var/log/install.log
+sleep 1
 ##### USB SOUND CARD ####
 source "${BASH_SOURCE%/*}/functions/sound_card.sh"
 soundcard
 echo -e "$(date)" "${YELLOW} #### Sound Card: $HID $GPIOD $card #### ${NORMAL}" | tee -a  /var/log/install.log	
 echo -e "$(date)" "${YELLOW} #### Checking Alsa #### ${NORMAL}" | tee -a  /var/log/install.log
+sleep 1
 #### UPDATE ####
 source "${BASH_SOURCE%/*}/functions/update.sh"
 update
+echo update >> /var/log/install.log
+sleep 1
 #### REQUEST CALLSIGN ####
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
+echo callsign >> /var/log/install.log
+sleep 1
 #### GROUPS AND USERS ####
  # clear
 echo -e "$(date)" "${YELLOW} #### Creating Groups and Users #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -36,17 +48,18 @@ make_groups
 
 echo -e "$(date)" "${YELLOW} #### Downloading SVXLink source code #### ${NORMAL}" | tee -a  /var/log/install.log
 source "${BASH_SOURCE%/*}/functions/source.sh"
-svxlink_source	
+svxlink_source
+sleep 1
 #### INSTALLATION ####
  # clear
  #*	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
 	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
-sleep 2
+sleep 1
 	
 #### COMPILING ####
  # clear
 	echo -e "$(date)" "${YELLOW} #### Compiling #### ${NORMAL}" | tee -a  /var/log/install.log
-sleep 2
+sleep 1
 #* 	cd svxlink/src/build
 #* 	sudo cmake -DUSE_QT=OFF -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONF_INSTALL_DIR=/etc -DLOCAL_STATE_DIR=/var -DWITH_SYSTEMD=ON  ..
 #* 	sudo make
