@@ -52,8 +52,8 @@ OPTION=$(whiptail --title "$TITLE" --menu "Select Node Type" 8 78 3 \
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
     case $OPTION in
-    1) SIMPLEX_INSTALL="true";;
-    2) SIMPLEX_INSTALL="false";;
+    1) SIMPLEX_INSTALL='true';;
+    2) SIMPLEX_INSTALL='false';;
     esac
     else
     exit;
@@ -66,8 +66,8 @@ function query_network {
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
     case $OPTION in
-    1) NETWORK="false";;
-    2) NETWORK="true";;
+    1) NETWORK='false';;
+    2) NETWORK='true';;
     esac
     else
         exit;
