@@ -54,7 +54,6 @@ function install_dash {
 
 ## Check if syntax check passed
 
-if [ $? -eq 0 ]; then
     echo "Lines added to sudoers successfully."
 else
     echo "Error: Failed to add lines to sudoers. Restoring backup."
