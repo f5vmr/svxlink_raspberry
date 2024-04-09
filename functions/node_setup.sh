@@ -77,7 +77,7 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
             fi
             else 
             echo
-            #no action
+            exit 1
             fi   
         cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 8 78 3 \
         "High" "Receive COS is active-High" OFF \
