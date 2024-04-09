@@ -64,13 +64,13 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
             "gpio 18" "as PTT Pin" OFF \
             "gpio 7" "as PTT Pin" OFF 3>&1 1>&2 2>&3)
         ptt_pin="${ptt_pin#"gpio "}"
-            if [$ptt_direction == "High"] then
+            if [$ptt_direction == 'High'] then
             echo
             #*     sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
             exit
-            elif [$ptt_direction == "Low"] then
+            elif [$ptt_direction == 'Low'] then
             echo
             #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
