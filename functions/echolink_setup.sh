@@ -12,7 +12,7 @@ then
         echosysop=$(whiptail --title "System Operator Name?" --inputbox "Enter your SYSOP Name" 8 60 3>&1 1>&2 2>&3)
         echosysop=${echosysop^}
         echofreq=$(whiptail --title "Frequency" --inputbox "Enter your Output frequency in MHz eg 145.2375" 8 60 3>&1 1>&2 2>&3)
-        echolocation=$(whiptail --title "Location" --inputbox "Enter your location" 8 20 3>&1 1>&2 2>&3)
+        echolocation=$(whiptail --title "Location" --inputbox "Enter your location" 8 60 3>&1 1>&2 2>&3)
         echolocation=${echolocation^}
  #*   sed -i "s/CALLSIGN=MYCALL-L/CALLSIGN=$echocall/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
  #*   sed -i "s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
