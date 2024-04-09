@@ -60,6 +60,7 @@ whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 8 
         echo -e "$(date)" "${GREEN} $selected Airports included with default Airport $specific_airport ${NORMAL}"
    
     else
-    exit 1
+    echo "test"
+    #no changes
     fi
 }
