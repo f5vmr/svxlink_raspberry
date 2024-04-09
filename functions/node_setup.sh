@@ -28,7 +28,7 @@ function nodeset {
     else    
     node="unset"
     fi
-whiptail --title "Node" --msgbox "You have select node-type $node" 8 78 --defaultyes
+whiptail --title "Node" --msgbox "You have select node-type $node" 8 78
 ## Time to change the node
 
 ##That's the Logics taken care of now we need to change the sound card settings 
