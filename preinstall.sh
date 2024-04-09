@@ -1,6 +1,6 @@
 #/bin/bash
     home="/home/pi/svxlink_raspberry"
-    echo $home
+    
     cd $home  
     sudo apt install -y acl
     sudo touch /var/log/install.log

@@ -11,12 +11,12 @@ fi
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
 welcome
-echo welcome >> /var/log/install.log
+
 sleep 1 
 
 source "${BASH_SOURCE%/*}/functions/configure.sh"
 configure
-echo configure >> /var/log/install.log
+
 sleep 1
 
 #### NODE Selection ####
@@ -33,12 +33,12 @@ sleep 1
 #### UPDATE ####
 source "${BASH_SOURCE%/*}/functions/update.sh"
 update
-echo update >> /var/log/install.log
+
 sleep 1
 #### REQUEST CALLSIGN ####
 source "${BASH_SOURCE%/*}/functions/callsign.sh"
 callsign
-echo callsign >> /var/log/install.log
+
 sleep 1
 #### GROUPS AND USERS ####
  # clear

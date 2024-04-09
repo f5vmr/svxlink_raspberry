@@ -9,18 +9,18 @@ function nodeoption {
 
     if [ "$NODE_OPTION" -eq "1" ] 
     then
-        echo "You chose Simplex Node without SvxReflector"
+        echo "You chose Simplex Node without SvxReflector" >> /var/log/install.log
     elif [ "$NODE_OPTION" -eq "2" ] 
     then
-        echo "You chose Simplex Node with SvxReflector"
+        echo "You chose Simplex Node with SvxReflector" >> /var/log/install.log
     elif [ "$NODE_OPTION" -eq "3" ] 
     then
-        echo "You chose Repeater Node without SvxReflector"
+        echo "You chose Repeater Node without SvxReflector" >> /var/log/install.log
     elif [ "$NODE_OPTION" -eq "4" ] 
     then
-        echo "You chose Repeater Node with SvxReflector"
+        echo "You chose Repeater Node with SvxReflector" >> /var/log/install.log
     else 
-        echo "You did not choose anything"
+        echo "You did not choose anything" >> /var/log/install.log
 fi
 echo Node Option $NODE_OPTION
 sleep 2
