@@ -57,5 +57,6 @@ selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 27
         echo "STARTDEFAULT=$specific_airport" >> /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
     #*    sed -i "s/DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g" /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
     else
-    exit 1
+    echo "test"
+    #no action
     fi
