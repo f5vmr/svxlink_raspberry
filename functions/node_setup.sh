@@ -89,11 +89,11 @@ if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"];
             "gpio 8" "as COS Pin" OFF 3>&1 1>&2 2>&3)
             cos_pin="${cos_pin#"gpio "}"
 
-            if [ "$cos_direction" == "High"]; then
+            if [ "$cos_direction" == "High" ]; then
             #*     sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
             
-            elif [ "$cos_direction" == "Low"]; then
+            elif [ "$cos_direction" == "Low" ]; then
             #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
         
@@ -101,7 +101,7 @@ if [ "$HID" == "false"] && [ "$GPIOD" == "true"] && [ "$card" == "false"];
             fi
 
 ##need to change the PTT and COS to GPIOD and all the statements to reflect this Unmodified SOundCard Unit - ask for GPIOD pins
-elif [ "$HID" == "true"] && [ "$GPIOD" == "true"] && [ "$card" == "true"];
+elif [ "$HID" == "true"] && [ "$GPIOD" == "true" ] && [ "$card" == "true"];
 then
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
