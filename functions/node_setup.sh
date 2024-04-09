@@ -16,9 +16,10 @@ function nodeset {
     #* sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "4" ]; then
     node="Repeater with Svxreflector"
+    auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
+    
     #* sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
     #* sed -i 's/LOGICS=SimplexLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
-    auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
     #* sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
     else    
     node="unset"
@@ -68,13 +69,13 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
             #*     sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
-            fi
+            exit
             elif [$ptt_direction == "Low"] then
             echo
             #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
-            fi
+            exit
             else 
             echo
             exit 1
@@ -91,9 +92,11 @@ if [$HID == "false"] && [$GPIOD == "true"] && [$card == "false"]
             if [$cos_direction == "High"] then
             #*     sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*     sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
+            exit
             elif [$cos_direction == "Low"] then
             #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
             #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
+            exit
             else #no action
             fi
 
@@ -117,9 +120,11 @@ then
         if [$cos_direction == "High"] then
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
+        exit
         elif [$cos_direction == "Low"]
     #*    sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
     #*    sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
+        exit
         fi
 elif [$HID == "true"] && [$GPIOD == "false"] && [$card == "true"] then
     #*    sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
@@ -129,8 +134,10 @@ elif [$HID == "true"] && [$GPIOD == "false"] && [$card == "true"] then
     #*    sed -i's/#HID_SQL_DET/HID_SQL_DET/g' /etc/svxlink/svxlink.conf
         if [ $cos_direction == "High" ] then
     #*    sed -i's/=VOL_DN/=VOL_UP/g' /etc/svxlink/svxlink.conf
+        exit
         elif [$cos_direction == "Low"]
         ##leave it as it is.
+        exit
         fi
 fi
 ##need to change the PTT and COS to HID and all the statements to reflect this modified SoundCard Unit - ask for GPIOD pins

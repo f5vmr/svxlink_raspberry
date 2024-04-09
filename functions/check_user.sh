@@ -9,7 +9,7 @@ function usercheck {
    if [ "$logname" != "pi" ]; then 
    echo -e "${RED}Please the reformat the SDcard as user pi ${NORMAL}" ; exit; 
 
-    else whiptail --title "OS and user check" --msgbox "OS is $OS_name and User is $logname" 8 78;
+    else whiptail --title "OS and user check" --msgbox "OS is $operating_system and User is $logname" 8 78;
 fi
     
 
