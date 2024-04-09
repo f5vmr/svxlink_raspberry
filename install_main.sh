@@ -54,9 +54,9 @@ svxlink_source
 sleep 1
 #### INSTALLATION ####
  # clear
-# 	NEWVERSION=`sudo grep -r "SVXLINK=" $VERSIONS * ` | awk -F= '{print $2}')
+	NEWVERSION=`sudo grep -r "SVXLINK=" $versions * ` | awk -F= '{print $2}')
 
-#	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
+	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
 sleep 1
 	
 #### COMPILING ####
