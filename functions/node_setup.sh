@@ -64,7 +64,7 @@ if [ "$HID" == "false" ] && [ "$GPIOD" == "true" ] && [ "$card" == "false" ]
         "High" "Transmit PTT is active-High" OFF \
         "Low" "Transmit PTT is active-Low" OFF 3>&1 1>&2 2>&3)
         ptt_pin=$(whiptail --title "PTT Pin" --radiolist "Please enter PTT Pin (gpio #)" 8 78 3\
-            "gpio 23" "as PTT Pin" ON \
+            "gpio 24" "as PTT Pin" ON \
             "gpio 18" "as PTT Pin" OFF \
             "gpio 7" "as PTT Pin" OFF 3>&1 1>&2 2>&3)
         ptt_pin="${ptt_pin#"gpio "}"
