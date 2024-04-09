@@ -5,7 +5,7 @@ whiptail --title "Setup EchoLink?" --yesno "This will install EchoLink and confi
 if [ $? -eq "0" ] 
 then
     ## "Installing echolink"
-#*    sed -i 's/#MUTE_LOGIC/MUTE_LOGIC/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i 's/#MUTE_LOGIC/MUTE_LOGIC/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
         echocall=$(whiptail --title "Callsign A2ABC-L or -R?" --inputbox "Enter your callsign (-L or -R) as registered" 8 60 3>&1 1>&2 2>&3)
         echocall=${echocall^^}
         echopass=$(whiptail --title "Password?" --passwordbox "Enter your EchoLink password" 8 60 3>&1 1>&2 2>&3)
@@ -14,14 +14,14 @@ then
         echofreq=$(whiptail --title "Frequency" --inputbox "Enter your Output frequency in MHz eg 145.2375" 8 60 3>&1 1>&2 2>&3)
         echolocation=$(whiptail --title "Location" --inputbox "Enter your location" 8 60 3>&1 1>&2 2>&3)
         echolocation=${echolocation^}
- #*   sed -i "s/CALLSIGN=MYCALL-L/CALLSIGN=$echocall/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/MyName/$echosysop/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/Fq,/$echofreq/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/MyTown/$echolocation/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
- #*   sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.conf
+    sed -i "s/CALLSIGN=MYCALL-L/CALLSIGN=$echocall/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/MyName/$echosysop/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/Fq,/$echofreq/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/MyTown/$echolocation/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.conf
 echo -e "$(date)" "${GREEN} Echolink is set up ${NORMAL}" >> /var/log/install.log
 
     else

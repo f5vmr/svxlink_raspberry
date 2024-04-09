@@ -22,7 +22,7 @@ while IFS= read -r line; do
             echo "$category" | tee -a   "$output_file"
             header_written=true
         fi
-    elif [[ $line == \#* ]] 
+    elif [[ $line == \ ]] 
     then
         ## Parameter heading
         parameter_heading=$(echo "$line" | cut -d '=' -f 1 | sed 's/# *//')
