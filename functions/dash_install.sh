@@ -42,7 +42,7 @@ function install_dash {
  for item in "${LINES[@]}"; do
      echo "$item" | sudo tee -a /etc/sudoers.d/svxlink >/dev/null
  done
-
+sudo chmod 0440 /etc/sudoers.d/svxlink
 ## Check sudoers file syntax
  sudo visudo -c
 
