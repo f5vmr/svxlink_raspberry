@@ -24,6 +24,6 @@ whiptail --title "Updates" --msgbox "Updates ." 8 78
 	whiptail --title "Build Essentials" --msgbox "Adding all required packages. Type OK to continue." 8 78
 
 	echo -e "$(date)" "${YELLOW} ### Installation of Packages ### ${NORMAL}" | tee -a  /var/log/install.log
- 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 nodejs libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial sqlite3 php8.2-sqlite3 toilet -y
+ 	sudo apt install build-essential g++ make cmake libsigc++-2.0-dev php8.2 libgsm1-dev libudev-dev libpopt-dev tcl-dev libgpiod-dev gpiod libgcrypt20-dev libspeex-dev libasound2-dev alsa-utils libjsoncpp-dev libopus-dev rtl-sdr libcurl4-openssl-dev libogg-dev librtlsdr-dev groff doxygen graphviz python3-serial sqlite3 php8.2-sqlite3 toilet -y
 
 }
