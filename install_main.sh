@@ -76,7 +76,7 @@ sleep 1
 #
  	cd /home/pi/
  	echo -e "$(date)" "${RED} #### Downloading prepared configuration files from the scripts #### ${NORMAL}" | tee -a  /var/log/install.log
- 	sudo mkdir scripts
+ 	sudo mkdir /hom/pi/scripts
 	sudo cp -f /home/pi/svxlink_raspberry/addons/10-uname /etc/update-motd.d/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/gpio.conf /etc/svxlink/
@@ -114,8 +114,7 @@ sleep 1
 	echo -e "$(date)" "${YELLOW} #### Checking IP Addresses #### ${NORMAL}" | tee -a  /var/log/install.log
 	
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
-	
-ipaddress
+	ipaddress
  # clear
 	cd /home/pi
 	echo -e "$(date)" "${YELLOW} #### Installing Dashboard #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -161,10 +160,6 @@ echolinksetup
 
 
 echo -e "$(date)" "${GREEN} #### Installation complete #### ${NORMAL}" | tee -a  /var/log/install.log
- 
-## echo -e "$(date)" "${GREEN} #### Now to configure SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
-## source "${BASH_SOURCE%/*}/functions/configure.sh"
-## config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 

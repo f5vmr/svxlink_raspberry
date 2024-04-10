@@ -30,7 +30,7 @@ source "${BASH_SOURCE%/*}/functions/source.sh"
  svxlink_source	
 #### INSTALLATION ####
  # clear
- #	NEWVERSION = `sudo grep -r "SVXLINK=" $VERSIONS * | awk -F= '{print $2}'
+ NEWVERSION=$(sudo grep -r "SVXLINK=" "svxlink"/* | awk -F= '{print $2}')
 	echo -e "$(date)" "${GREEN} #### New Version: $NEWVERSION #### ${NORMAL}" | tee -a  /var/log/install.log
 
 	
@@ -65,10 +65,10 @@ source "${BASH_SOURCE%/*}/functions/source.sh"
 
  	sudo cp -p $CONF $CONF.bak
 ##
- 	cd
+ 	cd /home/pi
  	echo -e "$(date)" "${RED} #### Téléchargement de Dossiers de configuration du scripts #### ${NORMAL}" | tee -a  /var/log/install.log
  	sudo mkdir /home/pi/scripts
- 	sudo cp -f svxlink_raspberry/10-uname /etc/update-motd.d/
+ 	sudo cp -f svxlink_raspberry/addons/10-uname /etc/update-motd.d/
  	sudo cp -f svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  	sudo cp -f svxlink_raspberry/configs/gpio.conf /etc/svxlink/
  	sudo cp -f svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
@@ -98,11 +98,13 @@ source "${BASH_SOURCE%/*}/functions/source.sh"
  	sudo sed -i 's/log\/svxlink/log\/svxlink.log/g' /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
  # clear
+	cd /home/pi
 	echo -e "$(date)" "${YELLOW} #### Vérification des adresses IP #### ${NORMAL}" | tee -a  /var/log/install.log
 	
 	source "${BASH_SOURCE%/*}/functions/get_ip.sh"
 	ipaddress
  # clear
+	cd /home/pi
 	echo -e "$(date)" "${YELLOW} #### Installing Tableau de Bord #### ${NORMAL}" | tee -a  /var/log/install.log
 
 	source "${BASH_SOURCE%/*}/functions/dash_install.sh"
@@ -128,9 +130,9 @@ source "${BASH_SOURCE%/*}/functions/echolink_setup.sh"
 echolink_setup
 	
 	 # clear
-	echo -e "$(date)" "${RED} #### Changement du ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
-	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
-	propagationmonitor
+#	echo -e "$(date)" "${RED} #### Changement du ModulePropagationMonitor #### ${NORMAL}" | tee -a  /var/log/install.log
+#	source "${BASH_SOURCE%/*}/functions/propagationmonitor_setup.sh"
+#	propagationmonitor
 	
 	 # clear
 	echo -e "$(date)" "${RED} #### Définir du svxlink.service #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -145,10 +147,6 @@ echolink_setup
 
 
 echo -e "$(date)" "${GREEN} #### Installation complète #### ${NORMAL}" | tee -a  /var/log/install.log
- 
- echo -e "$(date)" "${GREEN} #### Configuration SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
- source "${BASH_SOURCE%/*}/functions/configure.sh"
- config
 
 echo -e "$(date)" "${RED} #### Rebooting SVXLink #### ${NORMAL}" | tee -a  /var/log/install.log
 
