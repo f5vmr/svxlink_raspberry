@@ -105,13 +105,13 @@ sleep 2
  	sudo sed -i "s/MYCALL/$CALL/g" /etc/svxlink/node_info.json
 
 	echo -e "$(date)" "${GREEN} #### Setting Squelch Hangtime to 10 mS ${NORMAL}" | tee -a  /var/log/install.log
- 	sudo sed -i "s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g" $CONF
+ 	sudo sed -i s/SQL_HANGTIME=2000/SQL_HANGTIME=10/g $CONF
  
  # clear	
 	echo -e "$(date)" "${YELLOW} #### Disabling audio distortion warning messages #### ${NORMAL}"| tee -a  /var/log/install.log
 
 sleep 2
- 	sudo sed -i "s/PEAK_METER=1/PEAK_METER=0/g" $CONF
+ 	sudo sed -i 's/PEAK_METER=1/PEAK_METER=0/g' $CONF
 
  # clear
 	echo -e "$(date)" "${GREEN} #### Updating SplashScreen on startup #### ${NORMAL}" | tee -a  /var/log/install.log
@@ -122,7 +122,7 @@ sleep 2
  # clear
 	echo -e "$(date)" "${YELLOW} #### Changing Log file suffix ${NORMAL}" | tee -a  /var/log/install.log
 sleep 2
- 	sudo sed -i "s/log\/svxlink/log\/svxlink.log/g" /etc/default/svxlink
+ 	sudo sed -i 's/log\/svxlink/log\/svxlink.log/g' /etc/default/svxlink
 	#### INSTALLING DASHBOARD ####
  # clear
 	cd /home/pi

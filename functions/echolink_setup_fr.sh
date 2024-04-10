@@ -11,13 +11,13 @@ then
         echolocation=$(whiptail --title "Location" --inputbox "Enter your location" 8 20 3>&1 1>&2 2>&3)
         
     sed -i "s/CALLSIGN=MYCALL-L/CALLSIGN=$echocall/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i ""s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/MyName/$echosysop/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/Fq,/$echofreq/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/MyTown/$echolocation/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/#DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/DESCRIPTION/#DESCRIPTION/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
-    sed -i "s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i s/#DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i s/DESCRIPTION/#DESCRIPTION/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
+    sed -i s/#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     else
     ##nothing to do
     fi
