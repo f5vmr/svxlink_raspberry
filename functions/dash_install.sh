@@ -36,11 +36,11 @@ function install_dash {
  LINES=("svxlink ALL=NOPASSWD: /usr/sbin/service" "svxlink ALL=NOPASSWD: /bin/cp" "svxlink ALL=NOPASSWD: /bin/chown" "svxlink ALL=NOPASSWD: /bin/chmod" "svxlink ALL=NOPASSWD: /bin/systemctl" "svxlink ALL=NOPASSWD: /bin/reboot" "svxlink ALL=NOPASSWD: /bin/shutdown" )
  
  ## Backup sudoers file
- sudo cp /etc/sudoers /etc/sudoers.bak
+ sudo touch /etc/sudoers.d/svxlink
  
  ## Add each line to sudoers
  for item in "${LINES[@]}"; do
-     echo "$item" | sudo tee -a /etc/sudoers >/dev/null
+     echo "$item" | sudo tee -a /etc/sudoers.d/svxlink >/dev/null
  done
 
 ## Check sudoers file syntax
