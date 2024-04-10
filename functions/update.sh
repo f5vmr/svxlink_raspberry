@@ -4,7 +4,7 @@ CONF="/etc/svxlink/svxlink.conf"
 GPIO="/etc/svxlink/gpio.conf"
 OP=/etc/svxlink
 
-whiptail --title "Updates" --msgbox "Updates ." 8 78
+whiptail --title "Updates" --msgbox "Updating and Upgrading OS" 8 78
 
 	echo -e "$(date)" "${YELLOW}  #### updates and upgrades #### ${NORMAL}" | tee -a  /var/log/install.log
 	
