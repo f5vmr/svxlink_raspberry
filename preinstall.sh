@@ -9,21 +9,21 @@
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
     sudo setfacl -R -m u:pi:rwx /var/log/install.log
-    echo "#### Moving USB Soundcard to Position Card:0 ####" >> /var/log/install.log
+    echo "#### Moving USB Soundcard to Position Card:0 ####" | tee -a /var/log/install.log
     sudo chmod 777 /etc/modules
-    sudo sh -c 'echo "blacklist snd_bcm2835" > /etc/modprobe.d/raspi-blacklist.conf'
-    echo "#### Blacklisting snd_bcm 2835 ####" /var/log/install.log
+    sudo sh -c 'echo "blacklist snd_bcm2835" /etc/modprobe.d/raspi-blacklist.conf'
+    echo "#### Blacklisting snd_bcm 2835 ####" | tee -a /var/log/install.log
     sudo sed -i 's/options snd-usb/#options snd-usb/g' /lib/modprobe.d/aliases.conf
-    echo "#### Disabling HMDI Sound - NOt required for this build ####" >> /var/log/install.log
+    echo "#### Disabling HMDI Sound - Not required for this build ####"| tee -a /var/log/install.log
     sudo sed -i 's/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,noaudio/g' /boot/firmware/config.txt
     sudo cp /home/pi/svxlink_raspberry/configs/asound.conf /etc/modprobe.d/asound.conf
-    echo "#### Setting up Loopback Soundcard ####" >> /var/log/install.log
+    echo "#### Setting up Loopback Soundcard ####" | tee -a /var/log/install.log
     echo snd-aloop > /etc/modules
     sudo cp /home/pi/svxlink_raspberry/configs/loopback.conf /etc/asound.conf
-    echo "#### Reseting alsa-state.service #### " >> /var/log/install.log
+    echo "#### Reseting alsa-state.service #### " | tee -a /var/log/install.log
     sudo mkdir /etc/alsa
     sudo touch /etc/alsa/state-daemon.conf
     sudo systemctl restart alsa-state.service
-    echo "#### Rebooting after soundcard configuration" >> /var/log/install.log
+    echo "#### Rebooting after soundcard configuration ####" | tee -a /var/log/install.log
 
     sudo shutdown -r now
