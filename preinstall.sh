@@ -3,7 +3,7 @@
     
     cd /home/pi
     sudo dphys-swapfile swapoff 
-    sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=256/g' /etc/dphys-swapfile
+    sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=256/g' /etc/dphys-swapfile
     sudo dphys-swapfile swapon
     sudo apt install -y acl
     sudo touch /var/log/install.log
