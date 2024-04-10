@@ -1,5 +1,6 @@
 #!/bin/bash
 function soundcard {
+
 card=false
 
 ## Run lsusb and filter the output to check for a USB sound card
@@ -63,13 +64,13 @@ echo "Variable assigned: $sound_card_variable"
     if [ "$card" = true ] 
     then
     echo "Ok, allons y - changer les règles udev pour le USB sound card"
-               sudo cp svxlink_raspberry/cm-108.rules /etc/udev/rules.d/
+               sudo cp /home/pi/svxlink_raspberry/addons/cm-108.rules /etc/udev/rules.d/
                sudo udevadm control --reload-rules
                sudo udevadm trigger
                 
     else
     echo "ok, donc, je ne fait pas de changements"           
     fi               
-    echo -e "$(date)" "${GREEN}Audio mis à jour, carte-son factice inclu pour Darkice complètés.${NORMAL}" >> /var/log/install.log
+    echo -e "$(date)" "${GREEN}Audio mis à jour, carte-son factice inclu pour Darkice complètés.${NORMAL}" | tee -a /var/log/install.log
 				
 }

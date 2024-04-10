@@ -20,7 +20,7 @@ function which_language {
             sudo sed -i 's/^# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=fr_FR.UTF-8
-            echo "Langue maintenant fr_FR" | tee -a   /var/log/install.log
+            echo -e "${GREEN}Langue maintenant fr_FR ${NORMAL}" | tee -a   /var/log/install.log
     else
         ## Default action if no valid option is selected
         echo "No valid option selected."

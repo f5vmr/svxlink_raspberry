@@ -1,5 +1,6 @@
 #!/bin/bash
 ## Set up echolink
+function echolinksetup {
 whiptail --title "Setup EchoLink?" --yesno "Ceci va installer l'EchoLink et en configurer" 8 87 
 if [ $? -eq "0" ] 
 then
@@ -27,3 +28,4 @@ then
    echo -e "$(date)" "${YELLOW} EchoLink n'est pas disponible. ${NORMAL}" | tee -a /var/log/install.log
 
     fi
+}

@@ -1,5 +1,6 @@
 #!/bin/bash
 ##### Metar Info #####
+function modulemetar {
  airports=("LFPG" "LFPO" "LFOB" "LFBL" "LFMN" "LFML" "LFBD" "LFRK" "LFRN" "LFRB" "LFRS" "LFBO" "LFMT" "LFLC" "LFLS" "LFLY" "LFLB" "LFST" "LFOT" "LFSL" "LFBE")
  
 whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 8 78 3>&1 1>&2 2>&3
@@ -56,7 +57,10 @@ selected=$(whiptail --title "Metar Info" --checklist "choose which Airports:" 27
         specific_airport=$(echo "$specific_airport" | sed's/"//g')
         echo "STARTDEFAULT=$specific_airport" >> /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
         sed -i 's/DEFAULT_LANG=en_US/DEFAULT_LANG=fr_FR/g' /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
+        echo -e "$(date)" "${GREEN} $selected Aèroports inclu avec le défaut Aèroport $specific_airport ${NORMAL}" | tee -a /var/log/install.log
+   
     else
     echo "test"
     #no action
     fi
+}

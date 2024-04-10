@@ -57,7 +57,7 @@ whiptail --title "Metar Info" --yesno "Do you wish to configure this module?" 8 
         specific_airport=$(echo "$specific_airport" | sed 's/"//g')
          echo "STARTDEFAULT=$specific_airport" >> /etc/svxlink/svxlink.d/ModuleMetarInfo.conf
          sed -i 's/DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g' /etc/svxlink/svxlink.d/ModuleMetarInfo.conf    
-        echo -e "$(date)" "${GREEN} $selected Airports included with default Airport $specific_airport ${NORMAL}"
+        echo -e "$(date)" "${GREEN} $selected Airports included with default Airport $specific_airport ${NORMAL}" | tee -a /var/log/install.log
    
     else
     echo "test"
