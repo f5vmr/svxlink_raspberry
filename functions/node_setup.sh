@@ -5,7 +5,7 @@ function nodeset {
     then 
     node="Simplex without Svxreflector"
      sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=SimplexLogic/g' /etc/svxlink/svxlink.conf
-     sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
+     sed -i 's/LINKS=/\#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "2" ] 
     then
     node="Simplex with Svxreflector"
@@ -16,7 +16,7 @@ function nodeset {
     node="Repeater without Svxreflector"
      sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
      sed -i 's/LOGICS=SimplexLogic,ReflectorLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
-     sed -i 's/LINKS=/#LINKS=/g' /etc/svxlink/svxlink.conf
+     sed -i 's/LINKS=/\#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "4" ] 
     then
     node="Repeater with Svxreflector"
@@ -73,16 +73,16 @@ if [ "$HID" == "false" ] && [ "$GPIOD" == "true" ] && [ "$card" == "false" ]
             if [ "$ptt_direction" == "High" ] 
                 then
             echo "test"
-                 sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
-                 sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                 sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
+                 sed -i's/\#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
+                 sed -i's/\#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                 sed -i's/\#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=$ptt_pin/g' /etc/svxlink/svxlink.conf
             
             elif [ "$ptt_direction" == "Low" ] 
                 then
             echo "test"
-                sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
-                sed -i's/#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                sed -i's/#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#PTT_TYPE=Hidraw/PTT_TYPE=GPIOD/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#PTT_GPIOD_CHIP/PTT_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#PTT_GPIOD_LINE=!24/PTT_GPIOD_LINE=!$ptt_pin/g' /etc/svxlink/svxlink.conf
                 
             else 
                 echo "test"
@@ -101,14 +101,14 @@ if [ "$HID" == "false" ] && [ "$GPIOD" == "true" ] && [ "$card" == "false" ]
             if [ "$cos_direction" == "High" ] 
             then
             echo "test"
-                 sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                 sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
+                 sed -i's/\#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                 sed -i's/\#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
             
             elif [ "$cos_direction" == "Low" ] 
             then
             echo "test"
-                sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
+                sed -i's/\##SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
         
             else 
 
@@ -119,9 +119,9 @@ if [ "$HID" == "false" ] && [ "$GPIOD" == "true" ] && [ "$card" == "false" ]
 ##need to change the PTT and COS to GPIOD and all the statements to reflect this Unmodified SOundCard Unit - ask for GPIOD pins
 elif [ "$HID" == "true" ] && [ "$GPIOD" == "true" ] && [ "$card" == "true" ]
 then
-                sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
-                sed -i's/#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
-                sed -i's/#HID_PTT_PIN=GPIO3/HID_PTT_PIN=GPIO3/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#HID_PTT_PIN=GPIO3/HID_PTT_PIN=GPIO3/g' /etc/svxlink/svxlink.conf
 
 
         cos_direction=$(whiptail --title "COS" --radiolist "Please select COS direction" 10 78 3 \
@@ -137,25 +137,25 @@ then
             if [ "$cos_direction" == "High" ] 
             then
             echo "test"
-                sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=$cos_pin/g' /etc/svxlink/svxlink.conf
         
             elif [ "$cos_direction" == "Low" ]
             then
             echo "test"
-                sed -i's/#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
-                sed -i's/#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#SQL_GPIOD_CHIP/SQL_GPIOD_CHIP/g' /etc/svxlink/svxlink.conf
+                sed -i's/\#SQL_GPIOD_LINE=!23/SQL_GPIOD_LINE=!$cos_pin/g' /etc/svxlink/svxlink.conf
             else
             echo "test"
             #no action
             fi
 elif [ "$HID" == "true" ] && [ "$GPIOD" == "false" ] && [ "$card" == "true" ] 
 then
-        sed -i's/#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
-        sed -i's/#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
-        sed -i's/#HID_PTT_PIN=GPIO3/HID_PTT_PIN=GPIO3/g' /etc/svxlink/svxlink.conf
-        sed -i's/#SQL_DET=GPIOD/SQL_TYPE=HIDRAW/g' /etc/svxlink/svxlink.conf
-        sed -i's/#HID_SQL_DET/HID_SQL_DET/g' /etc/svxlink/svxlink.conf
+        sed -i's/\#PTT_TYPE=Hidraw/PTT_TYPE=HID/g' /etc/svxlink/svxlink.conf
+        sed -i's/\#HID_DEVICE=/HID_DEVICE=/g' /etc/svxlink/svxlink.conf
+        sed -i's/\#HID_PTT_PIN=GPIO3/HID_PTT_PIN=GPIO3/g' /etc/svxlink/svxlink.conf
+        sed -i's/\#SQL_DET=GPIOD/SQL_TYPE=HIDRAW/g' /etc/svxlink/svxlink.conf
+        sed -i's/\#HID_SQL_DET/HID_SQL_DET/g' /etc/svxlink/svxlink.conf
         if [ "$cos_direction" == "High" ] 
         then
         echo "test"

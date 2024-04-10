@@ -10,13 +10,13 @@ function which_language {
     if [ "$LANG_OPTION" -eq "1" ] 
     then
             sudo sed -i 's/^# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen
-            sudo sed -i 's/^ fr_FR.UTF-8 UTF-8/# fr_FR.UTF-8 UTF-8/' /etc/locale.gen
+            sudo sed -i 's/^ fr_FR.UTF-8 UTF-8/\# fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=en_GB.UTF-8
             echo "Language set to en_GB" | tee -a   /var/log/install.log
     elif [ "$LANG_OPTION" -eq "2" ] 
     then
-            sudo sed -i 's/^ en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/' /etc/locale.gen
+            sudo sed -i 's/^ en_GB.UTF-8 UTF-8/\# en_GB.UTF-8 UTF-8/' /etc/locale.gen
             sudo sed -i 's/^# fr_FR.UTF-8 UTF-8/fr_FR.UTF-8 UTF-8/' /etc/locale.gen
             sudo locale-gen
             sudo update-locale LANG=fr_FR.UTF-8
