@@ -1,7 +1,10 @@
 #/bin/bash
     home="/home/pi/svxlink_raspberry"
     
-    cd $home  
+    cd /home/pi
+    sudo dphys-swapfile swapoff 
+    sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=256/g' /etc/dphys_swapfile
+    sudo dphys-swapfile swapon
     sudo apt install -y acl
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
