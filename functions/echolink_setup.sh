@@ -22,11 +22,11 @@ then
     sed -i 's/\#DEFAULT_LANG=en_US/DEFAULT_LANG=en_GB/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i 's/DESCRIPTION/\#DESCRIPTION/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i 's/\#STATUS_SERVER_LIST/STATUS_SERVER_LIST/g' /etc/svxlink/svxlink.conf
-echo -e "$(date)" "${GREEN} Echolink is set up ${NORMAL}" >> /var/log/install.log
+echo -e "$(date)" "${GREEN} Echolink is set up ${NORMAL}" | tee -a /var/log/install.log
 
     else
     #echolinkyesno=no
-echo -e "$(date)" "${YELLOW} EchoLink is not set up ${NORMAL}" >> /var/log/install.log
+echo -e "$(date)" "${YELLOW} EchoLink is not set up ${NORMAL}" | tee -a /var/log/install.log
     ##nothing to do
     fi
 }

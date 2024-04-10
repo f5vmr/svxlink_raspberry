@@ -12,7 +12,7 @@ function usercheck {
 
     else whiptail --title "OS and user check" --msgbox "OS is $operating_system and User is $logname" 8 78;
 fi
-echo -e "${GREEN} #### User is pi as necessary #### ${NORMAL}" | tee -a /var/log/install.log
+echo -e "${GREEN} #### User is pi as required #### ${NORMAL}" | tee -a /var/log/install.log
 clear
 
 }
