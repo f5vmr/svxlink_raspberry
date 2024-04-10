@@ -89,10 +89,10 @@ sleep 2
 sleep 2
  	sudo cp -p $CONF $CONF.bak
 #
- 	
+ 	cd /home/pi/
  	echo -e "$(date)" "${RED} #### Downloading prepared configuration files from the scripts #### ${NORMAL}" | tee -a  /var/log/install.log
  	sudo mkdir scripts
-	sudo cp -f /home/pi/svxlink_raspberry/10-uname /etc/update-motd.d/
+	sudo cp -f /home/pi/svxlink_raspberry/addons/10-uname /etc/update-motd.d/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/gpio.conf /etc/svxlink/
  	sudo cp -f /home/pi/svxlink_raspberry/addons/node_info.json /etc/svxlink/node_info.json
