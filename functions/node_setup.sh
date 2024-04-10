@@ -24,7 +24,7 @@ function nodeset {
     
      sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
      sed -i 's/LOGICS=SimplexLogic/LOGICS=RepeaterLogic/g' /etc/svxlink/svxlink.conf
-     sed -i 's/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g' /etc/svxlink/svxlink.conf 
+     sed -i "s/AUTH_KEY="GET YOUR OWN KEY"/AUTH_KEY="$auth_key"/g" /etc/svxlink/svxlink.conf 
     else    
     node="unset"
     fi
@@ -43,7 +43,7 @@ whiptail --title "Sound Card" --msgbox "The USB soundcard is located at card $ca
 
 ## Use sed to replace the line with the new one even if there is no change
 
- sed -i 's/AUDIO_DEV=alsa:plughw:0/AUDIO_DEV=alsa:plughw:$card_number/g' /etc/svxlink/svxlink.conf
+ sed -i "s/AUDIO_DEV=alsa:plughw:0/AUDIO_DEV=alsa:plughw:$card_number/g" /etc/svxlink/svxlink.conf
 ## so even if it is '0' it is still '0'
 ## now we need to change the settings for COS and Squelch.
 ## We need to check if the Squelch is set to '1' or '0'
