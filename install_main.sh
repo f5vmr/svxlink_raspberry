@@ -76,7 +76,7 @@ sleep 1
 #
  	cd /home/pi/
  	echo -e "$(date)" "${RED} #### Downloading prepared configuration files from the scripts #### ${NORMAL}" | tee -a  /var/log/install.log
- 	sudo mkdir /hom/pi/scripts
+ 	sudo mkdir /home/pi/scripts
 	sudo cp -f /home/pi/svxlink_raspberry/addons/10-uname /etc/update-motd.d/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/svxlink.conf /etc/svxlink/
  	sudo cp -f /home/pi/svxlink_raspberry/configs/gpio.conf /etc/svxlink/
