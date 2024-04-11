@@ -2,33 +2,34 @@
 #### WHICH LANGUAGE ####
 ## lang_options en_GB or fr_FR ##
 function which_language {
+    set_locale() {
+    locale=$1
+    localectl set-locale LANG=${locale}
+    echo "Locale set to ${locale}"
+    }
 
-
-    LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 10 78 2 \
+    LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Language" 10 78 2 \
         "1" "English - en_GB" \
-        "2" "French - fr_FR" 3>&1 1>&2 2>&3)
-
+        "2" "French - fr_FR" \
+    
+    # Set locale based on user's choice
     case ${LANG_OPTION} in
-        1)
-            LC_ALL="en_GB.UTF-8"
-            LANG="en_GB.UTF-8"
-            LANGUAGE="en_GB:en"
-            ;;
-        2)
-            LC_ALL="fr_FR.UTF-8"
-            LANG="fr_FR.UTF-8"
-            LANGUAGE="fr_FR:fr:en_GB:en"
-            ;;
-        *)
-            echo "ALERT" "${FUNCNAME}: unknown language option '${LANG_OPTION}'"
-            ;;
+    1)
+        set_locale "en_GB.UTF-8"
+        ;;
+    2)
+        set_locale "fr_FR.UTF-8"
+        ;;
+    3)
+        set_locale "es_ES.UTF-8"
+        ;;
+    *)
+        echo "Invalid choice"
+        ;;
     esac
-    LC_PAPER="en_GB.UTF-8"  # default paper locale
-    LESSCHARSET="utf-8"      # independent from locale
-    MM_CHARSET="utf-8"       # independent from locale
-    echo "locale settings" "${LANG}"
-    export LC_ALL LANG LANGUAGE LC_PAPER LESSCHARSET MM_CHARSET
-}
+
+    echo "${GREEN} #### Language set to $LANG_OPTION #### ${NORMAL}" | tee -a /var/log/install.log
+    }
 
 
 
