@@ -1,28 +1,21 @@
 #!/bin/bash
 
-## List of packages to install
-PACKAGES=("app1" "app2" "app3" "app4" "app5")
+install_locale() {
+        locale=$1
+        if ! locale -a | grep -q "${locale}"; then
+            sudo sh -c "locale-gen ${locale}"
+        fi
+    }
+    
+    # Install en_GB.UTF-8 locale if not available
+    install_locale "en_GB.UTF-8"
+    # Install fr_FR.UTF-8 locale if not available
+    install_locale "fr_FR.UTF-8"
+    # Install en_US.UTF-8 locale if not available
+    install_locale "en_US.UTF-8"
+    # Install es_ES.UTF-8 locale if not available
+    install_locale "es_ES.UTF-8"
+    # Set en_GB.UTF-8 as the default locale
+    localectl set-locale LANG=en_GB.UTF-8
 
-## Total number of packages
-TOTAL=${#PACKAGES[@]}
-
-## Counter for progress
-PROGRESS=0
-
-## Function to update progress
-#!/bin/bash
-
-# Unload sound modules
-sudo modprobe -r snd_bcm2835
-sudo modprobe -r snd_usb_audio
-sudo modprobe -fr vc4
-sudo modprobe -r snd-aloop
-
-# Load sound modules in desired order
-sudo modprobe snd_usb_audio
-sudo modprobe snd_aloop
-sudo modprobe snd_bcm2835
-sudo modprobe vc4
-
-# Reload ALSA configuration
-sudo alsactl restore
+    echo Done

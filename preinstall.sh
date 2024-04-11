@@ -34,7 +34,7 @@
     install_locale() {
         locale=$1
         if ! locale -a | grep -q "${locale}"; then
-            sudo sh -c `echo "locale-gen ${locale}"`
+            sudo sh -c "locale-gen ${locale}"
         fi
     }
     
