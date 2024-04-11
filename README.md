@@ -18,7 +18,7 @@
 <p>Once complete, eject the card and install it in the raspberry pi and power it up. Enter the user <b>pi</b> and your password.</p> 
 <h2>The compilation</h2>
 <p>This script will also install a dummy sound card for the use of Darkice and Icecast2.</p> 
-<p>The first step will be the following command: <b>sudo apt install -y git</b> as without this you cannot download from the GitHub.</p>  
+<p>The first step will be the following command: <b>sudo apt-get install -y git</b> as without this you cannot download from the GitHub.</p>  
 
 <p>Now the following command: <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
@@ -76,7 +76,7 @@
 <p>Une fois terminé, éjectez la carte, installez-la dans le Raspberry Pi et allumez-la. Entrez l'utilisateur <b>pi</b> et votre mot de passe.</p>
 <h2>La Compilation</h2>
 <p>Ce script installera également une carte son factice pour l'utilisation de Darkice et Icecast2.</p>
-<p>La première étape sera la commande suivante : <b>sudo apt install -y git</b> car sans cela, vous ne pouvez pas télécharger depuis GitHub.</p>
+<p>La première étape sera la commande suivante : <b>sudo apt-get install -y git</b> car sans cela, vous ne pouvez pas télécharger depuis GitHub.</p>
 <p>Maintenant, la commande suivante : <b>sudo git clone https://github.com/f5vmr/svxlink_install.git</b> .</p>
 
 
