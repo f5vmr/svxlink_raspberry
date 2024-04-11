@@ -8,7 +8,7 @@ whiptail --title "Mis à jour" --msgbox "Mis à jour les répositoires pour node
 
 	echo -e "$(date)" "${YELLOW}  #### updates and upgrades #### ${NORMAL}" | tee -a  /var/log/install.log
 
- 	sudo apt-get-get update
+ 	sudo apt-get update
  	
  	sudo apt-get update
  	sudo apt-get upgrade -y

@@ -8,7 +8,7 @@ whiptail --title "Updates" --msgbox "Updating and Upgrading OS" 8 78
 
 	echo -e "$(date)" "${YELLOW}  #### updates and upgrades #### ${NORMAL}" | tee -a  /var/log/install.log
 	
- 	sudo apt-get-get update
+ 	sudo apt-get update
  	
 	sudo apt-get update
  	sudo apt-get upgrade -y
