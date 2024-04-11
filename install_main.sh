@@ -5,7 +5,7 @@ cd /home/pi
 
 source "${BASH_SOURCE%/*}/functions/language.sh"
 which_language
-if [ "$LANG" == "2" ] 
+if [ "$LANG_OPTION" == "2" ] 
 then 
 sudo sh ./install_main_fr.sh
 fi
