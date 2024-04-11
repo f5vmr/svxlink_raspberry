@@ -1,5 +1,6 @@
 #!/bin/bash
-LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 10 78 2 \
+
+    LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 10 78 2 \
         "1" "English - en_GB" \
         "2" "French - fr_FR" 3>&1 1>&2 2>&3)
 
