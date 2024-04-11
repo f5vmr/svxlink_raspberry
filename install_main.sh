@@ -6,7 +6,8 @@ cd /home/pi
 source "${BASH_SOURCE%/*}/functions/language.sh"
 which_language
 if [ "$LANG" == "2" ] 
-then sudo sh ./install_main_fr.sh
+then 
+sudo sh ./install_main_fr.sh
 fi
 #### Welcome Message ####
 source "${BASH_SOURCE%/*}/functions/welcome.sh"
