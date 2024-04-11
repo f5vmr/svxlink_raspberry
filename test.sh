@@ -3,11 +3,11 @@
 
 # Install locales
     if ! locale -a | grep -q "en_GB.UTF-8"; then
-        sudo sh -c (locale-gen en_GB.UTF-8)
+        sudo sh -c 'echo "locale-gen en_GB.UTF-8"'
     fi
     
     if ! locale -a | grep -q "fr_FR.UTF-8"; then
-        sudo sh -c (locale-gen fr_FR.UTF-8)
+        sudo sh -c 'echo "locale-gen fr_FR.UTF-8"'
     fi
     
     LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 10 78 2 \
