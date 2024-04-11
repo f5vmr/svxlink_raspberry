@@ -1,14 +1,17 @@
 #/bin/bash
     home="/home/pi/svxlink_raspberry"
     
-    cd /home/pi
+    ## Change swapfile size
     sudo dphys-swapfile swapoff 
     sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=256/g' /etc/dphys-swapfile
     sudo dphys-swapfile swapon
+    ## Install file manipulation pkg
     sudo apt install -y acl
+    ## Set /var/log/install.log
     sudo touch /var/log/install.log
     sudo chmod 777 /var/log/install.log
     sudo setfacl -R -m u:pi:rwx /var/log/install.log
+    ## Manipulation of Soundcards
     echo "#### Moving USB Soundcard to Position Card:0 ####" | tee -a /var/log/install.log
     sudo chmod 777 /etc/modules
     sudo sh -c 'echo "blacklist snd_bcm2835" /etc/modprobe.d/raspi-blacklist.conf'
