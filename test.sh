@@ -2,11 +2,11 @@
 
     install_locales() {
     if ! locale -a | grep -q "en_GB.UTF-8"; then
-        locale-gen en_GB.UTF-8
+    sudo locale-gen en_GB.UTF-8
     fi
     
     if ! locale -a | grep -q "fr_FR.UTF-8"; then
-        locale-gen fr_FR.UTF-8
+    sudo locale-gen fr_FR.UTF-8
     fi
 }
 
