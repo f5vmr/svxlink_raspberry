@@ -1,12 +1,16 @@
 #!/bin/bash
 #### WHICH LANGUAGE ####
 ## lang_options en_GB or fr_FR ##
-function which_language {
-    set_locale() {
-    locale=$1
-    localectl set-locale LANG=${locale}
-    echo "Locale set to ${locale}"
-    }
+
+function which_language{
+            set_locale() {
+            locale=$1.UTF-8
+            if [ ! -e "/usr/lib/locale/${locale}" ]; then
+                sudo locale-gen ${locale}
+            fi
+}
+
+          
 
     LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Language" 10 78 2 \
         "1" "English - en_GB" \

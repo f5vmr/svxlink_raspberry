@@ -28,18 +28,27 @@
     sudo touch /etc/alsa/state-daemon.conf
     sudo systemctl restart alsa-state.service
     # installing locales.
-  
-    # Install en_GB.UTF-8 locale if not available
-    sudo sh -c "locale-gen en_GB.UTF-8"
-    # Install fr_FR.UTF-8 locale if not available
-    sudo sh -c "locale-gen fr_FR.UTF-8"
-    # Install en_US.UTF-8 locale if not available
-    sudo sh -c "locale-gen en_US.UTF-8"
-    # Install es_ES.UTF-8 locale if not available
-    sudo sh -c "locale-gen es_ES.UTF-8"
-    # Set en_GB.UTF-8 as the default locale
-    localectl set-locale LANG=en_GB.UTF-8
-    
+ #!/bin/bash
+
+# Function to install locales if not already available
+install_locale() {
+    locale=$1.UTF-8
+    if [ ! -e "/usr/lib/locale/${locale}" ]; then
+        sudo locale-gen ${locale}
+    fi
+}
+
+# Install locales
+install_locale "en_GB"
+install_locale "fr_FR"
+install_locale "en_US"
+install_locale "es_ES"
+
+# Set en_GB.UTF-8 as the default locale
+sudo localectl set-locale LANG=en_GB.UTF-8
+
+
+
     echo "Locale setup completed."
 
 
