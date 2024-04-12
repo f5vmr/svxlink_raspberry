@@ -8,7 +8,7 @@ function nodeset {
      sed -i 's/LINKS=/\#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "2" ] 
     then
-    node="Simplex with Svxreflector"
+    node="Simplex with UK Svxreflector"
     auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
      sed -i "s/AUTH_KEY=\"GET YOUR OWN KEY\"/AUTH_KEY=\"$auth_key\"/g" /etc/svxlink/svxlink.conf 
     elif [ $NODE_OPTION  == "3" ] 
@@ -19,7 +19,7 @@ function nodeset {
      sed -i 's/LINKS=/\#LINKS=/g' /etc/svxlink/svxlink.conf
     elif [ $NODE_OPTION  == "4" ] 
     then
-    node="Repeater with Svxreflector"
+    node="Repeater with UK Svxreflector"
     auth_key=$(whiptail --passwordbox "Please enter your SvxReflector Key" 8 78 --title "password dialog" 3>&1 1>&2 2>&3)
     
      sed -i 's/set for SimplexLogic/set for RepeaterLogic/g' /etc/svxlink/svxlink.conf
@@ -169,6 +169,7 @@ then
         echo "test"
         #no operations
         fi
+        sed -i 's/DEFAULT_LANG=en_GB/DEFAULT_LANG=$lang/g' /etc/svxlink/svxlink.log
 fi
 ##need to change the PTT and COS to HID and all the statements to reflect this modified SoundCard Unit - ask for GPIOD pins
 

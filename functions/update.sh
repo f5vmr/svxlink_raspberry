@@ -10,7 +10,6 @@ whiptail --title "Updates" --msgbox "Updating and Upgrading OS" 8 78
 	
  	sudo apt-get update
  	
-	sudo apt-get update
  	sudo apt-get upgrade -y
 	VERSIONS=svxlink/src/versions | tee -a   /var/log/install.log   
 

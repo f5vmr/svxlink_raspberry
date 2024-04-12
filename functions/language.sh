@@ -1,6 +1,6 @@
 #!/bin/bash
 #### WHICH LANGUAGE ####
-## lang_options en_GB or fr_FR ##
+## lang_options en_GB or fr_FR or en_US ##
 
 set_locale() {
     locale=$1.UTF-8
@@ -19,10 +19,11 @@ function which_language{
 
 
 # Prompt the user for language choice
-LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Language" 10 78 2 \
+LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Language" 10 78 3 \
     "1" "English (United Kingdom) - en_GB" \
-    "2" "French (France) - fr_FR" 3>&1 1>&2 2>&3)
-    #"3" "English (United States) - en_US" \
+    "2" "French (France) - fr_FR" \
+    "3" "English (USA) - en_US" 3>&1 1>&2 2>&3)
+    
     #"4" "Spanish (Spain) - es_ES" 
 
 # Set locale based on user's choice
@@ -44,8 +45,8 @@ case ${LANG_OPTION} in
         ;;
 esac
 
-
-    echo "${GREEN} #### Language set to $LANG_OPTION #### ${NORMAL}" | tee -a /var/log/install.log
+    lang=$(echo $LANG | grep -o '^[a-zA-Z]*_[a-zA-Z]*')
+    echo "${GREEN} #### Language set to $LANG_OPTION $lang #### ${NORMAL}" | tee -a /var/log/install.log
     }
 
 
