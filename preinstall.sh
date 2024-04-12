@@ -28,32 +28,32 @@
     sudo touch /etc/alsa/state-daemon.conf
     sudo systemctl restart alsa-state.service
     # installing locales.
- #!/bin/bash
-
-# Function to install locales if not already available
+ 
+# Function to install locale if not already available
 install_locale() {
     locale=$1.UTF-8
-    if [ ! -e "/usr/lib/locale/${locale}" ]; then
+    if ! locale -a | grep -q "^${locale}$"; then
         sudo locale-gen ${locale}
     fi
 }
 
-# Install locales
-install_locale "en_GB"
+# Install fr_FR.UTF-8 locale if not available
 install_locale "fr_FR"
+# Install en_US.UTF-8 locale if not available
 install_locale "en_US"
+# Install es_ES.UTF-8 locale if not available
 install_locale "es_ES"
 
 # Set en_GB.UTF-8 as the default locale
 sudo localectl set-locale LANG=en_GB.UTF-8
 
+echo "Locale setup completed."
 
+
+# Set en_GB.UTF-8 as the default locale
+sudo localectl set-locale LANG=en_GB.UTF-8
 
     echo "Locale setup completed."
-
-
-
-
 
 echo "#### Rebooting after soundcard configuration ####" | tee -a /var/log/install.log
 
