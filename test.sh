@@ -1,37 +1,13 @@
 #!/bin/bash
-
+install_locale() {
+    locale=$1.UTF-8
+    if [ ! -e "/usr/lib/locale/${locale}" ]; then
+        sudo locale-gen ${locale}
+    fi
+}
 
 # Install locales
-    if ! locale -a | grep -q "en_GB.UTF-8"; then
-        sudo sh -c `echo "locale-gen en_GB.UTF-8"`
-    fi
-    
-    if ! locale -a | grep -q "fr_FR.UTF-8"; then
-        sudo sh -c `echo "locale-gen fr_FR.UTF-8"`
-    fi
-    
-    LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Default Language" 10 78 2 \
-        "1" "English - en_GB" \
-        "2" "French - fr_FR" 3>&1 1>&2 2>&3)
-
-    case ${LANG_OPTION} in
-        1)
-            LC_ALL="en_GB.UTF-8"
-            LANG="en_GB.UTF-8"
-            LANGUAGE="en_GB:en"
-            ;;
-        2)
-            LC_ALL="fr_FR.UTF-8"
-            LANG="fr_FR.UTF-8"
-            LANGUAGE="fr_FR:fr"
-            ;;
-        *)
-            echo "ALERT" "${FUNCNAME}: unknown language option '${LANG_OPTION}'"
-            ;;
-    esac
-    LC_PAPER="en_GB.UTF-8"  # default paper locale
-    LESSCHARSET="utf-8"      # independent from locale
-    MM_CHARSET="utf-8"       # independent from locale
-    echo "locale settings" "${LANG}"
-    export LC_ALL LANG LANGUAGE LC_PAPER LESSCHARSET MM_CHARSET
-
+install_locale "en_GB"
+install_locale "fr_FR"
+install_locale "en_US"
+install_locale "es_ES"
