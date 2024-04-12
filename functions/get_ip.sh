@@ -5,8 +5,8 @@ function ipaddress {
 
 
 # Get the IPv4 address and device (wlan0 or eth0)
-ip_address=$(ip -4 route get 1 | grep -oP 'src \K\S+') | tee -a /var/log/install.log
-device=$(ip -4 route get 1 | grep -oP 'dev \K\S+') | tee -a /var/log/install.log
+ip_address=$(ip -4 route get 1 | grep -oP 'src \K\S+') 
+device=$(ip -4 route get 1 | grep -oP 'dev \K\S+') 
 
 
 ## Update /etc/dhcpcd.conf with fixed IP addresses
