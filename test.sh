@@ -4,7 +4,10 @@
 install_locale() {
     locale=$1.UTF-8
     if ! locale -a | grep -q "^${locale}$"; then
+        echo "Generating ${locale} locale..."
         sudo locale-gen ${locale}
+    else
+        echo "${locale} locale is already generated."
     fi
 }
 
@@ -19,3 +22,4 @@ sudo localectl set-locale LANG=en_GB.UTF-8
 
 echo "Locale setup completed. Rebooting..."
 sudo reboot
+
