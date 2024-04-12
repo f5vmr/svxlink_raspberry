@@ -26,7 +26,7 @@ function install_dash {
     then
     ## add permissions to the dashboard
     sudo chmod -R 777 /var/www/html/config.inc.php
-    dashboard_user=$(whiptail --title "Dashboard User" --inputbox "Fait entrer le username du tableau - unique" 8 78 svxlink 3>&1 1>&2 2>&3)
+    dashboard_user=$(whiptail --title "Dashboard User" --inputbox "Selectionner le username du tableau - unique" 8 78 svxlink 3>&1 1>&2 2>&3)
     dashboard_pass=$(whiptail --title "Dashboard Password" --passwordbox "Fait Entrer le mot-pass de l'utilisateur du tableau" 8 78 3>&1 1>&2 2>&3)
     sudo sed -i "s/\"svxlink\"/\"$dashboard_user\"/g" /var/www/html/include/config.inc.php
     sudo sed -i "s/\"password\"/\"$dashboard_pass\"/g" /var/www/html/include/config.inc.php

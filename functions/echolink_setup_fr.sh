@@ -6,13 +6,13 @@ if [ $? -eq "0" ]
 then
     ## "Installing echolink"
     sed -i 's/\#MUTE_LOGIC/MUTE_LOGIC/g' /etc/svxlink/svxlink.d/ModuleEchoLink.conf      echocall=$(whiptail --title "Callsign A2ABC-L or -R?" --inputbox "Enter your callsign (-L or -R) as registered" 8 20 3>&1 1>&2 2>&3)
-        echocall=$(whiptail --title "Indicatif F2ABC-L or -R?" --inputbox "Fait entrer l'indicatif (-L or -R) comme enregisteré" 8 60 3>&1 1>&2 2>&3)
+        echocall=$(whiptail --title "Indicatif F2ABC-L or -R?" --inputbox "Selectionner l'indicatif (-L or -R) comme enregisteré" 8 60 3>&1 1>&2 2>&3)
         echocall=${echocall^^}
-        echopass=$(whiptail --title "Mot-pass?" --passwordbox "Fait entrer le mot-pass" 8 20 3>&1 1>&2 2>&3)
-        echosysop=$(whiptail --title "PreNom du System Operateur?" --inputbox "Fait entrer ton prenom SYSOP" 8 20 3>&1 1>&2 2>&3)
+        echopass=$(whiptail --title "Mot-pass?" --passwordbox "Selectionner le mot-pass" 8 20 3>&1 1>&2 2>&3)
+        echosysop=$(whiptail --title "PreNom du System Operateur?" --inputbox "Selectionner ton prenom SYSOP" 8 20 3>&1 1>&2 2>&3)
         echosysop=${echosysop^}
-        echofreq=$(whiptail --title "Frequence" --inputbox "Fait entrer La frequence sortie en MHz eg 145.2375" 8 20 3>&1 1>&2 2>&3)
-        echolocation=$(whiptail --title "Location" --inputbox "Fait entrer le Ville ou Dept." 8 20 3>&1 1>&2 2>&3)
+        echofreq=$(whiptail --title "Frequence" --inputbox "Selectionner La frequence sortie en MHz eg 145.2375" 8 20 3>&1 1>&2 2>&3)
+        echolocation=$(whiptail --title "Location" --inputbox "Selectionner le Ville ou Dept." 8 20 3>&1 1>&2 2>&3)
         echolocation=${echolocation^}
     sed -i "s/CALLSIGN=MYCALL-L/CALLSIGN=$echocall/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
     sed -i "s/PASSWORD=MyPass/PASSWORD=$echopass/g" /etc/svxlink/svxlink.d/ModuleEchoLink.conf
