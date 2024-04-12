@@ -2,9 +2,6 @@
 #### WHICH LANGUAGE ####
 ## lang_options en_GB or fr_FR ##
 
-function which_language{
-
-# Function to set locale based on user's choice
 set_locale() {
     locale=$1.UTF-8
     if [ $1 != en_GB ]
@@ -15,6 +12,11 @@ set_locale() {
     fi
     echo "Locale set to ${locale}"
 }
+
+function which_language{
+
+# Function to set locale based on user's choice
+
 
 # Prompt the user for language choice
 LANG_OPTION=$(whiptail --title "Language Option" --menu "Select Language" 10 78 2 \
