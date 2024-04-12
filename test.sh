@@ -21,5 +21,5 @@ install_locale "es_ES"
 sudo localectl set-locale LANG=en_GB.UTF-8
 
 echo "Locale setup completed. Rebooting..."
-sudo reboot
+
 
