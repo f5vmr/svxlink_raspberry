@@ -40,7 +40,7 @@ function install_dash {
  
  ## Add each line to sudoers
  for item in "${LINES[@]}"; do
-     echo "$item" | sudo tee -a /etc/sudoers.d/svxlink >/dev/null
+     echo "$item" | sudo tee -a /etc/sudoers.d/svxlink
  done
 sudo chmod 0440 /etc/sudoers.d/svxlink
 ## Check sudoers file syntax
